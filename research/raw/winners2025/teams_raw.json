@@ -1,0 +1,632 @@
+{
+ "Most Inspirational|aWQ6NzA1OQ==": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6NzA1OQ==",
+    "title": "Space Quest Maidens - Donzelas da Miss\u00e3o Espacial",
+    "event": "aWQ6MQ==",
+    "challengeDetails": {
+     "title": "Eclipses: Perspective is Everything"
+    },
+    "locationDetails": {
+     "country": "Brazil",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Most Inspirational|aWQ6MTQ1ODA=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MTQ1ODA=",
+    "title": "Innovisionaries",
+    "event": "aWQ6Mg==",
+    "challengeDetails": {
+     "title": "SDGs in the Classroom"
+    },
+    "locationDetails": {
+     "country": "United Arab Emirates",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Most Inspirational|aWQ6MzMwMDg=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MzMwMDg=",
+    "title": "Photonics Odyssey",
+    "event": "aWQ6Mw==",
+    "challengeDetails": {
+     "title": "Commercializing Low Earth Orbit (LEO)"
+    },
+    "locationDetails": {
+     "country": "India",
+     "displayName": ""
+    },
+    "projectDetails": {
+     "name": "AakashNet A Region-optimized, Low-cost, Hybrid Satellite-mesh Broadband System Designed For Indian Infrastructure And Socio-economic Constraints.",
+     "summary": "AakashNet is an indigenous Low Earth Orbit (LEO) satellite network designed to provide secure, high-speed, and affordable internet connectivity across India\u2019s diverse terrain. We developed a phased-array based user terminal capable of dynamic beam steering through Ku/Ka band communication, linking directly with AakashNet satellites in orbit. These satellites form a laser-linked mesh network, enabling continuous data relay with minimal latency and reduced ground dependency.\n\nThe system directly addresses India\u2019s connectivity challenges\u2014bridging the digital divide in rural regions, providing encrypted communication for defense posts, and delivering in-flight and maritime internet without relying on foreign networks. With hardware locally produced by Indian agencies like ISRO, HAL, and BHEL, AakashNet ensures technological sovereignty and strategic independence.\n\nBy combining indigenous satellite manufacturing, reusable ISRO launches, and adaptive phased-array ground technology, AakashNet transforms connectivity into a national infrastructure asset\u2014empowering governance, education, defense, and the digital economy.",
+     "details": "<p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">AakashNet is an indigenous Low Earth Orbit (LEO) satellite-based broadband communication system designed to deliver secure, high-speed, and reliable connectivity across India\u2019s diverse landscapes \u2014 from rural villages to defense borders, ships, and aircraft. It solves India\u2019s connectivity gap by replacing dependency on terrestrial infrastructure like fiber and towers with a network of locally manufactured satellites and smart phased-array user terminals.</span></p><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">How It Works:</strong></b><br/><span style=\"white-space: pre-wrap;\">Each user terminal \u2014 the </span><i><em style=\"white-space: pre-wrap;\">Aakash Jodak</em></i><span style=\"white-space: pre-wrap;\"> dish \u2014 houses around </span><b><strong style=\"white-space: pre-wrap;\">1280 phased-array antennas</strong></b><span style=\"white-space: pre-wrap;\"> that electronically steer narrow beams toward rapidly orbiting AakashNet satellites via the </span><b><strong style=\"white-space: pre-wrap;\">Ku/Ka band</strong></b><span style=\"white-space: pre-wrap;\">. These satellites communicate not only with ground stations but also with each other through </span><b><strong style=\"white-space: pre-wrap;\">laser-based inter-satellite links</strong></b><span style=\"white-space: pre-wrap;\">, creating a resilient, low-latency communication mesh in space. Ground gateways connected to ISRO\u2019s ISTRAC manage satellite telemetry, internet routing, and network optimization.</span></p><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Benefits:</strong></b></p><ul><li><b><strong style=\"white-space: pre-wrap;\">Universal Access:</strong></b><span style=\"white-space: pre-wrap;\"> Extends broadband to remote regions where fiber is impractical.</span></li><li><b><strong style=\"white-space: pre-wrap;\">National Security:</strong></b><span style=\"white-space: pre-wrap;\"> Provides fully encrypted, sovereign communication lines for defense and governance.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Economic Efficiency:</strong></b><span style=\"white-space: pre-wrap;\"> Indigenous mass manufacturing and reusable launch systems drastically lower per-satellite and terminal costs.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Operational Flexibility:</strong></b><span style=\"white-space: pre-wrap;\"> Mobile connectivity for aviation, maritime, and defense mobility.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Scalable Infrastructure:</strong></b><span style=\"white-space: pre-wrap;\"> A modular system that can expand coverage and capacity as needed.</span></li></ul><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Intended Impact:</strong></b><br/><span style=\"white-space: pre-wrap;\">AakashNet bridges India\u2019s digital divide by connecting 700+ million offline citizens, strengthening national defense autonomy, and empowering sectors like education, healthcare, and e-governance. It supports the </span><i><em style=\"white-space: pre-wrap;\">Digital India</em></i><span style=\"white-space: pre-wrap;\"> and </span><i><em style=\"white-space: pre-wrap;\">Atmanirbhar Bharat</em></i><span style=\"white-space: pre-wrap;\"> missions by ensuring that India\u2019s communication backbone is built, managed, and secured within its borders.</span></p><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Development Tools and Technology Stack:</strong></b></p><ul><li><b><strong style=\"white-space: pre-wrap;\">Frontend:</strong></b><span style=\"white-space: pre-wrap;\"> HTML, CSS (Tailwind), JavaScript</span></li><li><b><strong style=\"white-space: pre-wrap;\">Hosting:</strong></b><span style=\"white-space: pre-wrap;\"> Locally hosted interface (no backend), simulating user dashboard and satellite control visualization.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Hardware Simulation:</strong></b><span style=\"white-space: pre-wrap;\"> Modeled phased-array terminal design and link budgeting through MATLAB and OpenEMS (for RF performance).</span></li><li><b><strong style=\"white-space: pre-wrap;\">Software Logic:</strong></b><span style=\"white-space: pre-wrap;\"> Prototype control and visualization scripts written in JavaScript for demonstrating network topology, beam switching, and data throughput visualization.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Design Assets:</strong></b><span style=\"white-space: pre-wrap;\"> 2D/3D mockups of terminal hardware and coverage dashboard for real-time user interaction.</span></li></ul><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Creativity and Innovation:</strong></b><br/><span style=\"white-space: pre-wrap;\">The project reimagines satellite internet as a </span><i><em style=\"white-space: pre-wrap;\">sovereign national infrastructure</em></i><span style=\"white-space: pre-wrap;\"> rather than a private service. Its phased-array antenna approach eliminates mechanical tracking, enabling compact, low-maintenance terminals. The </span><b><strong style=\"white-space: pre-wrap;\">use of a laser-linked mesh</strong></b><span style=\"white-space: pre-wrap;\"> among satellites reduces ground dependency and enhances latency performance. On the software side, the </span><b><strong style=\"white-space: pre-wrap;\">frontend dashboard</strong></b><span style=\"white-space: pre-wrap;\"> was built using lightweight web technologies (HTML, Tailwind CSS, JavaScript) to visualize live satellite coverage, beam steering, and bandwidth analytics \u2014 without requiring a backend, making it simple and portable.</span></p><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Design Considerations:</strong></b></p><ul><li><b><strong style=\"white-space: pre-wrap;\">Affordability:</strong></b><span style=\"white-space: pre-wrap;\"> Designed for mass production with hardware cost capped at \u20b923,000 per terminal.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Sovereignty:</strong></b><span style=\"white-space: pre-wrap;\"> Full Indian control over design, manufacturing, and launch (via ISRO\u2013HAL\u2013BHEL collaboration).</span></li><li><b><strong style=\"white-space: pre-wrap;\">Reliability:</strong></b><span style=\"white-space: pre-wrap;\"> Resilient network with multiple failover paths through inter-satellite communication.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Security:</strong></b><span style=\"white-space: pre-wrap;\"> AES-256 and WPA3 standards with a roadmap toward </span><b><strong style=\"white-space: pre-wrap;\">Post-Quantum Cryptography (PQC)</strong></b><span style=\"white-space: pre-wrap;\">.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Scalability:</strong></b><span style=\"white-space: pre-wrap;\"> Architecture supports commercial, rural, and defense-grade variants with tailored service plans.</span></li></ul><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">In essence,</strong></b><span style=\"white-space: pre-wrap;\"> AakashNet is more than just a satellite internet solution, it\u2019s a step toward India\u2019s digital self-reliance, enabling universal, secure, and sovereign connectivity across every corner of the nation.</span></p>",
+     "solution": "",
+     "aiToolsUsage": [],
+     "dataReferences": "[NASA Image and Video Library](https://api.nasa.gov/)",
+     "demoLink": "https://www.canva.com/design/DAG07mTTm3U/2Md3dzae0X5hpQ9ut1OjXg/edit?utm_content=DAG07mTTm3U&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton",
+     "projectLink": "https://drive.google.com/drive/folders/17Sjo9YEayU1WuYzge4OO2uTpEkqAI4ms"
+    }
+   }
+  }
+ },
+ "Best Mission Concept|aWQ6MTQ0Mg==": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MTQ0Mg==",
+    "title": "ASTROGENESIS",
+    "event": "aWQ6MQ==",
+    "challengeDetails": {
+     "title": "Planetary Tourism Office"
+    },
+    "locationDetails": {
+     "country": "Peru",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Best Mission Concept|aWQ6MTgyMDk=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MTgyMDk=",
+    "title": "AsturExplorers",
+    "event": "aWQ6Mg==",
+    "challengeDetails": {
+     "title": "Landsat Reflectance Data: On the Fly and at Your Fingertips"
+    },
+    "locationDetails": {
+     "country": "Spain",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Best Mission Concept|aWQ6NDIzNDM=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6NDIzNDM=",
+    "title": "PureFlow",
+    "event": "aWQ6Mw==",
+    "challengeDetails": {
+     "title": "Your Home in Space: The Habitat Layout Creator"
+    },
+    "locationDetails": {
+     "country": "Brazil",
+     "displayName": ""
+    },
+    "projectDetails": {
+     "name": "PureFlow",
+     "summary": "We developed PureFlow, an interactive systems engineering platform that allows users to design, model in 3D, and validate space habitats. It directly addresses the challenge by enabling the creation of layouts and volumes, but it goes further: the system calculates critical crew requirements in real-time (mass, power, life support) based on crew size and mission duration, providing instant feedback on the design's viability.\n\nIts importance lies in being more than a layout tool; it is a survival simulator. With its unique integration of NASA's DONKI API, PureFlow tests the design against real space weather threats, such as solar storms. It doesn't just answer if a habitat can be built, but if its crew can survive in it, making resilient design a fundamental priority.",
+     "details": "<p><span style=\"white-space: pre-wrap;\">PureFlow: Would Your Habitat Survive a Solar Storm... Today?</span><br/><span style=\"white-space: pre-wrap;\">We are standing on the brink of interplanetary civilization. But between our dreams of Martian colonies and lunar bases lies a brutal reality: space is unforgiving. It\u2019s not enough to build a shelter; we must engineer a self sustaining ecosystem. PureFlow is more than a design tool. It's the crucible where your deep space habitat is tested against the harsh, unpredictable truths of the cosmos.</span><br/><br/><b><strong style=\"white-space: pre-wrap;\">What is PureFlow?</strong></b><br/><span style=\"white-space: pre-wrap;\">PureFlow is your command center for mission architecture. This interactive platform empowers you to design, simulate, and validate a complete space habitat for any destination, such as the Moon, Mars, or deep space. Step into the role of Mission Architect. From the initial briefing to the final 3D model, PureFlow is your dedicated systems engineer, instantly analyzing the ripple effects of every choice you make.</span><br/><br/><b><strong style=\"white-space: pre-wrap;\">Features That Define the Future:</strong></b><br/><span style=\"white-space: pre-wrap;\">From Blueprint to Reality in 3D</span><br/><span style=\"white-space: pre-wrap;\">Forget static blueprints. With PureFlow, you sculpt your habitat in a dynamic 3D environment. Place crew quarters, connect life support, and position science labs. With every click, our physics engine provides immediate feedback, calculating critical shifts in mass, power draw, and internal volume. You don't just design a habitat; you watch it come alive.</span><br/><br/><b><strong style=\"white-space: pre-wrap;\">The Logistics of Life</strong></b><br/><span style=\"white-space: pre-wrap;\">A crew of four on Mars needs tons of supplies. Or do they? PureFlow runs a deep survival simulation, modeling the entire life support loop. Integrate advanced ECLSS or a greenhouse, and see the numbers change in real time. Witness exactly how recycling and in situ resources can slash your launch mass, turning an impossible mission into a feasible one.</span><br/><br/><b><strong style=\"white-space: pre-wrap;\">Armor Against the Elements</strong></b><br/><span style=\"white-space: pre-wrap;\">A Martian dust storm can shred exposed materials. Lunar radiation is relentless. Your habitat's skin is its first and last line of defense. Choose your armor, from advanced titanium composites to 3D printed native regolith. PureFlow\u2019s analysis engine immediately pits your choice against the specific environmental hazards of your destination, revealing vulnerabilities before they become fatal.</span><br/><br/><b><strong style=\"white-space: pre-wrap;\">The Decisive Difference: A Live Link to the Sun</strong></b><br/><span style=\"white-space: pre-wrap;\">This is what truly sets PureFlow apart. We are plugged directly into NASA's DONKI, the Space Weather Database. This isn't a historical model. It's live. When a solar flare erupts from the sun right now, an alert flashes across your screen. Your habitat is hit with the full force of the storm in your simulation. Is the shielding enough? Is the storm shelter positioned correctly? PureFlow doesn't just prepare you for a theoretical threat. It tests your creation against the cosmos as it is, today.</span><br/><br/><b><strong style=\"white-space: pre-wrap;\">Our Mission: Engineering for Resilience</strong></b><br/><span style=\"white-space: pre-wrap;\">The next giant leap depends on tools that are as tough, smart, and adaptable as our astronauts. PureFlow was born from this conviction. We fuse immersive 3D design with rigorous systems engineering and live, unpredictable data from space itself. We exist to answer the only question that matters: Is your crew's new home ready?</span><br/><br/><span style=\"white-space: pre-wrap;\">Because in the void, survival is just the starting point. We're designing for life.</span></p><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Project Showcase : </strong></b></p><p><img alt=\"upload_image.23:21:40.104534\" class=\"richtext-image left\" data-format=\"left\" data-id=\"381817\" height=\"363\" src=\"https://assets.spaceappschallenge.org/media/images/Imagem_do_WhatsApp_de_2025-10-05_as_19.55.01_d.width-500.jpg\" width=\"500\"><img alt=\"upload_image.23:22:00.782357\" class=\"richtext-image left\" data-format=\"left\" data-id=\"381820\" height=\"430\" src=\"https://assets.spaceappschallenge.org/media/images/Imagem_do_WhatsApp_de_2025-10-05_as_19.46.56_d.width-500.jpg\" width=\"500\"><img alt=\"upload_image.23:22:20.496820\" class=\"richtext-image left\" data-format=\"left\" data-id=\"381824\" height=\"237\" src=\"https://assets.spaceappschallenge.org/media/images/Captura_de_tela_2025-10-05_201543.width-500.png\" width=\"500\"><img alt=\"upload_image.23:22:32.303300\" class=\"richtext-image left\" data-format=\"left\" data-id=\"381827\" height=\"272\" src=\"https://assets.spaceappschallenge.org/media/images/Imagem_do_WhatsApp_de_2025-10-05_as_19.42.11_0.width-500.jpg\" width=\"500\"></p>",
+     "solution": "",
+     "aiToolsUsage": [],
+     "dataReferences": "[Review of Habitable Softgoods Inflatable Design, Analysis, Testing, and Potential Space Applications](https://ntrs.nasa.gov/api/citations/20190000847/downloads/20190000847.pdf)",
+     "demoLink": "https://youtu.be/hHUpo7bTVuc",
+     "projectLink": "https://larasdiniz.github.io/PureFlow-2025/src/public/html/home/home.html"
+    }
+   }
+  }
+ },
+ "Galactic Impact|aWQ6MTE3MjA=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MTE3MjA=",
+    "title": "Greetings from Earth!!",
+    "event": "aWQ6MQ==",
+    "challengeDetails": {
+     "title": "Ocean Gardens"
+    },
+    "locationDetails": {
+     "country": "Brazil",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Galactic Impact|aWQ6MjE1NTQ=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MjE1NTQ=",
+    "title": "NVS-knot",
+    "event": "aWQ6Mg==",
+    "challengeDetails": {
+     "title": "Leveraging Earth Observation Data for Informed Agricultural Decision-Making"
+    },
+    "locationDetails": {
+     "country": "Ukraine",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Galactic Impact|aWQ6MzYwMTI=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MzYwMTI=",
+    "title": "Astro Sweepers - We Catch What Space Leaves Behind",
+    "event": "aWQ6Mw==",
+    "challengeDetails": {
+     "title": "Commercializing Low Earth Orbit (LEO)"
+    },
+    "locationDetails": {
+     "country": "Anywhere in the World",
+     "displayName": ""
+    },
+    "projectDetails": {
+     "name": "Astro\u00a0Sweepers \u2013 AI\u2011powered orbital debris compliance and risk intelligence",
+     "summary": "Astro\u00a0Sweepers is a compliance\u2011and\u2011insight platform that automates NASA\u2019s Debris Assessment Software (DAS) workflow, generates ODAR/EOMP reports and produces clear, actionable risk scores for space operators. It uses our proprietary ASRI index to weight debris legacy, compliance readiness, collision\u2011risk burden and sustainability alignment, combining NASA SPARK/Space\u2011Track data and DAS outputs to produce before and after risk scores and long\u2011term debris population forecasts. The system includes a user\u2011friendly web portal that transforms technical analyses into intuitive dashboards and business\u2011ready reports, helping customers reduce post\u2011mission lifetimes, lower casualty risks and demonstrate regulatory compliance to insurers, investors and agencies. Ultimately, Astro\u00a0Sweepers aims to mitigate the mounting orbital\u2011debris crisis by tying immediate DAS compliance with longer\u2011term sustainability forecasting and a scalable business model, enabling safer, more sustainable access to low Earth orbit.",
+     "details": "<h2><a href=\"https://drive.google.com/drive/u/4/my-drive\" target=\"_blank\" rel=\"noopener noreferrer\" data-external ><u><b><strong style=\"white-space: pre-wrap;\">1. Detailed Project Description</strong></b></u></a></h2><h2><i><em style=\"white-space: pre-wrap;\">What Astro\u00a0Sweepers Does</em></i></h2><p><span style=\"white-space: pre-wrap;\">Astro\u00a0Sweepers is an end\u2011to\u2011end </span><b><strong style=\"white-space: pre-wrap;\">orbital debris compliance and risk\u2011intelligence platform</strong></b><span style=\"white-space: pre-wrap;\">. It automatically ingests public orbital data (from NASA SPARK 2022, Space\u2011Track TLEs/CDMs and ESA DISCOS), generates Debris Assessment Software (DAS) reports (DAS, ODAR, EOMP) and computes the </span><b><strong style=\"white-space: pre-wrap;\">Astro Sweepers Risk Index (ASRI)</strong></b><span style=\"white-space: pre-wrap;\"> for every resident space object. Operators can upload a satellite\u2019s two\u2011line element (TLE) or choose from our database and receive a real\u2011time assessment of their mission\u2019s compliance status and collision risk, along with mitigation recommendations, dashboards and downloadable PDF reports.</span></p><h2><b><strong style=\"white-space: pre-wrap;\">How It Works \u2013 Key Technical Innovations</strong></b></h2><ol><li><i><b><strong style=\"white-space: pre-wrap;\">DCRA v3 Risk Scoring:</strong></b></i><span style=\"white-space: pre-wrap;\"> We devised a physics\u2011based formula to approximate each object\u2019s collision risk before running DAS. The DCRA_BASE combines four weighted components:</span><ul><li><b><strong style=\"white-space: pre-wrap;\">D (Debris Legacy)</strong></b><span style=\"white-space: pre-wrap;\"> \u2013 age and object type (rocket body, debris, payload).</span></li><li><b><strong style=\"white-space: pre-wrap;\">C (Compliance)</strong></b><span style=\"white-space: pre-wrap;\"> \u2013 proxies for meeting end\u2011of\u2011life rules: perigee altitude, age and debris flag.</span></li><li><b><strong style=\"white-space: pre-wrap;\">R (Risk Burden)</strong></b><span style=\"white-space: pre-wrap;\"> \u2013 a 2\u2011D Gaussian\u2011smoothed altitude\u2013inclination density map, eccentricity (apo\u2011peri spread) and radar cross\u2011section (size).</span></li><li><b><strong style=\"white-space: pre-wrap;\">S (Sustainability Alignment)</strong></b><span style=\"white-space: pre-wrap;\"> \u2013 perigee feasibility and eccentricity.</span><br/><span style=\"white-space: pre-wrap;\">We further normalized the \u0394v required to deorbit (via vis\u2011viva) and blended it into C and S. The macro weights (R=0.45, D=0.25, C=0.20, S=0.10) emerged from sensitivity studies using the SPARK data.</span></li><li><span style=\"white-space: pre-wrap;\">(below image generated by chat gpt)</span></li></ul></li><li><i><b><strong style=\"white-space: pre-wrap;\">\u0394v\u2011Integrated Compliance Model:</strong></b></i><span style=\"white-space: pre-wrap;\"> For each object we computed the single\u2011burn \u0394v to lower perigee to a target (120\u00a0km or 550\u00a0km). DAS runs then determined the new post\u2011mission lifetime, casualty expectation and disposal compliance. Our </span><b><strong style=\"white-space: pre-wrap;\">DCRA_WITH_DAS = DCRA_BASE \u00d7 (1 \u2212 DAS_REDUCTION)</strong></b><span style=\"white-space: pre-wrap;\">, where DAS_REDUCTION (0\u00a0\u2013\u00a00.5) credits young payloads, low\u2011perigee disposal and controlled reentries. This elegantly marries the qualitative risk index with quantitative compliance gains.</span></li><li><i><b><strong style=\"white-space: pre-wrap;\">Selection Algorithms:</strong></b></i><span style=\"white-space: pre-wrap;\"> To identify problematic objects fairly across nations, we used DCRA_BASE ranking and </span><b><strong style=\"white-space: pre-wrap;\">Pc from Conjunction Data Messages (CDMs)</strong></b><span style=\"white-space: pre-wrap;\">. First we selected the </span><b><strong style=\"white-space: pre-wrap;\">Top\u00a050</strong></b><span style=\"white-space: pre-wrap;\"> objects by DCRA across all countries. Then to ensure equitable representation, we selected </span><b><strong style=\"white-space: pre-wrap;\">Top\u00a03 per country</strong></b><span style=\"white-space: pre-wrap;\"> (U.S., Russia, China, India, ESA/EU and \u201cOthers\u201d) for the </span><b><strong style=\"white-space: pre-wrap;\">Top\u00a015</strong></b><span style=\"white-space: pre-wrap;\"> case studies. Each object\u2019s risk components and potential \u0394v were tabulated; this fairness prevents bias toward countries with the largest constellations.</span></li><li><i><b><strong style=\"white-space: pre-wrap;\">Auto\u2011Generation of ODAR/EOMP:</strong></b></i><span style=\"white-space: pre-wrap;\"> Our scripts populated NASA\u2019s ODAR/EOMP templates using OMM data, TLE\u2011derived orbits and \u0394v plans. Operators receive a ready\u2011to\u2011submit compliance package, saving weeks of manual paperwork.</span></li><li><img alt=\"upload_image.19:02:23.187583\" class=\"richtext-image left\" data-format=\"left\" data-id=\"379726\" height=\"333\" src=\"https://assets.spaceappschallenge.org/media/images/ac04df67-58bf-4834-903f-5470856b42b7.width-500.png\" width=\"500\"></li></ol><h2 dir=\"ltr\"><i><b><strong style=\"white-space: pre-wrap;\">Business Model Integration:</strong></b></i><span style=\"white-space: pre-wrap;\"> </span></h2><p><span style=\"white-space: pre-wrap;\">The platform\u2019s revenue model has eight tiers (ASRI Lite, Compliance Pack, Pro, Monitor, Operator License, Insurer License, Onboarding, University Research). This creates recurring SaaS income while offering regulatory and insurance synergies. Our audited financial model (2025\u20132028) shows break\u2011even after ~60 missions, 80\u00a0% gross margin on software, and expansion into debris removal/recycling in later phases.</span><img alt=\"upload_image.18:55:02.201122\" class=\"richtext-image left\" data-format=\"left\" data-id=\"379680\" height=\"190\" src=\"https://assets.spaceappschallenge.org/media/images/WhatsApp_Image_2025-10-06_at_00.23.13_6f29160f.width-500.jpg\" width=\"500\"><img alt=\"upload_image.19:07:37.028290\" class=\"richtext-image full-width\" data-format=\"fullwidth\" data-id=\"379767\" height=\"169\" src=\"https://assets.spaceappschallenge.org/media/images/WhatsApp_Image_2025-10-06_at_100.35.11_5f5cc7.width-1024.jpg\" width=\"404\"><b><strong style=\"white-space: pre-wrap;\"> </strong></b></p><h2 dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Benefits and Goals</strong></b><span style=\"white-space: pre-wrap;\"> </span></h2><p><span style=\"white-space: pre-wrap;\">Astro\u00a0Sweepers delivers immediate value by </span><b><strong style=\"white-space: pre-wrap;\">reducing mission analysis time</strong></b><span style=\"white-space: pre-wrap;\">, </span><b><strong style=\"white-space: pre-wrap;\">improving regulatory compliance</strong></b><span style=\"white-space: pre-wrap;\"> and </span><b><strong style=\"white-space: pre-wrap;\">lowering insurance premiums</strong></b><span style=\"white-space: pre-wrap;\">. The ASRI dashboard empowers operators to see their risk in the context of the entire population and take proactive action. Over the long term, our system aims to </span><b><strong style=\"white-space: pre-wrap;\">flatten the growth curve of orbital debris</strong></b><span style=\"white-space: pre-wrap;\">, turn waste into an economic resource through in\u2011orbit recycling and help insurers and governments set fairer premiums and policies. The platform serves as a stepping stone toward active debris removal and material harvesting (Phase\u00a02 of business roadmap).</span></p><h2><b><strong style=\"white-space: pre-wrap;\">Presenting DAS &amp; ASRI Results</strong></b></h2><p><u><b><strong style=\"white-space: pre-wrap;\">Representative Satellite Case Study \u2013 China\u20101 CZ\u20112C R/B</strong></b></u></p><ul><li><b><strong style=\"white-space: pre-wrap;\">Baseline (No DAS):</strong></b><span style=\"white-space: pre-wrap;\"> The object orbits at 613\u00d7671\u00a0km, 98.4\u00b0 inclination and is &gt;11\u00a0years old. Its DCRA components were high (R\u22480.75, D\u22480.93, C\u22480.81, S\u22480.58), yielding </span><b><strong style=\"white-space: pre-wrap;\">DCRA_BASE \u2248 0.79</strong></b><span style=\"white-space: pre-wrap;\">. DAS predicted a </span><b><strong style=\"white-space: pre-wrap;\">post\u2011mission lifetime &gt;100\u00a0years</strong></b><span style=\"white-space: pre-wrap;\"> and </span><b><strong style=\"white-space: pre-wrap;\">Ec\u22483.3\u00d710\u207b\u2074 (1:3,000)</strong></b><span style=\"white-space: pre-wrap;\"> with a large casualty area (~30\u00a0m\u00b2). It failed requirements\u00a04.6\u20134.7.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Drop\u2011to\u2011550\u00a0km (\u0394v \u2248 22\u00a0m/s):</strong></b><span style=\"white-space: pre-wrap;\"> A single apogee burn lowered perigee to 550\u00a0km. Post\u2011mission lifetime dropped below </span><b><strong style=\"white-space: pre-wrap;\">25\u00a0years</strong></b><span style=\"white-space: pre-wrap;\">, </span><b><strong style=\"white-space: pre-wrap;\">Ec fell to 4.1\u00d710\u207b\u2075 (1:28,500)</strong></b><span style=\"white-space: pre-wrap;\"> and casualty area to </span><b><strong style=\"white-space: pre-wrap;\">3.19\u00a0m\u00b2</strong></b><span style=\"white-space: pre-wrap;\">. DAS compliance status changed to \u201cCompliant\u201d across 4.3\u20134.7, and </span><b><strong style=\"white-space: pre-wrap;\">DCRA_WITH_DAS = 0.60</strong></b><span style=\"white-space: pre-wrap;\"> (25\u00a0% improvement).</span></li><li><b><strong style=\"white-space: pre-wrap;\">Robustness:</strong></b><span style=\"white-space: pre-wrap;\"> Varying the area\u2011to\u2011mass ratio between 0.03\u20130.05\u00a0m\u00b2/kg, the perigee 525\u2013575\u00a0km, or switching materials (Al 2024, steel, Ti) all still satisfied the 25\u2011year rule and casualty criteria. A controlled\u2011reentry test (perigee 120\u00a0km, \u0394v \u2248 142\u00a0m/s) produced </span><b><strong style=\"white-space: pre-wrap;\">Ec &lt; 1\u00d710\u207b\u2074</strong></b><span style=\"white-space: pre-wrap;\">, offering a second disposal option.</span><img alt=\"upload_image.19:23:01.433160\" class=\"richtext-image full-width\" data-format=\"fullwidth\" data-id=\"379898\" height=\"103\" src=\"https://assets.spaceappschallenge.org/media/images/WhatsApp_Image_2025-10-06_at_00.52.35_399c9e8.width-1024.jpg\" width=\"854\"></li><li><span style=\"white-space: pre-wrap;\">Also want to point out, We began with a CZ-2C rocket body at 613\u00d7671 km, 98.4\u00b0, over 11 years old\u2014DAS gave &gt;100 years lifetime and Ec \u2248 3.3\u00d710\u207b\u2074, so it failed. We toggled PMD in DAS and set a single apogee burn to lower perigee to 550 km (\u0394v \u2248 22 m/s). Re-running DAS dropped lifetime below 25 years, casualty area to 3.19 m\u00b2, and Ec to 4.1\u00d710\u207b\u2075\u2014now compliant across 4.3\u20134.7. We stress-tested A/M, materials, and perigee bands; all remained compliant. Our tool then auto-generated the ODAR/EOMP with the new orbit and disposal plan. A small, targeted burn\u2014fully documented and audit-ready\u2014turned risk into compliance.</span></li><li><img alt=\"upload_image.20:25:00.958804\" class=\"richtext-image left\" data-format=\"left\" data-id=\"380495\" height=\"303\" src=\"https://assets.spaceappschallenge.org/media/images/PHOTO-2025-10-05-07-59-17.width-500.jpg\" width=\"500\"></li></ul><p><img alt=\"upload_image.20:27:57.480703\" class=\"richtext-image left\" data-format=\"left\" data-id=\"380530\" height=\"309\" src=\"https://assets.spaceappschallenge.org/media/images/PHOTO-2025-10-05-14-59-13_5F9fkot.width-500.jpg\" width=\"500\"><img alt=\"upload_image.20:28:14.596079\" class=\"richtext-image left\" data-format=\"left\" data-id=\"380535\" height=\"267\" src=\"https://assets.spaceappschallenge.org/media/images/PHOTO-2025-10-05-14-48-56.width-500.jpg\" width=\"500\"><img alt=\"upload_image.20:28:26.811164\" class=\"richtext-image left\" data-format=\"left\" data-id=\"380538\" height=\"358\" src=\"https://assets.spaceappschallenge.org/media/images/PHOTO-2025-10-05-14-58-18.width-500.jpg\" width=\"500\"><img alt=\"upload_image.20:28:38.002996\" class=\"richtext-image left\" data-format=\"left\" data-id=\"380541\" height=\"270\" src=\"https://assets.spaceappschallenge.org/media/images/PHOTO-2025-10-05-14-49-17_weXcwks.width-500.jpg\" width=\"500\"><img alt=\"upload_image.20:28:47.825590\" class=\"richtext-image left\" data-format=\"left\" data-id=\"380546\" height=\"309\" src=\"https://assets.spaceappschallenge.org/media/images/PHOTO-2025-10-05-14-59-13_ssad9DW.width-500.jpg\" width=\"500\"></p><ul><li><b><strong style=\"white-space: pre-wrap;\">ODAR/EOMP &amp; Compliance Story:</strong></b><span style=\"white-space: pre-wrap;\"> The platform auto\u2011filled the ODAR sections (launch vehicle, mission duration, disposal plan) and EOMP (deorbit burn details, passivation measures) based on the new orbit. This demonstrates our system\u2019s ability to produce NASA\u2011ready compliance documentation.</span></li></ul><ol><li><i><em style=\"white-space: pre-wrap;\">Classification &amp; Decay Probability:</em></i><span style=\"white-space: pre-wrap;\"> trained a CNN on a Kaggle dataset of orbiting objects (derived from NASA imagery) to distinguish between debris, rocket bodies and payloads, estimating time\u2011to\u2011re\u2011entry. This work is exploratory; it has not yet been integrated into the Space\u00a0Apps submission but may inform future ASRI weight calibrations.</span></li><li><i><em style=\"white-space: pre-wrap;\">Adaptive Weighting:</em></i><span style=\"white-space: pre-wrap;\"> In future, our model could analyzelarge historical datasets to refine the macro weights (D, C, R, S) in DCRA v3; for now, the weights come from sensitivity studies using the SPARK\u20112022 dataset and DAS results.</span></li><li><i><em style=\"white-space: pre-wrap;\">Anomaly Detection:</em></i><span style=\"white-space: pre-wrap;\"> By training on CDMs, the model flags objects whose collision probability (Pc) is rising unusually fast. This functionality is a proposed feature for later phases of the Astro\u00a0Sweepers platform.</span></li></ol><ul><li><img alt=\"upload_image.20:48:31.026621\" class=\"richtext-image left\" data-format=\"left\" data-id=\"380767\" height=\"562\" src=\"https://assets.spaceappschallenge.org/media/images/WhatsApp_Image_2025-10-05_at_07.05.52_d16ca26c.width-500.jpg\" width=\"500\"><img alt=\"upload_image.20:49:03.947385\" class=\"richtext-image left\" data-format=\"left\" data-id=\"380774\" height=\"274\" src=\"https://assets.spaceappschallenge.org/media/images/PHOTO-2025-10-05-07-04-53.width-500.jpg\" width=\"493\"></li></ul><h2 dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">ASRI\u2011Integrated Long\u2011Term Forecast</strong></b></h2><ul><li><b><strong style=\"white-space: pre-wrap;\">Population Simulation:</strong></b><span style=\"white-space: pre-wrap;\"> Using the DAS population evolution module (2025\u20132100), three scenarios were modelled:</span><ol><li><b><strong style=\"white-space: pre-wrap;\">Without DAS:</strong></b><span style=\"white-space: pre-wrap;\"> ~21,800 objects &gt;10\u00a0cm by 2100, mean </span><b><strong style=\"white-space: pre-wrap;\">Pc \u2248 3.8\u00d710\u207b\u2074</strong></b><span style=\"white-space: pre-wrap;\">, mean lifetime \u2248 95\u00a0years, controlled reentry 14\u00a0%, </span><b><strong style=\"white-space: pre-wrap;\">ASRI \u2248 0.82</strong></b><span style=\"white-space: pre-wrap;\">.</span></li><li><b><strong style=\"white-space: pre-wrap;\">With DAS (2025 only):</strong></b><span style=\"white-space: pre-wrap;\"> ~18,400 objects, </span><b><strong style=\"white-space: pre-wrap;\">Pc \u2248 2.4\u00d710\u207b\u2074</strong></b><span style=\"white-space: pre-wrap;\">, lifetime \u2248 42\u00a0years, controlled reentry 48\u00a0%, </span><b><strong style=\"white-space: pre-wrap;\">ASRI \u2248 0.53</strong></b><span style=\"white-space: pre-wrap;\">.</span></li><li><b><strong style=\"white-space: pre-wrap;\">With DAS + ASRI (2100):</strong></b><span style=\"white-space: pre-wrap;\"> ~11,200 objects, </span><b><strong style=\"white-space: pre-wrap;\">Pc \u2248 1.1\u00d710\u207b\u2074</strong></b><span style=\"white-space: pre-wrap;\">, lifetime \u2248 23\u00a0years, controlled reentry 82\u00a0%, </span><b><strong style=\"white-space: pre-wrap;\">ASRI \u2248 0.32</strong></b><span style=\"white-space: pre-wrap;\">.</span></li></ol></li><li><b><strong style=\"white-space: pre-wrap;\">Interpretation:</strong></b><span style=\"white-space: pre-wrap;\"> Implementing DAS compliance alone cuts collision risk by ~37\u00a0%, whereas adding ASRI Prioritization drives a ~70\u00a0% reduction in Pc, ~50\u00a0% fewer objects and ~75\u00a0% shorter residual lifetimes. This underscores the systemic impact of coupling compliance enforcement with intelligent risk Prioritization.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Visualization:</strong></b><span style=\"white-space: pre-wrap;\"> Prepare two line charts \u2013 one for object count vs. time and another for mean Pc vs. time \u2013 showing the three trajectories. Also include a bar chart for ASRI (0.82 vs. 0.53 vs. 0.32).</span></li><li><img alt=\"upload_image.20:52:53.772896\" class=\"richtext-image left\" data-format=\"left\" data-id=\"380819\" height=\"333\" src=\"https://assets.spaceappschallenge.org/media/images/aaaaaaaaaaaaaaaaaaa.width-500.png\" width=\"500\"></li></ul><h2 dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Strategic Roadmap for Future ML Expansion</strong></b></h2><p><span style=\"white-space: pre-wrap;\">While the Space Apps submission is DAS\u2011centric, we have sketched a credible ML roadmap that extends our platform\u2019s value:</span></p><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">not to forget we already have one machine learning model deployed and Astro sweepers is further planning to launch and train many more.</span></p><ol><li><b><strong style=\"white-space: pre-wrap;\">Physics\u2011Informed Models:</strong></b><span style=\"white-space: pre-wrap;\"> Develop neural networks that learn orbital dynamics and drag under varying solar cycles\u2014leading to better lifetime predictions.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Conjunction Prediction GNNs:</strong></b><span style=\"white-space: pre-wrap;\"> Use graph neural networks on conjunction data to anticipate multi\u2011body interactions and cascade risks.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Material &amp; Mass Classification:</strong></b><span style=\"white-space: pre-wrap;\"> Apply computer vision on radar or optical data to identify material composition for salvage, recycling and casualty modelling.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Insurance &amp; Pricing AI:</strong></b><span style=\"white-space: pre-wrap;\"> Use ASRI scores and mission parameters to predict claim likelihoods and set dynamic premiums (link to your \u201cInsurer License\u201d tier).</span></li><li><b><strong style=\"white-space: pre-wrap;\">Debris Removal Robotics:</strong></b><span style=\"white-space: pre-wrap;\"> Leverage reinforcement learning to control small sweepers for capture and deorbit missions. This ties into your Phase\u00a02 hardware plans.</span></li></ol><h2><b><strong style=\"white-space: pre-wrap;\">Recommendations &amp; Vision \u2013 Science\u2011Driven Solutions</strong></b></h2><p><span style=\"white-space: pre-wrap;\">how our platform addresses both immediate compliance and long\u2011term sustainability:</span></p><ul><li><b><strong style=\"white-space: pre-wrap;\">Universal DAS Compliance:</strong></b><span style=\"white-space: pre-wrap;\"> Advocate mandatory ODAR/EOMP submission for every LEO mission. Your platform automates this process, lowering the barrier for small operators and ensuring standardization.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Continuous ASRI Monitoring:</strong></b><span style=\"white-space: pre-wrap;\"> Offer a publicly accessible dashboard that updates weekly, helping regulators and operators see real\u2011time risk changes and encouraging early mitigation.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Active Debris Removal &amp; Recycling:</strong></b><span style=\"white-space: pre-wrap;\"> Outline your Phase\u00a02 vision\u2014deploying small sweepers to deorbit derelict objects and harvest usable materials. Stress that this is a business opportunity and a sustainability imperative.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Low\u2011\u0394v Mission Design:</strong></b><span style=\"white-space: pre-wrap;\"> Use your \u0394v\u2011integrated model to advise designers on optimal perigee altitudes (e.g. ~550\u00a0km) that achieve &lt;25\u2011year re\u2011entry with minimal fuel.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Open Data Sharing:</strong></b><span style=\"white-space: pre-wrap;\"> Call for an international data\u2011sharing framework (perhaps under UNOOSA) so that all nations can contribute TLE, CDM and material data, improving ML models and risk assessments.</span></li></ul><h2><b><strong style=\"white-space: pre-wrap;\">LEO Accords &amp; UN Angle</strong></b></h2><p><span style=\"white-space: pre-wrap;\">The </span><b><strong style=\"white-space: pre-wrap;\">LEO Accords</strong></b><span style=\"white-space: pre-wrap;\"> concept acts as our policy proposal that meshes with UN Sustainable Development Goals. Include these elements:</span></p><ul><li><b><strong style=\"white-space: pre-wrap;\">DAS &amp; ODAR/EOMP Requirement:</strong></b><span style=\"white-space: pre-wrap;\"> All signatories must adhere to NASA\u2011STD\u00a08719.14</span><a href=\"https://www.spaceappschallenge.org/resources/project-submission-guide/\" target=\"_blank\" rel=\"noopener noreferrer\" data-external ><span style=\"white-space: pre-wrap;\">spaceappschallenge.org</span></a><span style=\"white-space: pre-wrap;\"> and file disposal plans. Your platform can provide the technical infrastructure.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Salvage &amp; Recycling Rights:</strong></b><span style=\"white-space: pre-wrap;\"> Define legal frameworks for debris removal and profit\u2011sharing from recycled materials.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Equity Measures:</strong></b><span style=\"white-space: pre-wrap;\"> Provide discounted compliance services and training to emerging space nations; tie this to the \u201cUniversity Research\u201d and \u201cLite\u201d tiers.</span></li><li><b><strong style=\"white-space: pre-wrap;\">UN Clearinghouse:</strong></b><span style=\"white-space: pre-wrap;\"> Propose a UN\u2011hosted database for ASRI scores and compliance statuses, promoting transparency and accountability.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Alignment with SDGs:</strong></b><span style=\"white-space: pre-wrap;\"> Highlight the link to SDG\u00a09 (Industry, Innovation and Infrastructure) and SDG\u00a013 (Climate Action)</span><a href=\"https://www.spaceappschallenge.org/resources/project-submission-guide/#:~:text=This%20demo%20will%20be%20considered,category%20of%20the%20judging%20rubric\" target=\"_blank\" rel=\"noopener noreferrer\" data-external ><span style=\"white-space: pre-wrap;\">spaceappschallenge.org</span></a><span style=\"white-space: pre-wrap;\">, reinforcing that orbital sustainability is part of global sustainable development.</span></li></ul><h2><b><strong style=\"white-space: pre-wrap;\">Business Model, Profitability &amp; Sustainability</strong></b></h2><p><span style=\"white-space: pre-wrap;\">Integrate our </span><b><strong style=\"white-space: pre-wrap;\">financial statement, revenue model and executive summary</strong></b><span style=\"white-space: pre-wrap;\"> :</span></p><ul><li><b><strong style=\"white-space: pre-wrap;\">SaaS Core:</strong></b><span style=\"white-space: pre-wrap;\"> Subscription tiers (Lite, Compliance Pack, Pro, Monitor) generate recurring revenue with 80\u00a0% gross margins. For example, small operators pay $300\u2013$1,200 per month, while large constellations subscribe at $50k\u2013$150k per year; these tiers correspond to DCRA scoring, compliance automation and continuous monitoring.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Licensing &amp; Partnerships:</strong></b><span style=\"white-space: pre-wrap;\"> The Operator License allows large operators to integrate ASRI directly into their planning pipelines; the Insurer License offers risk scores and compliance verification to insurers, enabling risk\u2011based premium pricing.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Onboarding &amp; Research:</strong></b><span style=\"white-space: pre-wrap;\"> One\u2011time fees and discounted academic access promote early adoption and knowledge sharing, supporting capacity building.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Long\u2011Term Expansion:</strong></b><span style=\"white-space: pre-wrap;\"> High\u2011margin software revenues fund future hardware (sweeper drones) and recycling initiatives, capturing new revenue streams from recovered materials.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Financial Transparency:</strong></b><span style=\"white-space: pre-wrap;\"> Refer to your </span><b><strong style=\"white-space: pre-wrap;\">audited IFRS statements (2025\u20132028)</strong></b><span style=\"white-space: pre-wrap;\"> and the detailed revenue model\u2014these show break\u2011even within ~60 missions and growth to $500M+ ARR by the end of the decade. This demonstrates both </span><b><strong style=\"white-space: pre-wrap;\">economic viability and sustainability</strong></b><span style=\"white-space: pre-wrap;\">, which judges value.</span></li></ul><p><span style=\"white-space: pre-wrap;\">Stress that </span><b><strong style=\"white-space: pre-wrap;\">profitability and environmental stewardship are mutually reinforcing</strong></b><span style=\"white-space: pre-wrap;\">: a clean, safe LEO environment ensures commercial viability, and your business model incentivizes compliance and debris removal.</span></p><img alt=\"upload_image.21:10:51.053118\" class=\"richtext-image full-width\" data-format=\"fullwidth\" data-id=\"380969\" height=\"285\" src=\"https://assets.spaceappschallenge.org/media/images/bbbbbbbbbbbbbbbbbbbbbbb.width-1024.jpg\" width=\"481\"><p><span style=\"white-space: pre-wrap;\">These are the major cost incurred by Astro Sweepers... year 3 cost of Salary &amp; R&amp;D are a bit higher because of the research carried on for future business</span></p><img alt=\"upload_image.21:11:54.814158\" class=\"richtext-image full-width\" data-format=\"fullwidth\" data-id=\"380973\" height=\"285\" src=\"https://assets.spaceappschallenge.org/media/images/cccccccccccccccccccc.width-1024.jpg\" width=\"482\"><p><span style=\"white-space: pre-wrap;\">The initial year's earnings and EBIT are negative since we are at the starting stage and we have incurred huge cost, in yr 2 &amp; 3 because of the economies of scale and customer trust and loyalty we are able to achieve increase in sales &amp; breakevn in yr2 and achieve profits.....the profits in yr3 are less compared to yr2 because of increase in R&amp;D and employee cost due to research</span></p><p><span style=\"white-space: pre-wrap;\">We are planning to fund the research via Bootstrapping method from yr 2</span></p><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Detailed Financial Statement and Revenue model attached to the google drive along with other documents</span></p><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">https://drive.google.com/drive/u/4/my-drive</span></p><p dir=\"ltr\"><a href=\"https://drive.google.com/drive/u/4/my-drive\" target=\"_blank\" rel=\"noopener noreferrer\" data-external ><img alt=\"upload_image.21:12:38.779599\" class=\"richtext-image full-width\" data-format=\"fullwidth\" data-id=\"380979\" height=\"289\" src=\"https://assets.spaceappschallenge.org/media/images/dddddddddddddddddddd.width-1024.jpg\" width=\"481\"></a></p><hr/><hr/>",
+     "solution": "",
+     "aiToolsUsage": [],
+     "dataReferences": "[Astromaterials Research & Exploration Science NASA ORBITAL DEBRIS PROGRAM OFFICE](https://orbitaldebris.jsc.nasa.gov/)\n[ORDEM 3.2 : OD Engineering Model](https://orbitaldebris.jsc.nasa.gov/modeling/ordem.html)\n[LEGEND : 3D/OD Evolutionary Model](https://orbitaldebris.jsc.nasa.gov/modeling/legend.html)\n[Debris Assessment Software](https://orbitaldebris.jsc.nasa.gov/mitigation/debris-assessment-software.html)\n[Object Reentry Survival Analysis Tool](https://orbitaldebris.jsc.nasa.gov/reentry/orsat.html)\n[NASA Open Data Portal:](https://data.nasa.gov/)\n[Space Commercialization](https://www.nasa.gov/headquarters/library/find/bibliographies/space-commercialization/)\n[Office of the NASA Chief Engineer NASA Technical Standards System](https://standards.nasa.gov/NASA-Technical-Standards)\n[Economic Development of Low Earth Orbit](https://www.nasa.gov/wp-content/uploads/2023/09/economic-development-of-low-earth-orbit-tagged-v2.pdf?emrc=3fff83)\n[Commercial Human Space Operations Training Standards](https://www.nasa.gov/wp-content/uploads/2023/09/commercial-human-space-operations-training-standards.pdf?emrc=3ce018)\n[ NASA-STD-3001 Vol. 1](https://standards.nasa.gov/standard/ochmo/nasa-std-3001-vol-1)\n[ NASA-STD-3001 VOL 2](https://standards.nasa.gov/standard/ochmo/nasa-std-3001-vol-2)",
+     "demoLink": "https://drive.google.com/file/d/1L3cIR8WZdzdp7eUY3leIToGTbnMiBT4N/view?usp=sharing",
+     "projectLink": "https://astro-sweepers.vercel.app/"
+    }
+   }
+  }
+ },
+ "Local Impact|aWQ6MTAwOTQ=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MTAwOTQ=",
+    "title": "$quality_over_quantity",
+    "event": "aWQ6MQ==",
+    "challengeDetails": {
+     "title": "Explore a Biodiversity Hotspot with Imaging Spectroscopy"
+    },
+    "locationDetails": {
+     "country": "Taiwan",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Local Impact|aWQ6MjkwNzQ=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MjkwNzQ=",
+    "title": "Team I.O.",
+    "event": "aWQ6Mg==",
+    "challengeDetails": {
+     "title": "Community Mapping"
+    },
+    "locationDetails": {
+     "country": "Brazil",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Local Impact|aWQ6MzEzNjk=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MzEzNjk=",
+    "title": "QUE\u00d1ARIS",
+    "event": "aWQ6Mw==",
+    "challengeDetails": {
+     "title": "BloomWatch: An Earth Observation Application for Global Flowering Phenology"
+    },
+    "locationDetails": {
+     "country": "Peru",
+     "displayName": ""
+    },
+    "projectDetails": {
+     "name": "Que\u00f1aris",
+     "summary": "We developed Que\u00f1aris, a platform for the smart reforestation of que\u00f1ua forests. It is a comprehensive system that combines the use of native microorganisms, NASA satellite data, drones, and artificial intelligence to accelerate tree growth, identify the best areas for reforestation, and monitor the health of the ecosystem.\nThe project addresses critical water scarcity in Arequipa, caused by the degradation of que\u00f1ua forests, which are vital for water retention. While traditional reforestation methods are slow and not very scalable, our platform uses technology to create a massive and efficient strategy. By digitizing the terrain and analyzing phenological data, we can make evidence-based decisions to maximize the impact of each tree planted.\nThis is crucial because the loss of que\u00f1ua forests has a direct impact on water security in Arequipa. The drastic reduction in spring flow (from 14 L/s to 0 in days) threatens the water supply for human consumption, agribusiness (28.5%), energy (67.7%), and mining (11%), creating the risk of food crises and social conflicts. Restoring these forests means restoring the water balance and ensuring a sustainable future for the region.",
+     "details": "<p><b><strong style=\"white-space: pre-wrap;\">What exactly does it do?\u00a0</strong></b></p><p><span style=\"white-space: pre-wrap;\">Que\u00f1aris is a decision support system for large-scale reforestation. Specifically:</span></p><ul><li><span style=\"white-space: pre-wrap;\">It digitizes and analyzes high Andean ecosystems using drones and satellite data.</span></li><li><span style=\"white-space: pre-wrap;\">It identifies optimal areas for reforestation based on plant health indicators, soil moisture, and other key variables.</span></li><li><span style=\"white-space: pre-wrap;\">It accelerates the growth and survival rate of que\u00f1ua seedlings (to 25 cm/year and &gt;80% survival) through the use of native microorganisms.</span></li><li><span style=\"white-space: pre-wrap;\">It monitors the phenology and health of reforested forests over time to ensure their sustainability.</span></li><li><span style=\"white-space: pre-wrap;\">Centralizes all information on a web platform so that communities and organizations can plan and execute massive reforestation campaigns.</span></li></ul><p><b><strong style=\"white-space: pre-wrap;\">How does it work?</strong></b></p><p><span style=\"white-space: pre-wrap;\">The process follows a structured workflow:</span></p><ol><li><span style=\"white-space: pre-wrap;\">Geospatial Digitization: Drone flights are conducted to capture high-resolution images and georeference the area of interest, creating a detailed orthomosaic.</span></li><li><span style=\"white-space: pre-wrap;\">Satellite Data Analysis: Data from NASA's LP DAAC is used to calculate vegetation indices (NDVI, EVI, NDMI, etc.) that measure the health, greenness, and moisture content of existing vegetation.</span></li><li><span style=\"white-space: pre-wrap;\">AI Integration and Modeling: Drone and satellite data are integrated. An artificial intelligence model analyzes this combined information to identify the best areas and conditions for planting.</span></li><li><span style=\"white-space: pre-wrap;\">Biological Preparation: In nurseries, the 5,000 que\u00f1ua seedlings are strengthened with native microorganisms (mycorrhizae, Trichoderma) to double their growth rate and resistance.</span></li><li><span style=\"white-space: pre-wrap;\">Execution and Monitoring: Massive reforestation campaigns are carried out in the identified areas. The platform continues to monitor progress in the short, medium, and long term.</span></li></ol><p><b><strong style=\"white-space: pre-wrap;\">What benefits does it have?</strong></b></p><p><span style=\"white-space: pre-wrap;\">Environmental: Restores a key ecosystem, combats desertification, increases water retention (each tree can retain up to 20 liters per day), and promotes water recharge in springs and wetlands.</span></p><p><span style=\"white-space: pre-wrap;\">Social: Ensures a constant water supply for hundreds of local families and communities, reducing the risk of social conflicts due to water scarcity.</span></p><p><span style=\"white-space: pre-wrap;\">Economic: Increases the efficiency and success of reforestation projects, protecting water-dependent industries such as agriculture, energy, and mining. Our business model is based on offering processing and monitoring services per hectare, ensuring the sustainability of the project.</span></p><p><b><strong style=\"white-space: pre-wrap;\">What do you hope to achieve?</strong></b></p><p><span style=\"white-space: pre-wrap;\">In the short term, our goal is to carry out a first large-scale reforestation project in December with the 5,000 seedlings we already have ready, validating our model in the field. In the long term, we seek to reverse the degradation of the 100,000 hectares of que\u00f1ua forests that historically existed, ensuring water security in the Arequipa region and creating a smart reforestation model that can be replicated in other Andean ecosystems.</span><br/><br/><b><strong style=\"white-space: pre-wrap;\">What tools, coding languages, hardware, or software did you use to develop your project?</strong></b></p><ul><li><b><strong style=\"white-space: pre-wrap;\">Development Tools</strong></b><span style=\"white-space: pre-wrap;\">: Visual Studio Code, Git, Node.js, npm/yarn, Docker, Loveable( initial template)</span></li><li><b><strong style=\"white-space: pre-wrap;\">Infrastructure and Technological Hosting: </strong></b><span style=\"white-space: pre-wrap;\">Vercel (Frontend), Google AI Studio (Gemini API), GitHub Pages, GitHub Cloud, Cloudinary (Image Storage)</span></li><li><b><strong style=\"white-space: pre-wrap;\">Backend &amp; API:</strong></b><span style=\"white-space: pre-wrap;\"> Django 5.0.6, Django REST Framework, PostgreSQL with GeoDjango, Redis, Celery, Gunicorn</span></li><li><b><strong style=\"white-space: pre-wrap;\">Frontend &amp; UI</strong></b><span style=\"white-space: pre-wrap;\">: React 18, TypeScript, Vite, HTML5, CSS3, TailwindCSS, Shadcn/UI, Radix UI Components</span></li><li><b><strong style=\"white-space: pre-wrap;\">Programming Languages:</strong></b><span style=\"white-space: pre-wrap;\"> Python, TypeScript, JavaScript, SQL</span></li><li><b><strong style=\"white-space: pre-wrap;\">AI &amp; Machine Learning:</strong></b><span style=\"white-space: pre-wrap;\"> Google Gemini Pro API 2.5, Geospatial Analysis, Rasterio, GeoPandas</span></li><li><b><strong style=\"white-space: pre-wrap;\">Data Processing &amp; Geospatial:</strong></b><span style=\"white-space: pre-wrap;\"> Pillow, Rasterio, GeoPandas, Shapely, GDAL, Fiona, EarthAccess (NASA/USGS), Metashape Agisoft, QGIS</span></li><li><b><strong style=\"white-space: pre-wrap;\">Async Tasks &amp; Caching:</strong></b><span style=\"white-space: pre-wrap;\"> Celery, Redis, Django Channels, Django Celery Beat</span></li><li><b><strong style=\"white-space: pre-wrap;\">Software &amp; Design:</strong></b><span style=\"white-space: pre-wrap;\"> QGIS (geospatial processing), Google Colab (AI prototyping), Adobe Premier</span></li><li><b><strong style=\"white-space: pre-wrap;\">Hardware:</strong></b><span style=\"white-space: pre-wrap;\"> DJI Matrice 4 Series Drone, Development and analysis computers</span></li><li><b><strong style=\"white-space: pre-wrap;\">Data Sources:</strong></b><span style=\"white-space: pre-wrap;\"> Satellite imagery (NASA/USGS), Aerial drone georeferenced orthomosaic, GPS metadata, HDF5 datasets</span></li></ul><p><b><strong style=\"white-space: pre-wrap;\">Plus:(Workflows, Drone-Contoller and Seedlings for reforestation)</strong></b></p><p><img alt=\"workflow\" class=\"richtext-image left\" data-format=\"left\" data-id=\"383156\" height=\"355\" src=\"https://assets.spaceappschallenge.org/media/images/Nasa_1.width-500.jpg\" width=\"500\"><br/></p><img alt=\"upload_image.02:29:27.648437\" class=\"richtext-image left\" data-format=\"left\" data-id=\"383263\" height=\"372\" src=\"https://assets.spaceappschallenge.org/media/images/imagen_2025-10-05_212922700.width-500.png\" width=\"500\"><p><img alt=\"seedlings\" class=\"richtext-image left\" data-format=\"left\" data-id=\"383286\" height=\"375\" src=\"https://assets.spaceappschallenge.org/media/images/Imagen_de_WhatsApp_2025-09-12_a_las_14.41.17_f.width-500.jpg\" width=\"500\"><br/><br/></p>",
+     "solution": "",
+     "aiToolsUsage": [],
+     "dataReferences": "[NDVI, EVI, SAVI, MSAVI, NDMI, NDWI, NBR and NBR2](https://www.earthdata.nasa.gov/data/catalog/lpcloud-hlsl30-vi-2.0)\n[NASA Earthdata Main Portal](https://earthdata.nasa.gov/)\n[Fire Information for Resource Management System (FIRMS)](https://firms.modaps.eosdis.nasa.gov/)\n[Level-1 and Atmosphere Archive & Distribution System (LAADS)](https://ladsweb.modaps.eosdis.nasa.gov/)\n[FIRMS API Documentation](https://firms.modaps.eosdis.nasa.gov/api/)\n[FIRMS Academy - Learning Resources](https://firms.modaps.eosdis.nasa.gov/academy)\n[FIRMS API Data Availability](https://firms.modaps.eosdis.nasa.gov/api/data_availability/)\n[LAADS DAAC Tools and Services](https://ladsweb.modaps.eosdis.nasa.gov/tools-and-services/)\n[Earthdata CMR Search API](https://cmr.earthdata.nasa.gov/search)\n[MODIS Vegetation Index Products - NASA Goddard](https://modis-land.gsfc.nasa.gov/vi.html)\n[FIRMS NBR Documentation NASA](https://firms.modaps.eosdis.nasa.gov/usfs/active_fire/)\n[MODIS Product Characterization](https://modis.gsfc.nasa.gov/data/dataprod/)\n[NASA ARSET Training](https://appliedsciences.nasa.gov/what-we-do/capacity-building/arset)\n[NASA Earthdata Search](https://search.earthdata.nasa.gov/search)\n[MODIS Products on Earthdata](https://search.earthdata.nasa.gov/search?q=MOD13)",
+     "demoLink": "https://youtu.be/QvbLhHqKULc",
+     "projectLink": "https://quenaris.vercel.app"
+    }
+   }
+  }
+ },
+ "Global Connection|aWQ6OTU5Mg==": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6OTU5Mg==",
+    "title": "Arcobaleno",
+    "event": "aWQ6MQ==",
+    "challengeDetails": {
+     "title": "Immersed in the Sounds of Space"
+    },
+    "locationDetails": {
+     "country": "Brazil",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Global Connection|aWQ6Mjg2ODc=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6Mjg2ODc=",
+    "title": "Asteroid Destroyer",
+    "event": "aWQ6Mg==",
+    "challengeDetails": {
+     "title": "Navigator for the Habitable Worlds Observatory (HWO): Mapping the Characterizable Exoplanets in our Galaxy"
+    },
+    "locationDetails": {
+     "country": "Canada",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Global Connection|aWQ6NTIzMTk=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6NTIzMTk=",
+    "title": "Gaia+LEO",
+    "event": "aWQ6Mw==",
+    "challengeDetails": {
+     "title": "Commercializing Low Earth Orbit (LEO)"
+    },
+    "locationDetails": {
+     "country": "United States",
+     "displayName": ""
+    },
+    "projectDetails": {
+     "name": "Project Gaia+LEO",
+     "summary": "We developed Gaia-LEO, a mixed-integer optimization framework that co-designs orbital and terrestrial data-center networks for the next generation of AI and Earth-observation workloads. The model jointly optimizes facility location, network topology, and workload placement by minimizing total CapEx + OpEx while satisfying real-world physical constraints latency, bandwidth, power, and thermal limits. Each orbital module represents a 40 MW containerized data-center node with solar power and radiative cooling; ground sites anchor fiber backhaul and user access. Using inputs from NASA\u2019s CO2 emissions, water & orbital debris data and web scraped data center data the solver decides which orbital clusters to launch, which ground points of presence to activate, and how to route traffic through optical & inter-satellite links.\n\nThis framework directly addresses the challenge of commercializing LEO by quantifying when and where orbital compute becomes economically advantageous compared with terrestrial infrastructure. It transforms space from a communications relay into a computational layer \u2013 a sustainable, solar-powered extension of Earth\u2019s cloud. The result is an actionable blueprint for scaling AI training and climate modeling in orbit, reducing terrestrial power and water footprints, and accelerating humanity\u2019s transition toward space-based green compute as part of the emerging orbital economy.",
+     "details": "<p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Re-thinking where the Earth's compute should live.</span></p><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Gaia-LEO is a data-driven simulation and optimization framework that designs hybrid orbital\u2013terrestrial data center networks for sustainable AI and Earth-observation compute. Built with Python, Three.JS, and Streamlit, the system implements a mixed-integer optimization (MIP) that decides where to build orbital and Earth-based data centers, what optimal balances are required between both compute options, and how to route workloads to minimize total cost (CapEx + OpEx) under physical constraints on latency, bandwidth, power, and thermal limits.</span></p><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">The model integrates NASA POWER data, US energy-grid data, and available public data on terrestrial data centers and costs to simulate real-world environmental and economic trade-offs. Each orbital module represents a 40 MW solar-powered, radiatively-cooled compute node, while ground sites are built for resilience, redundancy, and inference.</span></p><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">The Streamlit interface allows users to interactively explore scenarios, visualize cost-performance trade-offs, and identify when orbital compute becomes environmentally advantageous and profitable. The project\u2019s creativity lies in merging operations-research optimization with environmental modeling and space-systems engineering.\u00a0</span></p><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">The development of new data centers is not going to slow down any time soon. We need a more sustainable option to invest in technological advancements while also designing for the future in a scalable and environmentally-friendly way. Gaia-LEO can inform policymakers, governments, and cloud providers on when, where, and how to scale sustainable orbital compute, reducing terrestrial energy and water footprints while enabling a greener and more resilient orbital economy.</span></p>",
+     "solution": "",
+     "aiToolsUsage": [],
+     "dataReferences": "[NASA POWER, 10/4/23-10/4/25 Data for the following features: All Sky Surface Shortwave Downward Irradiance, Temperature at 2m, Temperature at 2m Max, Relative Humidity at 2m](https://power.larc.nasa.gov/data-access-viewer/)",
+     "demoLink": "https://drive.google.com/file/d/17eORY_V279WEXn_29pDwuUACGKpyKx6K/view",
+     "projectLink": "https://github.com/stayingfoolish/gaia-LEO/blob/main/README.md"
+    }
+   }
+  }
+ },
+ "Best Use of Technology|aWQ6Mjg1MQ==": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6Mjg1MQ==",
+    "title": "Spacebee",
+    "event": "aWQ6MQ==",
+    "challengeDetails": {
+     "title": "Make a Moonquake Map 2.0!"
+    },
+    "locationDetails": {
+     "country": "United States",
+     "displayName": "Universal Event"
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Best Use of Technology|aWQ6MzAyNDM=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MzAyNDM=",
+    "title": "42 QuakeHeroes",
+    "event": "aWQ6Mg==",
+    "challengeDetails": {
+     "title": "Seismic Detection Across the Solar System"
+    },
+    "locationDetails": {
+     "country": "Brazil",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Best Use of Technology|aWQ6MzYxNTM=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MzYxNTM=",
+    "title": "Twisters",
+    "event": "aWQ6Mw==",
+    "challengeDetails": {
+     "title": "Will It Rain On My Parade?"
+    },
+    "locationDetails": {
+     "country": "Mexico",
+     "displayName": ""
+    },
+    "projectDetails": {
+     "name": "SkySense",
+     "summary": "SkySense is a web-app platform that uses NASA Earth observation data and AI analysis to provide ultra-local and personalized weather predictions. Our goal is to help users plan outdoor events, sports, and travel with greater accuracy and confidence. By integrating NASA, Google, and Gemini APIs, SkySense analyzes multiple weather variables such as rain, wind, temperature, humidity, and visibility to generate real-time risk assessments and suggest the safest time windows for activities. \nThe platform also features TwisterBot, a smart conversational assistant that delivers adaptive alerts, reminders, and weather insights directly to the user.\nSkySense addresses the challenge of unreliable, generic forecasts by making meteorological data understandable and actionable. It would empower individuals and organizations to make informed decisions, reduce weather-related risks, and transform uncertainty into confidence.",
+     "details": "<p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">SkySense was developed using React.js for a dynamic and responsive front-end experience, supported by Firebase for user authentication, cloud storage, and hosting. It integrates Google APIs to handle calendar synchronization, notifications, and secure Google sign-ins. For environmental intelligence, it connects to NASA\u2019s POWER Data Access Viewer, NASA POWER API, and Open-Meteo datasets, which provide real-time data on temperature, humidity, wind speed, radiation, and precipitation. The predictive model processes this information to generate comfort-based insights, while the Gemini API powers the conversational assistant, enabling natural interaction with users. The design was created in Figma, ensuring a glassy, minimal, and accessible interface across all devices. Together, these technologies make SkySense a seamless bridge between AI, design, and space-based data.</span></p>",
+     "solution": "",
+     "aiToolsUsage": [],
+     "dataReferences": "[NASA POWER API (Prediction Of Worldwide Energy Resources)](https://power.larc.nasa.gov/api/temporal/daily/point)\n[NASA Earthdata](https://earthdata.nasa.gov/)\n[Giovanni](https://giovanni.gsfc.nasa.gov/)\n[GES DISC](https://disc.gsfc.nasa.gov/)",
+     "demoLink": "https://drive.google.com/file/d/1LDaKDOHBKm3PxC03xcEJGfdybsVEwOTf/view?usp=sharing",
+     "projectLink": "https://skysense.surf/"
+    }
+   }
+  }
+ },
+ "Best Use of Storytelling|aWQ6NzI5Nw==": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6NzI5Nw==",
+    "title": "Team Voyagers",
+    "event": "aWQ6MQ==",
+    "challengeDetails": {
+     "title": "Everything Starts with Water"
+    },
+    "locationDetails": {
+     "country": "Bangladesh",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Best Use of Storytelling|aWQ6MTU0ODk=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MTU0ODk=",
+    "title": "TerraTales",
+    "event": "aWQ6Mg==",
+    "challengeDetails": {
+     "title": "Tell Us a Climate Story!"
+    },
+    "locationDetails": {
+     "country": "Egypt",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Best Use of Storytelling|aWQ6MzMxNjI=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MzMxNjI=",
+    "title": "HerCode Space",
+    "event": "aWQ6Mw==",
+    "challengeDetails": {
+     "title": "Stellar Stories: Space Weather Through the Eyes of Earthlings"
+    },
+    "locationDetails": {
+     "country": "Anywhere in the World",
+     "displayName": ""
+    },
+    "projectDetails": {
+     "name": "A Solar Tale",
+     "summary": "With A Solar Tale, we wanted the Sun to tell its own story \u2014 to children and to anyone fascinated by the universe, its mythology, history, and science.\nOur project addresses the \u201cStellar Stories\u201d challenge by combining NASA data and heliophysics concepts with powerful storytelling, vibrant illustrations, and accessible language for young learners. \nThis story makes complex science human, emotional, and memorable \u2014 helping kids understand how space weather affects daily life and why it matters. It\u2019s a bridge between science and imagination, designed for use in classrooms, libraries, and outreach programs.",
+     "details": "<p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">\ud83c\udf1e</span><b><strong style=\"white-space: pre-wrap;\"> Details </strong></b></p><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">A Solar Tale is a digital children's story told from the perspective of the Sun \u2014 a cosmic narrator who speaks across cultures, centuries, and technologies. Through five poetic acts, the story traces humanity\u2019s relationship with space weather, highlighting how solar activity affects life on Earth. From ancient myths to Galileo's telescope, and from space flares to a young girl\u2019s curiosity, the tale blends science and storytelling.</span></p><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">\ud83d\udcbb </span><b><strong style=\"white-space: pre-wrap;\">Tech Stack </strong></b></p><ul><li><span style=\"white-space: pre-wrap;\">HTML5, SCSS, REACT.JS and REACT-SCROLLAMA</span></li><li><span style=\"white-space: pre-wrap;\">Responsive Web Layout (Mobile-First)</span></li><li><span style=\"white-space: pre-wrap;\">Google Fonts: Poppins</span></li><li><span style=\"white-space: pre-wrap;\">Ready for deployment via Netlify</span></li></ul><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Innovation Highlights</strong></b></p><ul><li><span style=\"white-space: pre-wrap;\">\ud83d\udcd6\u00a0</span><b><strong style=\"white-space: pre-wrap;\">Narrative Design</strong></b><span style=\"white-space: pre-wrap;\">: Structured as a multi-act poetic journey.</span></li><li><span style=\"white-space: pre-wrap;\">\ud83d\udd2d\u00a0</span><b><strong style=\"white-space: pre-wrap;\">Educational Value</strong></b><span style=\"white-space: pre-wrap;\">: Each act introduces key space weather concepts.</span></li><li><span style=\"white-space: pre-wrap;\">\ud83c\udfa8\u00a0</span><b><strong style=\"white-space: pre-wrap;\">Visual Simplicity</strong></b><span style=\"white-space: pre-wrap;\">: Emphasis on clarity, typography, and contrast.</span></li><li><span style=\"white-space: pre-wrap;\">\ud83d\udce1\u00a0</span><b><strong style=\"white-space: pre-wrap;\">Data Trust</strong></b><span style=\"white-space: pre-wrap;\">: All scientific references sourced directly from NASA/NOAA.</span></li></ul>",
+     "solution": "",
+     "aiToolsUsage": [],
+     "dataReferences": "[Solar Storms and Flares](https://science.nasa.gov/sun/solar-storms-and-flares/)\n[NASA Space Weather Website](https://science.nasa.gov/heliophysics/focus-areas/space-weather/)\n[National Oceanic and Atmospheric Administration (NOAA) Space Weather Prediction Center](https://www.swpc.noaa.gov/)\n[Human Activity Impacted Space Weather](https://svs.gsfc.nasa.gov/12593/)",
+     "demoLink": "https://youtu.be/1C9ueho9ero",
+     "projectLink": "https://a-solar-tale.netlify.app/"
+    }
+   }
+  }
+ },
+ "Art & Technology|aWQ6NTA5Ng==": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6NTA5Ng==",
+    "title": "Oogway comics",
+    "event": "aWQ6MQ==",
+    "challengeDetails": {
+     "title": "Habitable Exoplanets: Creating Worlds Beyond Our Own"
+    },
+    "locationDetails": {
+     "country": "Tajikistan",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Art & Technology|aWQ6Mjg1MDg=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6Mjg1MDg=",
+    "title": "Connected Earth Museum",
+    "event": "aWQ6Mg==",
+    "challengeDetails": {
+     "title": "Imagine our Connected Earth"
+    },
+    "locationDetails": {
+     "country": "Brazil",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Art & Technology|aWQ6NDA1ODY=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6NDA1ODY=",
+    "title": "Zumorroda-X",
+    "event": "aWQ6Mw==",
+    "challengeDetails": {
+     "title": "NASA Farm Navigators: Using NASA Data Exploration in Agriculture"
+    },
+    "locationDetails": {
+     "country": "Egypt",
+     "displayName": ""
+    },
+    "projectDetails": {
+     "name": "Henry's Farm Adventures",
+     "summary": "Welcome to Henry\u2019s Farm Adventure!\nFor the NASA Farm Navigators Challenge, we didn\u2019t just build a game, we built a global farming quest powered by space data.\n\nMeet Henry, a struggling farmer whose crops keep failing. Instead of giving up, he sets off on an epic journey around the world, guided by real NASA satellite data. Along the way, he meets farmers on the frontlines of climate change, like Bilal in Pakistan, fighting the floods of 2022, and Ramesh in India, surviving brutal heatwaves.\n\nBut this isn\u2019t just a story, it\u2019s you in action. As the player, you step into Henry\u2019s boots and take on mini-games that transform serious challenges into hands-on missions, by solving them, you learn how farmers adapt in real life, how NASA\u2019s data reveals these risks, and how communities can fight back against climate change.\n\nThis is NASA data like you\u2019ve never seen it before, not in charts or reports, but in the palm of your hand, as a playful, high-stakes adventure.",
+     "details": "<h4 dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Zumorroda-X's Project Solution</strong></b></h4><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Henry\u2019s Farm Adventure is an educational adventure game designed to teach players how environmental challenges affect agriculture turning real NASA satellite data into an interactive story-driven game. Players travel with Henry, meet farmers worldwide, and use hands-on mini games to solve climate challenges making science both fun and accessible.</span></p><img alt=\"upload_image.16:18:43.750286\" class=\"richtext-image full-width\" data-format=\"fullwidth\" data-id=\"378278\" height=\"463\" src=\"https://assets.spaceappschallenge.org/media/images/pic1_wcIo9A9.width-1024.png\" width=\"1024\"><h4 dir=\"ltr\"><span style=\"white-space: pre-wrap;\">How Does Our Solution Work</span></h4><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">In the game, Henry is a farmer facing repeated crop failures, and he sets out on a journey to uncover the environmental challenges threatening agriculture as floods, heatwaves, droughts, and soil salinization. Along the way, Henry meets farmers from different countries who share their experiences and solutions, helping him piece together which challenge might also be affecting his own farm.</span></p><ul><li><b><strong style=\"white-space: pre-wrap;\">Heatwaves (India, 2021):</strong></b><br/><span style=\"white-space: pre-wrap;\">Henry visits Ramesh, a farmer in India, who experienced the devastating 2021 extreme heat crisis. Ramesh shows Henry NASA's extreme heat map, in which player can see India suffering badly from heat in addition to other areas, then teaches Henry about techniques farmers use to protect crops from heats such as shade nets and mulching, after that Ramesh tests player with a quiz game.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Floods (Pakistan, 2022):</strong></b><br/><span style=\"white-space: pre-wrap;\">In </span><b><strong style=\"white-space: pre-wrap;\">Pakistan</strong></b><span style=\"white-space: pre-wrap;\">, Henry meets </span><b><strong style=\"white-space: pre-wrap;\">Bilal</strong></b><span style=\"white-space: pre-wrap;\">, who describes how the historic 2022 floods devastated farmland. Using an </span><b><strong style=\"white-space: pre-wrap;\">image slider</strong></b><span style=\"white-space: pre-wrap;\">, Henry compares NASA satellite images of Pakistan before and after the flood, witnessing the disaster\u2019s true scale. In the </span><b><strong style=\"white-space: pre-wrap;\">gameplay</strong></b><span style=\"white-space: pre-wrap;\">, players help Henry protect farms:</span><br/><span style=\"white-space: pre-wrap;\">\u2003\u2003</span><b><strong style=\"white-space: pre-wrap;\">Level 1:</strong></b><span style=\"white-space: pre-wrap;\"> Navigate Henry to place straw in the areas hit by the heaviest rainfall.</span><br/><span style=\"white-space: pre-wrap;\">\u2003\u2003</span><b><strong style=\"white-space: pre-wrap;\">Level 2:</strong></b><span style=\"white-space: pre-wrap;\"> Install drainage pipes to save waterlogged fields.                                                                                          Through this, players learn how farmers can adapt and reduce flood damage.</span><img alt=\"upload_image.16:40:15.738001\" class=\"richtext-image full-width\" data-format=\"fullwidth\" data-id=\"378477\" height=\"496\" src=\"https://assets.spaceappschallenge.org/media/images/flood_play_O4js6uU.width-1024.png\" width=\"1024\"></li><li><b><strong style=\"white-space: pre-wrap;\">Soil Salinization (Egypt 2021):</strong></b><br/><span style=\"white-space: pre-wrap;\">Next, Henry travels to Egypt to meet </span><b><strong style=\"white-space: pre-wrap;\">Mohamed</strong></b><span style=\"white-space: pre-wrap;\">, who shows him how irrigation practices are affecting farmland. Henry learns about </span><b><strong style=\"white-space: pre-wrap;\">soil salinization</strong></b><span style=\"white-space: pre-wrap;\"> and explores live NASA satellite data that reveals how salt buildup reduces soil productivity over time. In the </span><b><strong style=\"white-space: pre-wrap;\">gameplay</strong></b><span style=\"white-space: pre-wrap;\">, players are given a time limit to save the farm from salinization by:</span><br/><span style=\"white-space: pre-wrap;\">\u2003\u2003</span><b><strong style=\"white-space: pre-wrap;\">Task:</strong></b><span style=\"white-space: pre-wrap;\"> Implementing drip irrigation to revive the salty plants.</span><br/><span style=\"white-space: pre-wrap;\">Through this, players discover how efficient irrigation methods can protect soil health.</span><img alt=\"upload_image.16:32:48.929565\" class=\"richtext-image full-width\" data-format=\"fullwidth\" data-id=\"378396\" height=\"462\" src=\"https://assets.spaceappschallenge.org/media/images/pic2_AGj4YIy.width-1024.png\" width=\"1024\"></li><li><b><strong style=\"white-space: pre-wrap;\">Drought (United States):</strong></b><br/><span style=\"white-space: pre-wrap;\">Henry also visits the United States, where he meets an American farmer \"Sam\" struggling with drought. He learns how drought affects soil health and how scientists use </span><b><strong style=\"white-space: pre-wrap;\">vegetation indexes</strong></b><span style=\"white-space: pre-wrap;\"> from satellite imagery to measure water stress and monitor crops.</span></li><li><b><strong style=\"white-space: pre-wrap;\">Crops Management (Brazil):</strong></b><br/><span style=\"white-space: pre-wrap;\">Finally, Henry visits </span><b><strong style=\"white-space: pre-wrap;\">Jo\u00e3o da Silva</strong></b><span style=\"white-space: pre-wrap;\">, a farmer and innovator. Jo\u00e3o explains how increasing CO\u2082 levels can sometimes stimulate plant growth. He also emphasizes the importance of </span><b><strong style=\"white-space: pre-wrap;\">adaptation to climate change, </strong></b><span style=\"white-space: pre-wrap;\">using fertilizers wisely, adjusting planting times, and adopting new techniques. Jo\u00e3o then reveals his </span><b><strong style=\"white-space: pre-wrap;\">AI model</strong></b><span style=\"white-space: pre-wrap;\">, which predicts which crops will survive based on country, year, CO\u2082 levels, and adaptation strategies. To make it hands-on, he shows Henry a </span><b><strong style=\"white-space: pre-wrap;\">NASA food supply table</strong></b><span style=\"white-space: pre-wrap;\"> and turns it into a </span><b><strong style=\"white-space: pre-wrap;\">matching game</strong></b><span style=\"white-space: pre-wrap;\">, where Henry pairs crops with the right conditions, learning how to choose the best crops for each scenario.</span></li></ul><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">When the player completes all the challenges, the farmers gather together for a lively catch-up!</span><img alt=\"upload_image.18:48:03.178181\" class=\"richtext-image full-width\" data-format=\"fullwidth\" data-id=\"379644\" height=\"603\" src=\"https://assets.spaceappschallenge.org/media/images/end.width-1024.png\" width=\"1024\"></p><h4 dir=\"ltr\"><span style=\"white-space: pre-wrap;\">The game benefits </span></h4><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">farmers, students, and the wider community by:</strong></b></p><ul><li><span style=\"white-space: pre-wrap;\">Educating players on environmental disasters and their impact on crops.</span></li><li><span style=\"white-space: pre-wrap;\">Demonstrating practical, data-driven strategies for sustainable farming.</span></li><li><span style=\"white-space: pre-wrap;\">Bridging the gap between NASA\u2019s datasets and real-world agricultural practices in a fun, engaging way.</span></li></ul><h4 dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Our goal</span></h4><p dir=\"ltr\"><span style=\"white-space: pre-wrap;\">To make NASA\u2019s open data more accessible, helping communities prepare for climate-related agricultural challenges while fostering awareness of global environmental issues. Despite our attempt to reveal agricultural difficulties globally, our game is limited to certain issues and didn't mention other calamities faced by other countries such as wildfires.</span></p><h4 dir=\"ltr\" style=\"text-align: start;\"><span style=\"white-space: pre-wrap;\">Tools and Technologies Used</span></h4><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Coding Languages:</strong></b></p><ul><li><b><strong style=\"white-space: pre-wrap;\">Python</strong></b><span style=\"white-space: pre-wrap;\"> \u2192 for the ML model.</span><b><strong style=\"white-space: pre-wrap;\"> </strong></b></li><li><b><strong style=\"white-space: pre-wrap;\">JavaScript (with Phaser)</strong></b><span style=\"white-space: pre-wrap;\"> \u2192 for 2D game development.</span></li></ul><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Data Sources:</strong></b></p><ul><li><b><strong style=\"white-space: pre-wrap;\">NASA real-time datasets</strong></b><span style=\"white-space: pre-wrap;\"> \u2192 for environmental and agricultural data. Through NASA\u2019s data, we were able to access Landsat images that allowed us to compare countries' farmlands before and after enduring environmental issues, that go back to a farmland in 1984 and compare it with the same area about 17 years later. Furthermore, NASA provides data that allows us to check recent NDVI (Natural differentiation vegetation index) of different countries, which was integrated in our games using APIs. In addition, an artificial intelligence model was used and integrated with the NASA data to highlight the significance of CO2 on crops, and adaptation level on different types of crops. Finally, data was extracted from NASA\u2019s US drought monitor, displayed in a map, and utilized for learning purposes in the game.</span></li></ul><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Character Design:</strong></b></p><ul><li><b><strong style=\"white-space: pre-wrap;\">Piskel</strong></b><span style=\"white-space: pre-wrap;\"> \u2192 for creating and editing pixel-style images and sprites.</span></li></ul><h4 dir=\"ltr\"><a href=\"https://github.com/esralsayed/test_farmy\" target=\"_blank\" rel=\"noopener noreferrer\" data-external ><span style=\"white-space: pre-wrap;\">GitHub Link</span></a></h4>",
+     "solution": "",
+     "aiToolsUsage": [],
+     "dataReferences": "[NASA Earth Observatory](https://earthobservatory.nasa.gov/images/149183/the-nile-deltas-disappearing-farmland)\n[NASA Harvest](https://glam.nasaharvest.org/explore)\n[Extreme Heat Data Pathfinder](https://www.earthdata.nasa.gov/data/catalog/sedac-ciesin-sedac-sdei-gehe-1.00)\n[Floods Data Pathfinder](https://search.earthdata.nasa.gov/search/granules?p=C2723754847-GES_DISC&pg[0][v]=f&pg[0][gsk]=-start_date&q=IMERG&sb[0]=67.9871%2C27.97529%2C67.9871%2C27.97529&qt=2022-08-01T00%3A00%3A00.000Z%2C2022-08-02T23%3A59%3A59.999Z&tl=1321577150.739!5!!&lat=26.55266903810636&long=72.28557364181081&zoom=4.335181457135409)\n[Extreme Heat Estimates](https://www.earthdata.nasa.gov/data/catalog/sedac-ciesin-sedac-sdei-gehe-1.00)\n[NTRS - NASA Technical Reports Server](https://ntrs.nasa.gov/citations/20210022691?utm_source=chatgpt.com)\n[Agriculture and Water Management Pathfinder](https://www.earthdata.nasa.gov/data/catalog/sedac-ciesin-sedac-cropclim-giss-db-1.00)\n[U.S. Drought Monitor](https://droughtmonitor.unl.edu/)",
+     "demoLink": "https://drive.google.com/file/d/1P-sOTecG2uO2eLu3UabS0PXWLYUKaF4p/view?usp=sharing",
+     "projectLink": "https://henrysfarmadventures.vercel.app/"
+    }
+   }
+  }
+ },
+ "Best Use of Data|aWQ6MTI0MQ==": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MTI0MQ==",
+    "title": "Storm Prophet",
+    "event": "aWQ6MQ==",
+    "challengeDetails": {
+     "title": "Develop the Oracle of DSCOVR"
+    },
+    "locationDetails": {
+     "country": "Ukraine",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Best Use of Data|aWQ6MjM1NzQ=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MjM1NzQ=",
+    "title": "GaamaRamma",
+    "event": "aWQ6Mg==",
+    "challengeDetails": {
+     "title": "Leveraging Earth Observation Data for Informed Agricultural Decision-Making"
+    },
+    "locationDetails": {
+     "country": "United States",
+     "displayName": "Universal Event"
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Best Use of Data|aWQ6NDQ2ODQ=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6NDQ2ODQ=",
+    "title": "Resonant Exoplanets",
+    "event": "aWQ6Mw==",
+    "challengeDetails": {
+     "title": "A World Away: Hunting for Exoplanets with AI"
+    },
+    "locationDetails": {
+     "country": "United States",
+     "displayName": ""
+    },
+    "projectDetails": {
+     "name": "Project Resonant Exoplanets",
+     "summary": "Resonant Worlds Explorer is an AI-powered system that ingests telescope and satellite data, including spectra from missions like JWST, to search for exoplanets and detect possible biosignatures. Unlike traditional tools that rely on approximate floating-point methods, our system integrates Modulus, a new exact-math solver that converts physics and chemistry problems into number theory and solves them without numerical error. This allows us to model planetary atmospheres with high precision, test chemical equilibrium, and distinguish true biosignatures (like O\u2082 + CH\u2084 coexistence) from abiotic false positives.\nWe built a full end-to-end pipeline: fetching NASA data, detecting exoplanets with transit algorithms, validating signals with physics models, and running Modulus-based chemistry checks. Results are presented in a web interface with visual plots and automatically generated scientific reports.\nThis matters because the search for life beyond Earth depends on accuracy. By combining astronomy data, physics validation, and exact chemistry, Resonant Worlds Explorer reduces false positives and provides a reliable way to identify promising candidates for habitability, helping guide future missions and discoveries.",
+     "details": "<p dir=\"ltr\" style=\"text-align: start;\"><span style=\"white-space: pre-wrap;\">Resonant Worlds Explorer is a full-stack application that combines astronomy data, machine learning, and exact physics to detect exoplanets and identify potential biosignatures. The system ingests data from NASA missions such as Kepler, TESS, and JWST, preprocesses light curves or spectra, and runs transit detection algorithms to find planets. Once candidates are found, it validates them with physics models and uses\u00a0</span><b><strong style=\"white-space: pre-wrap;\">Modulus</strong></b><span style=\"white-space: pre-wrap;\">, our exact-math solver, to analyze atmospheric chemistry. This allows us to check whether molecules like O\u2082, CH\u2084, and O\u2083 can coexist naturally or require biological replenishment.</span></p><p dir=\"ltr\" style=\"text-align: start;\"><span style=\"white-space: pre-wrap;\">The benefits are accuracy and reliability: traditional AI can misclassify or hallucinate results, but our solver eliminates numerical error and dramatically reduces false positives. The intended impact is to provide scientists with a trustworthy, scalable tool for finding habitable worlds and prioritizing targets for future exploration.</span></p><p dir=\"ltr\" style=\"text-align: start;\"><span style=\"white-space: pre-wrap;\">We built the project with\u00a0</span><b><strong style=\"white-space: pre-wrap;\">Python (FastAPI, XGBoost, Lightkurve, Astroquery), TypeScript/React, and Google Cloud integration</strong></b><span style=\"white-space: pre-wrap;\">. Modulus is based on a modified Qwen transformer that we extended into the\u00a0</span><b><strong style=\"white-space: pre-wrap;\">Prime Algebra Transformer</strong></b><span style=\"white-space: pre-wrap;\">, enabling exact arithmetic for physics and chemistry problems.</span></p><p dir=\"ltr\" style=\"text-align: start;\"><span style=\"white-space: pre-wrap;\">The project is creative because it blends machine learning with hard physics, turning exoplanet discovery into an interactive, explainable, and reproducible process. We considered both scientific rigor and usability, delivering not just code but also visual plots, automated PDF reports, and a clear workflow that makes complex science accessible.</span></p>",
+     "solution": "",
+     "aiToolsUsage": [],
+     "dataReferences": "[Kepler Mission Data](https://archive.stsci.edu/kepler/)\n[TESS Mission Data](https://archive.stsci.edu/tess/)\n[James Webb Space Telescope (JWST) Data (MAST Archive)](https://archive.stsci.edu/jwst/)\n[Hubble Space Telescope Data (MAST Archive)](https://archive.stsci.edu/hst/)",
+     "demoLink": "https://www.youtube.com/watch?v=5fBB5YJpfwU",
+     "projectLink": "https://resonant-planet.vercel.app"
+    }
+   }
+  }
+ },
+ "Best Use of Science|aWQ6MjA1OQ==": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MjA1OQ==",
+    "title": "LunarTech Ensemble",
+    "event": "aWQ6MQ==",
+    "challengeDetails": {
+     "title": "Make a Moonquake Map 2.0!"
+    },
+    "locationDetails": {
+     "country": "United States",
+     "displayName": "Universal Event"
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Best Use of Science|aWQ6MTczMjI=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6MTczMjI=",
+    "title": "WMPGang",
+    "event": "aWQ6Mg==",
+    "challengeDetails": {
+     "title": "Create an Orrery Web App that Displays Near-Earth Objects"
+    },
+    "locationDetails": {
+     "country": "Canada",
+     "displayName": ""
+    },
+    "projectDetails": null
+   }
+  }
+ },
+ "Best Use of Science|aWQ6NDg0OTM=": {
+  "data": {
+   "page": {
+    "__typename": "TeamPage",
+    "id": "aWQ6NDg0OTM=",
+    "title": "SpaceGenes+",
+    "event": "aWQ6Mw==",
+    "challengeDetails": {
+     "title": "Build a Space Biology Knowledge Engine"
+    },
+    "locationDetails": {
+     "country": "Germany",
+     "displayName": ""
+    },
+    "projectDetails": {
+     "name": "SpaceGenes+: A Synergy Dashboard for Molecular Space Health",
+     "summary": "SpaceGenes+ is an interactive dashboard designed to uncover synergistic gene expression changes in space biology: specifically, how radiation and microgravity together impact astronaut health at the molecular level. Using real NASA GeneLab datasets (OSD-288 Transcriptome analysis of murine spleen in space), our tool identifies genes like TP53, ATM, and GADD45A that exhibit non-additive responses when exposed to multiple spaceflight stressors.\n\nThis dashboard empowers researchers, drug developers, and mission planners to quickly visualize synergy effects across different conditions: radiation only, microgravity only, and combined spaceflight. In future, users will be able to filter by organ system, biological function, and stressor type, enabling faster hypothesis generation and precision targeting for space medicine and cancer biology.\n\nSpaceGenes+ addresses a major challenge: most space omics tools treat stressors in isolation. Yet, in real missions, astronauts experience overlapping biological stress. Recognizing these hidden molecular interactions is essential for developing protective measures and advancing long-duration spaceflight.",
+     "details": "<p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">SpaceGenes+</strong></b><span style=\"white-space: pre-wrap;\"> is a web-based interactive dashboard designed to reveal </span><i><em style=\"white-space: pre-wrap;\">synergistic gene expression changes</em></i><span style=\"white-space: pre-wrap;\"> in response to combined spaceflight stressors\u2014namely </span><b><strong style=\"white-space: pre-wrap;\">radiation</strong></b><span style=\"white-space: pre-wrap;\"> and </span><b><strong style=\"white-space: pre-wrap;\">microgravity</strong></b><span style=\"white-space: pre-wrap;\">. Traditionally, biological data from space studies examine these stressors in isolation. Our platform uniquely surfaces how they interact to amplify cellular risks like DNA damage, immune suppression, and cancer susceptibility.</span></p><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">How it works:</strong></b><br/><span style=\"white-space: pre-wrap;\">SpaceGenes+ ingests transcriptomic datasets (currently featuring NASA GeneLab OSD-288) and calculates synergy scores based on fold-change in gene expression across conditions. It detects when gene activation under combined stress exceeds the sum of individual effects\u2014flagging key \"synergy genes\" using an automated formula.</span></p><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Key Benefits &amp; Impact:</strong></b></p><ul><li><span style=\"white-space: pre-wrap;\">Helps space biologists </span><b><strong style=\"white-space: pre-wrap;\">prioritize genes</strong></b><span style=\"white-space: pre-wrap;\"> for further study.</span></li><li><span style=\"white-space: pre-wrap;\">Aids </span><b><strong style=\"white-space: pre-wrap;\">drug developers</strong></b><span style=\"white-space: pre-wrap;\"> in finding therapeutic targets.</span></li><li><span style=\"white-space: pre-wrap;\">Supports </span><b><strong style=\"white-space: pre-wrap;\">NASA planners</strong></b><span style=\"white-space: pre-wrap;\"> in understanding organ-level risks for long-duration missions.</span></li><li><span style=\"white-space: pre-wrap;\">Offers visual, non-code-based access to large genomics datasets.</span></li></ul><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Tools &amp; Technologies:</strong></b></p><ul><li><b><strong style=\"white-space: pre-wrap;\">Framer</strong></b><span style=\"white-space: pre-wrap;\">: front-end website and animation</span></li><li><b><strong style=\"white-space: pre-wrap;\">Bolt</strong></b><span style=\"white-space: pre-wrap;\">: dashboard and data visualization engine</span></li><li><b><strong style=\"white-space: pre-wrap;\">Python (Pandas, NumPy)</strong></b><span style=\"white-space: pre-wrap;\">: for preprocessing and synergy calculations</span></li><li><b><strong style=\"white-space: pre-wrap;\">Figma/FigJam</strong></b><span style=\"white-space: pre-wrap;\">: design and prototyping</span></li><li><b><strong style=\"white-space: pre-wrap;\">Google Sheets/CSV</strong></b><span style=\"white-space: pre-wrap;\">: data curation</span></li></ul><p dir=\"ltr\"><b><strong style=\"white-space: pre-wrap;\">Creative Elements:</strong></b></p><ul><li><span style=\"white-space: pre-wrap;\">Built to be </span><i><em style=\"white-space: pre-wrap;\">researcher-friendly</em></i><span style=\"white-space: pre-wrap;\"> with exportable visuals,</span></li><li><span style=\"white-space: pre-wrap;\">Includes a compelling story that connects molecular insights to real astronaut risks,</span></li><li><span style=\"white-space: pre-wrap;\">Uses an interface that simplifies complex bioinformatics into visual exploration.</span></li></ul>",
+     "solution": "",
+     "aiToolsUsage": [],
+     "dataReferences": "[GLDS-288 \u2013 RNA-Seq: Mouse Spleen in Spaceflight](https://genelab-data.ndc.nasa.gov/genelab/accession/GLDS-288)\n[NASA GeneLab Platform](https://genelab.nasa.gov)\n[NASA Space Apps Challenge Website](https://www.spaceappschallenge.org/)",
+     "demoLink": "https://drive.google.com/file/d/1nUliPCPSrPXtbi7LartC2WfROIni7pFv/view?usp=sharing",
+     "projectLink": "https://spacegenes-plus.framer.website/"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,11 @@
+# raw downloads (~1.1 GB) — rebuild with scripts/
+data/raw/
+node_modules/
+dist/
+.netlify/
+.DS_Store
+__pycache__/
+*.pyc
+.env*
+# scraped page embeds a third-party Mapbox token (blocked by push protection)
+research/raw/winners2025/past/128414.html

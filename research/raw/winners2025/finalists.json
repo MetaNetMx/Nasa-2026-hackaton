@@ -1,0 +1,677 @@
+[
+ {
+  "id": "aWQ6MzYwMTI=",
+  "title": "Astro Sweepers - We Catch What Space Leaves Behind",
+  "challengeDetails": {
+   "title": "Commercializing Low Earth Orbit (LEO)"
+  },
+  "locationDetails": {
+   "country": "Anywhere in the World"
+  },
+  "projectDetails": {
+   "summary": "Astro\u00a0Sweepers is a compliance\u2011and\u2011insight platform that automates NASA\u2019s Debris Assessment Software (DAS) workflow, generates ODAR/EOMP reports and produces clear, actionable risk scores for space operators. It uses our proprietary ASRI index to weight debris legacy, compliance readiness, collision\u2011risk burden and sustainability alignment, combining NASA SPARK/Space\u2011Track data and DAS outputs to produce before and after risk scores and long\u2011term debris population forecasts. The system includes a user\u2011friendly web portal that transforms technical analyses into intuitive dashboards and business\u2011ready reports, helping customers reduce post\u2011mission lifetimes, lower casualty risks and demonstrate regulatory compliance to insurers, investors and agencies. Ultimately, Astro\u00a0Sweepers aims to mitigate the mounting orbital\u2011debris crisis by tying immediate DAS compliance with longer\u2011term sustainability forecasting and a scalable business model, enabling safer, more sustainable access to low Earth orbit.",
+   "dataReferences": "[Astromaterials Research & Exploration Science NASA ORBITAL DEBRIS PROGRAM OFFICE](https://orbitaldebris.jsc.nasa.gov/)\n[ORDEM 3.2 : OD Engineering Model](https://orbitaldebris.jsc.nasa.gov/modeling/ordem.html)\n[LEGEND : 3D/OD Evolutionary Model](https://orbitaldebris.jsc.nasa.gov/modeling/legend.html)\n[Debris Assessment Software](https://orbitaldebris.jsc.nasa.gov/mitigation/debris-assessment-software.html)\n[Object Reentry Survival Analysis Tool](https://orbitaldebris.jsc.nasa.gov/reentry/orsat.html)\n[NASA Open Data Portal:](https://data.nasa.gov/)\n[Space Commercialization](https://www.nasa.gov/headquarters/library/find/bibliographies/space-commercialization/)\n[Office of the NASA Chief Engineer NASA Technical Standards System](https://standards.nasa.gov/NASA-Technical-Standards)\n[Economic Development of Low Earth Orbit](https://www.nasa.gov/wp-content/uploads/2023/09/economic-development-of-low-earth-orbit-tagged-v2.pdf?emrc=3fff83)\n[Commercial Human Space Operations Training Standards](https://www.nasa.gov/wp-content/uploads/2023/09/commercial-human-space-operations-training-standards.pdf?emrc=3ce018)\n[ NASA-STD-3001 Vol. 1](https://standards.nasa.gov/standard/ochmo/nasa-std-3001-vol-1)\n[ NASA-STD-3001 VOL 2](https://standards.nasa.gov/standard/ochmo/nasa-std-3001-vol-2)",
+   "projectLink": "https://astro-sweepers.vercel.app/"
+  }
+ },
+ {
+  "id": "aWQ6NTI0MjY=",
+  "title": "A.T.L.A.S.",
+  "challengeDetails": {
+   "title": "Animation Celebration of Terra Data!"
+  },
+  "locationDetails": {
+   "country": "Brazil"
+  },
+  "projectDetails": {
+   "summary": "Project A.T.L.A.S. is an immersive web experience guided by NASA's Terra satellite, personified as a friendly 3D storyteller.\n\nThe journey begins with an interactive tour of the satellite itself, where Terra introduces its five \"senses\"\u2014the instruments that make its stories possible (MODIS, MOPITT, ASTER, MISR, and CERES).\n\nFrom there, the experience dives into two powerful, interconnected memories: the 2004 Amazon fires (\u201cA Forest\u2019s Fever\u201d) and the catastrophic 2024 Southern Brazil floods (\u201cA Deluge of Tears\u201d).\n\nOur story uses layered data to reveal a profound insight: how a wound to the planet in the past contributed to a tragedy in the present.\n\nAfter the guided tour, the controls are handed over. In a free-explore mode, users can scrub through 25 years of Terra data, layer instruments, and make their own discoveries.\n\nA.T.L.A.S. is designed to reduce data friction for educators, communicators, and citizens, turning NASA's vast archives into clear, actionable stories. We turn seeing into understanding, and understanding into action.",
+   "dataReferences": "[NASA's Global Imagery Browse Services (GIBS)](https://www.earthdata.nasa.gov/engage/open-data-services-software/earthdata-developer-portal/gibs-api)\n[NASA Earthdata Worldview](https://www.earthdata.nasa.gov/data/tools/worldview)\n[Fire Information for Resource Management System (FIRMS)](https://firms.modaps.eosdis.nasa.gov/)",
+   "projectLink": "https://atlas-webapp-nu.vercel.app/"
+  }
+ },
+ {
+  "id": "aWQ6NDM0OTU=",
+  "title": "Bagis",
+  "challengeDetails": {
+   "title": "Sharks from Space"
+  },
+  "locationDetails": {
+   "country": "Philippines"
+  },
+  "projectDetails": {
+   "summary": "Our project develops a predictive foraging habitat web application for endangered whale sharks (\ud835\ude19\ud835\ude29\ud835\ude2a\ud835\ude2f\ud835\ude24\ud835\ude30\ud835\ude25\ud835\ude30\ud835\ude2f \ud835\ude35\ud835\ude3a\ud835\ude31\ud835\ude36\ud835\ude34) in Philippine waters, the heart of the Coral Triangle\u2014home to unparalleled marine biodiversity that supports local livelihoods. Whale sharks face growing threats from ship strikes, tourism pressure, and climate change, making conservation planning urgent.\n\nUsing Google Earth Engine, we built a MaxEnt-based model that integrates NASA satellite data (sea surface temperature, chlorophyll-a, ocean currents, and bathymetry) with 48 verified sightings to forecast monthly whale shark foraging habitats from 2025\u20132030. The system achieves robust accuracy (AUC > 0.87), providing a reliable framework for identifying seasonal hotspots and supporting marine protected area management.\n\nTo advance monitoring, we propose next-generation bio-telemetry tags that pair environmental sensors with molecular prey detection, transmitting real-time data via satellite for continuous model refinement.\n\nThis work delivers a scalable, data-driven solution for whale shark conservation by combining machine learning, remote sensing, and proposes an innovative tagging technology. Beyond safeguarding this iconic species, the project establishes baseline data for climate change impact assessments, strengthens ecotourism sustainability, and contributes to global marine biodiversity protection efforts.",
+   "dataReferences": "[MODIS-Aqua Level-3 Standard Mapped Image (L3SMI) Products (SST, Chlorophyll-a, POC)](https://oceancolor.gsfc.nasa.gov)",
+   "projectLink": "https://total-service-474209-k1.projects.earthengine.app/view/bagis"
+  }
+ },
+ {
+  "id": "aWQ6NDU5NTQ=",
+  "title": "BuBu",
+  "challengeDetails": {
+   "title": "Your Home in Space: The Habitat Layout Creator"
+  },
+  "locationDetails": {
+   "country": "Taiwan"
+  },
+  "projectDetails": {
+   "summary": "Dr. BUBU is your personal interior design assistant.\n\nOpen the website through desktop web browser, tell Dr. BUBU what you need, and choose furniture from the list below. Simply drag and drop items into the scene, then ask Dr. BUBU to help refresh the layout.\n\nThis friendly assistant can generate images at incredible speed \u2014 helping you visualize your ideas and share them with others.",
+   "dataReferences": "[Internal Layout of a Lunar Surface Habitat_ASCEND](https://ntrs.nasa.gov/citations/20220013735)\n[Overview of NASA\u2019s Moon to Mars Planetary Autonomous Construction Technology (MMPACT)](https://ntrs.nasa.gov/citations/20210022105)\n[Review of Habitable Softgoods Inflatable Design, Analysis, Testing, and Potential Space Applications](https://ntrs.nasa.gov/api/citations/20190000847/downloads/20190000847.pdf)\n[Moon to Mars Architecture Definition Document](https://www.nasa.gov/wp-content/uploads/2024/01/rev-a-acr23-esdmd-001-m2madd.pdf?emrc=67072cd5ca62f)",
+   "projectLink": "https://nasa2025.scsonic.com/"
+  }
+ },
+ {
+  "id": "aWQ6NDQ0MTM=",
+  "title": "Celesta",
+  "challengeDetails": {
+   "title": "Will It Rain On My Parade?"
+  },
+  "locationDetails": {
+   "country": "India"
+  },
+  "projectDetails": {
+   "summary": "The Weather Risk Assistant is a web application designed to provide a detailed historical weather analysis for any location and date worldwide. By leveraging over 30 years of daily data from the NASA POWER Project, our tool directly addresses the challenge of making complex Earth observation data accessible and actionable for long-term planning.\n\nThe application allows users to input a location and a future date to receive a personalized dashboard showing the historical probability of extreme conditions like 'Very Hot', 'Very Wet', or 'Very Uncomfortable'. It also displays historical averages and long-term climate trends through intuitive charts and a plain-English summary.\n\nThis is important because it empowers individuals, event planners, and travelers to make informed decisions months in advance, far beyond the scope of standard weather forecasts. By revealing localized climate trends for specific dates, it also makes the impacts of our changing environment personal and understandable.",
+   "dataReferences": "[NASA POWER Project Data Access](https://power.larc.nasa.gov/data-access-viewer/)",
+   "projectLink": "https://v0-weather-dashboard-app-sigma.vercel.app/"
+  }
+ },
+ {
+  "id": "aWQ6Mzc2OTY=",
+  "title": "Ceylon Xzora",
+  "challengeDetails": {
+   "title": "Will It Rain On My Parade?"
+  },
+  "locationDetails": {
+   "country": "Sri Lanka"
+  },
+  "projectDetails": {
+   "summary": "Weatherly is a next-generation long-term weather prediction platform that combines advanced machine learning models with NASA POWER\u2019s historical weather data to deliver accurate forecasts according to a user\u2019s submitted location and date.\nUnlike standard traditional weather apps that simply show temperature and rainfall, Weatherly goes further. It provides a complete activity suitability analysis, enabling users to know in advance whether the chosen day is ideal for their planned event. Whether it\u2019s a cricket match, festival, parade, or outdoor celebration, \"Weatherly\" predicts not just the weather, but how it will affect the comfort and safety of your plans.\nWeatherly is designed to make long-term weather analysis stable, reliable, and globally accessible. It empowers users worldwide to plan with confidence, by giving them both precise predictions and clear comfort-level recommendations for their activities.\n\nKey Features of \"Weatherly\" includes\n- Event-specific forecasts that predict weather for a specific location, date, and event type\n- Event suitability that shows predicted weather as high, medium, or low risk levels\n- Weather descriptions such as very rainy, sunny, cloudy, snowy, or windy\n- Detailed metrics that provide temperature, rain probability, and wind speed data\n- Long-term forecasts that can predict weather up to one year in advance\n- Clear climate condition charts of 7 day forecasts\n- A responsive design\n- A system powered entirely by open NASA datasets",
+   "dataReferences": "[NASA POWER](https://power.larc.nasa.gov/)\n[NASA POWER DAV](https://power.larc.nasa.gov/data-access-viewer/)",
+   "projectLink": "https://drive.google.com/drive/folders/1NSQcf-6lx42mmjMyCrAHD33MHTwLhgqH?usp=sharing"
+  }
+ },
+ {
+  "id": "aWQ6NDkyMDA=",
+  "title": "CloudMap",
+  "challengeDetails": {
+   "title": "From EarthData to Action: Cloud Computing with Earth Observation Data for Predicting Cleaner, Safer Skies"
+  },
+  "locationDetails": {
+   "country": "Anywhere in the World"
+  },
+  "projectDetails": {
+   "summary": "AirWatch Pro is a comprehensive air quality monitoring platform that integrates real-time data from global sensor networks with advanced machine learning predictions. Built for the NASA Space Apps Challenge, it demonstrates how accessible technology can empower communities to monitor and respond to air quality issues.",
+   "dataReferences": "[NASA TEMPO (Ready for Integration)](https://tempo.si.edu/)\n[NASA Earthdata Search (Ready for Integration)](https://search.earthdata.nasa.gov/)\n[NASA ASDC (Atmospheric Science Data Center) (Ready for Integration)](https://asdc.larc.nasa.gov/)\n[NASA WorldView (Ready for Integration)](https://worldview.earthdata.nasa.gov/)\n[NASA Giovanni (Ready for Integration)](https://giovanni.gsfc.nasa.gov/giovanni/)",
+   "projectLink": "https://airwatch-pro.vercel.app/"
+  }
+ },
+ {
+  "id": "aWQ6MzQ2NTY=",
+  "title": "CosmicNova",
+  "challengeDetails": {
+   "title": "Stellar Stories: Space Weather Through the Eyes of Earthlings"
+  },
+  "locationDetails": {
+   "country": "Malaysia"
+  },
+  "projectDetails": {
+   "summary": "Oops! The Sun Sneezes: Flarey\u2019s Adventure is an interactive digital children\u2019s story designed to educate children about space weather and its diverse impacts on Earth. Developed using Figma, the project transforms complex scientific concepts into an engaging and visually appealing learning experience.\n\nThe story follows Flarey, a cheerful solar flare who accidentally triggers a coronal mass ejection (CME). Players begin by selecting characters such as a pilot, farmer, student, astronaut or power grid operator. Each illustrating how solar flares influence their respective roles and communities. The narrative then transitions to Flarey\u2019s perspective, where users explore how space weather affects satellites, the Earth\u2019s magnetic field and the formation of auroras.\n\nBy combining storytelling, interactivity and quizzes, the project addresses NASA\u2019s challenge of communicating the science and effects of space weather in a creative and accessible way. It emphasizes the importance of scientific awareness, critical thinking and curiosity about our solar environment. Ultimately, Oops! The Sun Sneezes: Flarey\u2019s Adventure serves as an educational tool that makes learning about space weather both meaningful and enjoyable for children, promoting a deeper appreciation of the Sun\u2019s influence on our daily lives.",
+   "dataReferences": "[Space Weather](https://science.nasa.gov/heliophysics/focus-areas/space-weather/)\n[Solar Storms and Flares](https://science.nasa.gov/sun/solar-storms-and-flares/)\n[Solar Flare Impact](https://svs.gsfc.nasa.gov/12640/)\n[Space Weather Impact](https://svs.gsfc.nasa.gov/10959/)\n[Space Weather](https://www.goes-r.gov/multimedia/space-weather.html)",
+   "projectLink": "https://figmashort.link/CZiXkR"
+  }
+ },
+ {
+  "id": "aWQ6Mzc1MjU=",
+  "title": "Earth Tellers 2",
+  "challengeDetails": {
+   "title": "Stellar Stories: Space Weather Through the Eyes of Earthlings"
+  },
+  "locationDetails": {
+   "country": "Anywhere in the World"
+  },
+  "projectDetails": {
+   "summary": "\u201cStorytelling is one of the oldest ways of telling about the unknown\u2026\u201d   \nFrom ancient firesides to modern classrooms, stories have been our way to connect facts with feelings- turning science into something we can see, feel, and remember.\nOur way of story telling is not about flipping pages, it is about making something impossible possible like hearing the sounds of space\u2026 Making the most boring things to stick in your mind\u2026 and educating people about the unknown.\nOur project brings the story of space weather to life in a new and imaginative way. We see space weather through the eyes of earthlings and share their experiences about how something 93 million miles away can affect the very smallest parts of their life.\nThe website is built entirely on NASA Space Weather data, but learning alone isn\u2019t enough. That\u2019s why we\u2019ve included interactive games, letting users explore the impact of their choices and see how individuals collectively shape outcomes.\nTo make the experience even more captivating, we\u2019ve added comics, immersive space sounds, and a space weather forecast that shows what the future could look like if we don\u2019t take action. By blending storytelling, play, and real science, our project sparks curiosity, builds understanding, and empowers the next generation to connect with the cosmos\u2014and take responsibility for protecting our planet.",
+   "dataReferences": "[NASA Space Weather Website](https://science.nasa.gov/heliophysics/focus-areas/space-weather/)\n[Solar Storms and Flares](https://science.nasa.gov/sun/solar-storms-and-flares/)\n[Results of the First National Survey of User Needs for Space Weather (NASA resource)](https://www.weather.gov/media/nws/Results-of-the-First-National-Survey-of-User-Needs-for-Space-Weather-2024.pdf)\n[National Oceanic and Atmospheric Administration (NOAA) Space Weather Prediction Center](https://www.swpc.noaa.gov/)\n[How Solar Flares Affect Earth](https://svs.gsfc.nasa.gov/12640/)\n[Space Weather Vocabulary](https://svs.gsfc.nasa.gov/11179/)",
+   "projectLink": "https://www.canva.com/design/DAG004kwV5Q/ivwooWX3gpjXr4DGmn4e8Q/view"
+  }
+ },
+ {
+  "id": "aWQ6MzQ3MzA=",
+  "title": "ECI Centauri",
+  "challengeDetails": {
+   "title": "A World Away: Hunting for Exoplanets with AI"
+  },
+  "locationDetails": {
+   "country": "Colombia"
+  },
+  "projectDetails": {
+   "summary": "We developed a convolutional neural network (CNN) model capable of processing previously cleaned datasets. It receives parameters through a platform and, considering the light curves of the candidates, determines whether or not they classify as exoplanets. The model was trained using a standard 80/10/10 data split, training, evaluation, and testing respectively, optimized with binary cross-entropy loss in order to increase our accuracy, thus achieving 96.38% accuracy. Our solution to the challenge was developed under an MVC architecture, offering an intuitive interface, accessible to the scientific field and curious minds, encouraging learning and facilitating the understanding of exoplanets, complemented by an educational chatbot that explains exoplanet discoveries in real time.",
+   "dataReferences": "[KOI data](https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=cumulative)\n[TESS data](https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=TOI)\n[NASA Exoplaner Archive](https://exoplanetarchive.ipac.caltech.edu)\n[Eyes on exoplanets](https://eyes.nasa.gov/apps/exo/#)\n[Webb\u2019s Impact on Exoplanet Research](https://science.nasa.gov/mission/webb/science-overview/science-explainers/webbs-impact-on-exoplanet-research)\n[Solar system TREKS](https://trek.nasa.gov/#)\n[Moon Trek WMTS Layer Services](https://trek.nasa.gov/tiles/apidoc/trekAPI.html?body=moon)",
+   "projectLink": "https://github.com/JAPV-X2612/ECI-Centauri-Frontend"
+  }
+ },
+ {
+  "id": "aWQ6MzIzMTM=",
+  "title": "ExoVisionaries",
+  "challengeDetails": {
+   "title": "Stellar Stories: Space Weather Through the Eyes of Earthlings"
+  },
+  "locationDetails": {
+   "country": "Bangladesh"
+  },
+  "projectDetails": {
+   "summary": "Team ExoVisionaries from Bangladesh developed Solar Storms to Auroras, an interactive storytelling platform that makes invisible space weather visible and exciting for children. Space weather events like solar storms can disrupt satellites, GPS, navigation, radio signals, and even power grids, yet most people, especially kids, rarely understand their impact. Using NASA\u2019s open heliophysics datasets, our platform transforms real science into playful, story-driven adventures. Children can trigger solar flares, explore astronaut storm shelters, visualize electron storms damaging satellites, forecast auroras, and even create their own auroras in the Aurora Lab.Features like the Mood Meter, interactive quizzes, and an AI Space Assistant make learning fun, simple, and engaging. Our mission is to replace superstition with science, spark curiosity, and inspire the next generation of explorers. Looking ahead, we plan to expand into classroom apps, add multilingual and accessible features, and create AI-driven space weather alerts for real-time exploration.",
+   "dataReferences": "[ NASA Images:](https://www.nasa.gov/images/ \u2013 Educational imagery for vocabulary cards and stories)\n[ NASA Science:](https://science.nasa.gov/)\n[Space Place:](https://spaceplace.nasa.gov/)\n[ Aurora Forecast:](https://services.swpc.noaa.gov/json/ovation_aurora_latest.json)\n[Aurora Animations:](https://services.swpc.noaa.gov/products/animations/)\n[K-Index Data:](https://services.swpc.noaa.gov/json/boulder_k_index_1m.json)\n[Electron Forecast: ](https://services.swpc.noaa.gov/json/electron_fluence_forecast.json)\n[ Heliophysics Data Portal: ](https://science.nasa.gov/heliophysics/data/)\n[ NASA YouTube: ](https://www.youtube.com/@NASAgovVideo)",
+   "projectLink": "https://exo-visionaries.vercel.app/"
+  }
+ },
+ {
+  "id": "aWQ6Mzc1NTY=",
+  "title": "FyCUS",
+  "challengeDetails": {
+   "title": "SpaceTrash Hack: Revolutionizing Recycling on Mars"
+  },
+  "locationDetails": {
+   "country": "Spain"
+  },
+  "projectDetails": {
+   "summary": "Our project tackles three critical challenges for Martian colonization: the hazardous buildup of polymeric waste, the danger of cosmic radiation, and the immense cost of transporting materials from Earth. Our solution is a revolutionary process that transforms this waste into a lightweight, high-quality, and protective insulator. \nThe strategic advantage is turning a liability into an asset. \n\nA closed-loop system is created where a dangerous liability (trash) is transformed into a vital asset (shielding and building materials). We propose a \u2018biological factory\u2019, where each component plays a vital role. Bacteria act as our biological recyclers, breaking down the tough polymeric waste into a raw, workable base. We then mix in Martian regolith for structural strength and a small amount of a bio-resin, which creates a smooth, homogenous 'ink' ready for molding. After this, mycelium fungi, the living binder, is introduced as fungal spores that grow a dense root network throughout the ink, weaving all the components together into a solid composite. Finally, the planet's intense UV radiation cures the bio-resin, hardening the entire structure into a durable and protective building block.",
+   "dataReferences": "[Mars data](https://science.nasa.gov/mars/facts/)\n[Waste material recycling ](https://ntrs.nasa.gov/citations/20240004496)\n[Dual use of packaging](https://dataverse.jpl.nasa.gov/file.xhtml?fileId=4047&version=2.0)\n[Space waste categories and earth equivalents](https://drive.google.com/file/d/12cxywjd3-mkEroySLN04595gx7K7AVmQ/view)\n[NASA\u2019s LunaRecycle Challenge](https://www.nasa.gov/prizes-challenges-and-crowdsourcing/centennial-challenges/lunarecycle/)",
+   "projectLink": "https://miquelpffj.github.io/FyCUS-NASA-Space-Apps/"
+  }
+ },
+ {
+  "id": "aWQ6NTIzMTk=",
+  "title": "Gaia+LEO",
+  "challengeDetails": {
+   "title": "Commercializing Low Earth Orbit (LEO)"
+  },
+  "locationDetails": {
+   "country": "United States"
+  },
+  "projectDetails": {
+   "summary": "We developed Gaia-LEO, a mixed-integer optimization framework that co-designs orbital and terrestrial data-center networks for the next generation of AI and Earth-observation workloads. The model jointly optimizes facility location, network topology, and workload placement by minimizing total CapEx + OpEx while satisfying real-world physical constraints latency, bandwidth, power, and thermal limits. Each orbital module represents a 40 MW containerized data-center node with solar power and radiative cooling; ground sites anchor fiber backhaul and user access. Using inputs from NASA\u2019s CO2 emissions, water & orbital debris data and web scraped data center data the solver decides which orbital clusters to launch, which ground points of presence to activate, and how to route traffic through optical & inter-satellite links.\n\nThis framework directly addresses the challenge of commercializing LEO by quantifying when and where orbital compute becomes economically advantageous compared with terrestrial infrastructure. It transforms space from a communications relay into a computational layer \u2013 a sustainable, solar-powered extension of Earth\u2019s cloud. The result is an actionable blueprint for scaling AI training and climate modeling in orbit, reducing terrestrial power and water footprints, and accelerating humanity\u2019s transition toward space-based green compute as part of the emerging orbital economy.",
+   "dataReferences": "[NASA POWER, 10/4/23-10/4/25 Data for the following features: All Sky Surface Shortwave Downward Irradiance, Temperature at 2m, Temperature at 2m Max, Relative Humidity at 2m](https://power.larc.nasa.gov/data-access-viewer/)",
+   "projectLink": "https://github.com/stayingfoolish/gaia-LEO/blob/main/README.md"
+  }
+ },
+ {
+  "id": "aWQ6MzMyMDE=",
+  "title": "GRIT-X Awa",
+  "challengeDetails": {
+   "title": "A World Away: Hunting for Exoplanets with AI"
+  },
+  "locationDetails": {
+   "country": "Anywhere in the World"
+  },
+  "projectDetails": {
+   "summary": "This project presents an interactive web interface that applies ensemble-based machine learning to NASA\u2019s publicly available datasets for exoplanet identification. Noticing the rapid pace of space technology, future missions will generate richer and more diverse datasets, making adaptable models essential. To address this, we designed multiple mission-specific models, with Kepler and TESS serving as initial examples. Our approach shows how machine learning can classify objects of interest more quickly and reliably than manual methods, while remaining flexible enough to integrate new data as it becomes available. The models employ a stacking ensemble of XGBoost, LightGBM, and CatBoost to maximize accuracy and robustness. Beyond accuracy, we emphasized feature engineering and a reliable pipeline to ensure methodological integrity and lasting innovation. While tailored to individual missions, the framework can also extend to other datasets with the required features, offering broader applicability. The frontend, built with Astro, React, Three.js, and Tailwind, enables users to upload and analyze datasets, retrain models, and view real-time results. On the backend, FastAPI service validates inputs, preprocesses data, and delivers predictions via APIs. Looking ahead, we aim to expand with high-performance models for future missions. Our slogan, \u201cContinents apart, worlds away together,\u201d reflects the global collaboration that drives this project.",
+   "dataReferences": "[NASA Exoplanet Archive (TESS Objects of Interest Dataset)](https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=TOI)\n[NASA Exoplanet Archive (Kepler Objects of Interest Dataset)](https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=cumulative)\n[Exoplanet Detection Using Machine Learning](https://academic.oup.com/mnras/article/513/4/5505/6472249)\n[Assessment of Ensemble-Based Machine Learning Algorithms for Exoplanet Identification](https://www.mdpi.com/2079-9292/13/19/3950)\n[Go Daddy (Free offer from NASA Space Apps Challenge 2025) ](https://www.spaceapps.earth/)",
+   "projectLink": "https://github.com/GRITX-AWA/GRIT-X-Awa"
+  }
+ },
+ {
+  "id": "aWQ6MzIyNDY=",
+  "title": "HammerSpaceCraft",
+  "challengeDetails": {
+   "title": "SpaceTrash Hack: Revolutionizing Recycling on Mars"
+  },
+  "locationDetails": {
+   "country": "Ethiopia"
+  },
+  "projectDetails": {
+   "summary": "Reuse Reduce AI System is a smart waste management system for Mars missions. It uses artificial intelligence to identify, sort, and recycle inorganic waste like packaging, textiles, and debris into useful tools and parts. By adapting to Martian conditions and using energy-efficient design, it reduces waste, saves resources, and supports sustainable living for astronauts on Mars.",
+   "dataReferences": "[NTRS Waste Materials Recycling for In-Space Manufacturing](https://ntrs.nasa.gov/citations/20240004496)\n[Table - Non-Metabolic Waste Categories, Items, Materials, and Commercial Equivalents](https://drive.google.com/file/d/12cxywjd3-mkEroySLN04595gx7K7AVmQ/view)",
+   "projectLink": "https://www.reuse-reduce.earth/"
+  }
+ },
+ {
+  "id": "aWQ6MzMxNjI=",
+  "title": "HerCode Space",
+  "challengeDetails": {
+   "title": "Stellar Stories: Space Weather Through the Eyes of Earthlings"
+  },
+  "locationDetails": {
+   "country": "Anywhere in the World"
+  },
+  "projectDetails": {
+   "summary": "With A Solar Tale, we wanted the Sun to tell its own story \u2014 to children and to anyone fascinated by the universe, its mythology, history, and science.\nOur project addresses the \u201cStellar Stories\u201d challenge by combining NASA data and heliophysics concepts with powerful storytelling, vibrant illustrations, and accessible language for young learners. \nThis story makes complex science human, emotional, and memorable \u2014 helping kids understand how space weather affects daily life and why it matters. It\u2019s a bridge between science and imagination, designed for use in classrooms, libraries, and outreach programs.",
+   "dataReferences": "[Solar Storms and Flares](https://science.nasa.gov/sun/solar-storms-and-flares/)\n[NASA Space Weather Website](https://science.nasa.gov/heliophysics/focus-areas/space-weather/)\n[National Oceanic and Atmospheric Administration (NOAA) Space Weather Prediction Center](https://www.swpc.noaa.gov/)\n[Human Activity Impacted Space Weather](https://svs.gsfc.nasa.gov/12593/)",
+   "projectLink": "https://a-solar-tale.netlify.app/"
+  }
+ },
+ {
+  "id": "aWQ6NTA5ODA=",
+  "title": "HUEI-YING-OH",
+  "challengeDetails": {
+   "title": "Will It Rain On My Parade?"
+  },
+  "locationDetails": {
+   "country": "Taiwan"
+  },
+  "projectDetails": {
+   "summary": "Event Horizon Weather is a web-based application that lets users choose any location (by name lookup or map pin) and any calendar date (month/day), and then returns probability estimates for a suite of extreme weather categories \u2014 \u201cvery hot,\u201d \u201cvery wet,\u201d \u201cvery windy,\u201d \u201cvery uncomfortable,\u201d etc. \u2014 based on historical records. Users can also view trends over time (e.g. how probabilities changed over the last N years) and export the underlying data (CSV or JSON). The backend is built with FastAPI, and the frontend uses React + TypeScript, plus modern UI libraries and mapping/charting tools. Crucially, we also integrate an AI agent interface that helps users ask natural language queries, interpret the NASA data outputs, and receive conversational explanations or suggestions. We aim especially at the Best Use of Data award, to show how NASA data can be transformed into actionable insights for everyday users through both data analytics and intelligent conversational assistance.",
+   "dataReferences": "[GES DISC OPeNDAP server (Hyrax)](https://disc.gsfc.nasa.gov/information/tools?title=OPeNDAP%20and%20GDS)\n[Giovanni](https://giovanni.gsfc.nasa.gov/)\n[Data Rods for Hydrology](https://disc.gsfc.nasa.gov/information/tools?title=Hydrology%20Data%20Rods)\n[Worldview](https://worldview.earthdata.nasa.gov/)\n[Earthdata Search](https://search.earthdata.nasa.gov/search)\n[Data access Tutorials](https://disc.gsfc.nasa.gov/information/howto?page=1&dataTools=Python)\n[Scientific Visualization Studio](https://svs.gsfc.nasa.gov/)\n[NASA Prediction Of Worldwide Energy Resources](https://power.larc.nasa.gov/docs/services/api/)",
+   "projectLink": "https://nasa-space-app-hackathon2025-web.vercel.app/"
+  }
+ },
+ {
+  "id": "aWQ6NDMwNzY=",
+  "title": "iNFINITY MISSION",
+  "challengeDetails": {
+   "title": "Will It Rain On My Parade?"
+  },
+  "locationDetails": {
+   "country": "Egypt"
+  },
+  "projectDetails": {
+   "summary": "We created a complete weather forecasting site for everyone and Egyptian farmers. The site offers critical weather-related measures such as temperature, wind speed, humidity, and atmospheric pressure throughout Egypt and related governorates.\n\nOur solution checks an important agricultural need: one wrong prediction in the weather would cause crop loss. The site adds value to weather forecasting by offering other resources for farmers. After users put in their crop type, land size, and soil type, it recommends crops best for the growing season, harvest timing, irrigation, and potential best methods for good growing and high yield.\n\nThis is important because it assists farmers in making better decisions for yield improvement, and crop loss prevention. The site uses reliable weather data achieved by NASA through API (Application Programming Interface). Our implementation combines front-end and back-end code using JavaScript, Python, HTML, and CSS while create relevant cropping level weather information for farmers in Egypt.",
+   "dataReferences": "[Nasa power api](https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,PRECTOTCORR,WS10M&community=AG&longitude=-74&latitude=40&start=20200101&end=20200131&format=JSON)\n[Nasa power api](https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M,PRECTOTCORR,WS10M&community=SB&longitude=0&latitude=0&format=JSON&start=2016&end=2017)",
+   "projectLink": "https://drive.google.com/file/d/1qRdxPNzfbc1zeIz5STLTEkcx1pw70476/view?usp=sharing"
+  }
+ },
+ {
+  "id": "aWQ6MzYwNTc=",
+  "title": "Luminexus",
+  "challengeDetails": {
+   "title": "Stellar Stories: Space Weather Through the Eyes of Earthlings"
+  },
+  "locationDetails": {
+   "country": "Philippines"
+  },
+  "projectDetails": {
+   "summary": "The team created an interactive educational website called Luminexus. It is an engaging learning platform that teaches not just children but also educators and students at multiple levels about space weather and solar phenomena such as solar flares, auroras, and geomagnetic storms.\n\nThe project integrates immersive storytelling, educational games, and space app challenges that make intricate space science concepts easy, fun, and entertaining for learners of all ages. Children, students, and teachers can explore space through stories and games while earning points, unlocking achievements, and tracking progress.\n\nThis directly addresses the challenge of making STEM and space science stories engaging and easily accessible. Instead of relying on the traditional way of learning and reading heavy-text materials, using the platform, which incorporates games, animations, and storytelling, can greatly cultivate curiosity, understanding, and retention of lessons.\n\nIt promotes active learning, allowing students to explore, experiment, and think critically. Through this, they develop curiosity, creativity, and scientific literacy, which are foundational skills that prepare them to become future innovators, scientists, and problem-solvers who can shape advancements in space and technology.",
+   "dataReferences": "[Space Weather](https://science.nasa.gov/heliophysics/focus-areas/space-weather/)\n[Solar Storms and Flares](https://science.nasa.gov/sun/solar-storms-and-flares/)\n[Results of the First National Survey of User Needs for Space Weather](https://www.weather.gov/media/nws/Results-of-the-First-National-Survey-of-User-Needs-for-Space-Weather-2024.pdf)\n[Space Weather Centers of Excellence](https://science.nasa.gov/space-weather-centers-of-excellence/)\n[Heliophysics Mission](https://science.nasa.gov/wp-content/uploads/2020/01/hpd-fleet-chart-jan-2024.jpg)\n[Space Weather Prediction Center](https://www.swpc.noaa.gov/)\n[Human Activity Impacted Space Weather](https://svs.gsfc.nasa.gov/12593/)\n[How Solar Flares Affect Earth](https://svs.gsfc.nasa.gov/12640/)\n[NASA Scientists Answer Top Space Weather Questions](https://svs.gsfc.nasa.gov/10959/)\n[Space Weather Vocabulary](https://svs.gsfc.nasa.gov/11179/)\n[Space Weather](https://www.goes-r.gov/multimedia/space-weather.html)\n[NASA Spacecraft Track Solar Storms From Sun To Earth](https://svs.gsfc.nasa.gov/10809/)\n[X-Class: A Guide to Solar Flares](https://www.youtube.com/watch?v=oOXVZo7KikE)",
+   "projectLink": "https://drive.google.com/drive/folders/1drYH6XpDpGVNyhXaKOsDkia_husX-z9u?usp=sharing"
+  }
+ },
+ {
+  "id": "aWQ6MzIyODE=",
+  "title": "Memora-Lab",
+  "challengeDetails": {
+   "title": "Build a Space Biology Knowledge Engine"
+  },
+  "locationDetails": {
+   "country": "Peru"
+  },
+  "projectDetails": {
+   "summary": "We are a passionate team of engineers, data scientists, and physicists who believe that the key to our future in space lies in decoding the secrets of life itself.\nAt MEMORA LAB, we have joined forces to create an intelligent platform that transforms NASA\u2019s vast archive of space biology research into an interactive experience of knowledge and discovery.\n\nOur project, enables users to explore biological experiments conducted in space, understand how living organisms adapt to microgravity, and visualize how these discoveries connect across decades of missions.\nUsing artificial intelligence, knowledge graphs, and statistical analysis, our system organizes and connects hundreds of scientific papers \u2014 revealing relationships not only between experiments, organisms, and biological outcomes, but also among the scientists and research teams behind them.\n\nUsers can explore how life adapts to space environments, visualize collaborations, and identify emerging trends through interactive graphs and data-driven summaries.\nPlus it helps scientists and educators access and interpret complex data more efficiently, fostering new insights and collaborations. By transforming dispersed information into structured and visual knowledge, MEMORA LAB bridges data, discovery, and the people advancing life science in space \u2014 accelerating how humanity understands life beyond Earth.",
+   "dataReferences": "[A list of 608 open access full-text publications on spatial biology](https://github.com/jgalazka/SB_publications/tree/main)",
+   "projectLink": "https://www.memoralab.us/"
+  }
+ },
+ {
+  "id": "aWQ6NDA4NDk=",
+  "title": "Meteor Rizzlers",
+  "challengeDetails": {
+   "title": "Meteor Madness"
+  },
+  "locationDetails": {
+   "country": "India"
+  },
+  "projectDetails": {
+   "summary": "We are the Meteor Rizzlers from Rajagiri School of Engineering and Technology, and we developed the NASA Asteroid Impact Simulator \u2013 Neo Track, a comprehensive web application that transforms complex NASA asteroid data into an accessible, interactive experience for public education and planetary defense awareness.\nOur solution features four integrated modules:\nNASA Live Orrery \u2013 Real-time 3D visualization of 121 Near-Earth Objects using NASA NEO API data, complete with SVG icons, dynamic orbit highlighting, and color-coded danger levels.\nImpact Simulator \u2013 An interactive Leaflet.js map where users select impact sites, input asteroid parameters (size, velocity, composition), and visualize blast radius, damage estimates, and casualties using USGS geological datasets.\nAsteroidSmash Game \u2013 A Three.js educational mini-game that teaches orbital mechanics and impact mitigation through gameplay.\nAstroBot \u2013 An AI-powered chatbot providing instant explanations and guidance.\nBy combining NASA NEO data, USGS terrain information, and modern web technologies (Three.js, Leaflet.js, Framer Motion), EarthGuard democratizes planetary defense awareness\u2014making asteroid-impact understanding intuitive, visual, and accessible to everyone.",
+   "dataReferences": "[Risk List](https://neo.ssa.esa.int/risk-list)\n[Automated Data Access](https://neo.ssa.esa.int/computer-access)\n[NASA APIs](https://api.nasa.gov/)\n[NASA CNEOS ](https://cneos.jpl.nasa.gov/)\n[JPL Small\u2011Body Database](https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html)",
+   "projectLink": "https://nasafinalll-git-main-roshith-roberts-projects.vercel.app/"
+  }
+ },
+ {
+  "id": "aWQ6NTE2ODc=",
+  "title": "nai\u03c0",
+  "challengeDetails": {
+   "title": "Build a Space Biology Knowledge Engine"
+  },
+  "locationDetails": {
+   "country": "Brazil"
+  },
+  "projectDetails": {
+   "summary": "Our project tackles a major challenge in NASA\u2019s Space Biology domain: connecting thousands of research articles with hundreds of Open Science Data (OSDs) in a meaningful and unbiased way. Today, finding relevant datasets for a given publication\u2014or identifying underexplored topics\u2014is manual, slow, and often incomplete.\n\nWe developed an intelligent web platform that semantically links Articles \u2194 OSDs using embeddings and domain-specific normalization (\u201ctextual ligaments\u201d). The system provides three main views:\n\nArticles: summarized papers with their top dataset matches;\n\nOSDs: datasets with related publications and metadata;\n\nVaults: a new feature that maps semantic \u201cgaps\u201d \u2014 topics with low coverage, outdated connections, or missing factors \u2014 ranked by a VaultScore (0\u2013100).\n\nThis approach accelerates scientific discovery by surfacing hidden relationships and research opportunities in space biology. By highlighting where knowledge is dense and where it\u2019s missing, the platform helps researchers and curators focus on high-impact areas, fostering more connected and efficient open science.",
+   "dataReferences": "[Articles repository](https://github.com/jgalazka/SB_pubhttps://registry.opendata.aws/nasa-osdr/lications/tree/main)\n[Osd bucket](https://registry.opendata.aws/nasa-osdr/)\n[Nacle Project Repository](https://github.com/rodrigoacm10/nasa-biologic)",
+   "projectLink": "https://nasa-biologic.vercel.app/"
+  }
+ },
+ {
+  "id": "aWQ6NDEzNzM=",
+  "title": "NEIL A",
+  "challengeDetails": {
+   "title": "Commercializing Low Earth Orbit (LEO)"
+  },
+  "locationDetails": {
+   "country": "India"
+  },
+  "projectDetails": {
+   "summary": "OrbitalHive is a self-sustaining orbital platform that integrates autonomous debris extraction, in-situ resource utilization, and In-Space Biomanufacturing (ISBM) to create the first circular economy in Low Earth Orbit (LEO).\nEquipped with dual robotic extraction arms and a Tag-and-Tow tether system, OrbitalHive captures and stabilizes both structured and irregular debris. Using in-situ scanning technologies like Laser-Induced Breakdown Spectroscopy (LIBS) and X-Ray Fluorescence (XRF), it identifies material composition before recycling. Recovered metals are purified and fed into an additive manufacturing unit, where advanced 3D printers produce replacement components, satellite modules, and repair tools directly in orbit\u2014reducing launch costs and dependency on Earth.\nThe In-Space Biomanufacturing Module (ISBM), located in the lower layer, harnesses the microgravity environment for pharmaceutical synthesis, protein crystallization, and biomaterial production. These processes yield higher molecular precision, enabling the development of next-generation therapeutics and materials impossible to achieve on Earth.\nBy combining AI-driven autonomy, tether-assisted debris retrieval, and bio-industrial synergy, OrbitalHive redefines sustainable space operations\u2014turning orbital waste into industrial feedstock and transforming space into a productive ecosystem for both technology and life sciences.",
+   "dataReferences": "[Debris Measurements](https://orbitaldebris.jsc.nasa.gov/measurements/)\n[ORDEM 3.2 : OD Engineering Model](https://orbitaldebris.jsc.nasa.gov/modeling/ordem.html)",
+   "projectLink": "https://orbital-hive.vercel.app"
+  }
+ },
+ {
+  "id": "aWQ6MzM5NTA=",
+  "title": "NUPS",
+  "challengeDetails": {
+   "title": "A World Away: Hunting for Exoplanets with AI"
+  },
+  "locationDetails": {
+   "country": "South Korea"
+  },
+  "projectDetails": {
+   "summary": "What we have developed is an astronomical data analysis program and community platform for amateur astronomers. \nThis application has the potential to make exoplanet exploration more accessible to citizen astronomers and the general public.\nUntil now, follow-up observations after the detection of exoplanets by space telescopes have been conducted primarily by a small number of observers equipped with professional instruments. However, through this application, anyone interested in exoplanet research can participate in follow-up observations and experience the process of discovering exoplanets firsthand.\nFurthermore, by incorporating artificial intelligence (AI) technology, the application enhances both the convenience of observation and the accuracy and reliability of data processing.\nSuch detection and study of exoplanets contribute to expanding celestial maps and exploring the unknown regions of the universe, which remain beyond full human understanding, thereby holding significant academic and social value.",
+   "dataReferences": "[Kepler Objects of Interest(KOI)](https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=PS)\n[TESS Objects of Interest(TOI)](https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=TOI)\n[K2 Planets and Candidates](https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=k2pandc)",
+   "projectLink": "https://github.com/orgs/NUPS-NASA/repositories"
+  }
+ },
+ {
+  "id": "aWQ6NDczNzE=",
+  "title": "Pana2Orbit",
+  "challengeDetails": {
+   "title": "From EarthData to Action: Cloud Computing with Earth Observation Data for Predicting Cleaner, Safer Skies"
+  },
+  "locationDetails": {
+   "country": "Anywhere in the World"
+  },
+  "projectDetails": {
+   "summary": "The project is a cloud-based platform that predicts air quality in California three hours in advance using NASA\u2019s TEMPO satellite (NO\u2082), AirNow ground stations (O\u2083, PM\u2082.\u2085), and MERRA-2 / Google Weather meteorological data. Our pipeline converts geospatial NetCDF files into tabular data, cleans and merges all sources, and stores them in BigQuery for analysis. Using Vertex AI AutoML, we trained and deployed a predictive model optimized with RMSE and R\u00b2 metrics. The model runs in real time and is served through a FastAPI backend hosted on Cloud Run, while a React web interface displays pollutant levels on an interactive map where users can explore air quality by location.\n\nWe built a complete ETL pipeline in Python, transforming geospatial .nc files into clean tabular datasets stored in BigQuery. The system runs in real time and feeds the React web app, allowing users to explore pollution levels interactively. The model was trained and deployed in the cloud through Vertex AI endpoints and Cloud Run. Our goal is to deliver useful, scalable, and reproducible technology for cleaner skies, combining cloud computing, real data, and future improvements such as broader regions, longer prediction horizons, and integration of advanced deep-learning models. This platform demonstrates how open data, cloud-native architectures, and machine learning can provide actionable insights, support public health decisions, and make environmental science practical and accessible.",
+   "dataReferences": "[Earth Data Search](https://search.earthdata.nasa.gov/search?q=TEMPO%20FORMAL)\n[World Health Organization](https://www.who.int/health-topics/air-pollution#tab=tab_1)\n[EarthData](https://www.earthdata.nasa.gov/data/instruments/tempo)\n[Sport](https://weather.ndc.nasa.gov/sport/viewer/?dataset=tempol2&product=tempo_no2&location=for)\n[airnow](https://www.airnow.gov/)\n[google weather](https://serpapi.com/?gad_source=1&gad_campaignid=1061187028&gbraid=0AAAAADD8kqNiYcpJHhLSlQDjFjgN7BcoX&gclid=Cj0KCQjwrojHBhDdARIsAJdEJ_czZPFhyF_bjwQjdD52X4ZlEBfqWI6senfVe1zO36qF7Ey5PpNPSbAaAsJ1EALw_wcB)\n[earth data](https://search.earthdata.nasa.gov/search?q=TMPA)",
+   "projectLink": "https://studio--nuevo-proyecto-432123.us-central1.hosted.app/"
+  }
+ },
+ {
+  "id": "aWQ6MzMwMDg=",
+  "title": "Photonics Odyssey",
+  "challengeDetails": {
+   "title": "Commercializing Low Earth Orbit (LEO)"
+  },
+  "locationDetails": {
+   "country": "India"
+  },
+  "projectDetails": {
+   "summary": "AakashNet is an indigenous Low Earth Orbit (LEO) satellite network designed to provide secure, high-speed, and affordable internet connectivity across India\u2019s diverse terrain. We developed a phased-array based user terminal capable of dynamic beam steering through Ku/Ka band communication, linking directly with AakashNet satellites in orbit. These satellites form a laser-linked mesh network, enabling continuous data relay with minimal latency and reduced ground dependency.\n\nThe system directly addresses India\u2019s connectivity challenges\u2014bridging the digital divide in rural regions, providing encrypted communication for defense posts, and delivering in-flight and maritime internet without relying on foreign networks. With hardware locally produced by Indian agencies like ISRO, HAL, and BHEL, AakashNet ensures technological sovereignty and strategic independence.\n\nBy combining indigenous satellite manufacturing, reusable ISRO launches, and adaptive phased-array ground technology, AakashNet transforms connectivity into a national infrastructure asset\u2014empowering governance, education, defense, and the digital economy.",
+   "dataReferences": "[NASA Image and Video Library](https://api.nasa.gov/)",
+   "projectLink": "https://drive.google.com/drive/folders/17Sjo9YEayU1WuYzge4OO2uTpEkqAI4ms"
+  }
+ },
+ {
+  "id": "aWQ6NDIzNDM=",
+  "title": "PureFlow",
+  "challengeDetails": {
+   "title": "Your Home in Space: The Habitat Layout Creator"
+  },
+  "locationDetails": {
+   "country": "Brazil"
+  },
+  "projectDetails": {
+   "summary": "We developed PureFlow, an interactive systems engineering platform that allows users to design, model in 3D, and validate space habitats. It directly addresses the challenge by enabling the creation of layouts and volumes, but it goes further: the system calculates critical crew requirements in real-time (mass, power, life support) based on crew size and mission duration, providing instant feedback on the design's viability.\n\nIts importance lies in being more than a layout tool; it is a survival simulator. With its unique integration of NASA's DONKI API, PureFlow tests the design against real space weather threats, such as solar storms. It doesn't just answer if a habitat can be built, but if its crew can survive in it, making resilient design a fundamental priority.",
+   "dataReferences": "[Review of Habitable Softgoods Inflatable Design, Analysis, Testing, and Potential Space Applications](https://ntrs.nasa.gov/api/citations/20190000847/downloads/20190000847.pdf)",
+   "projectLink": "https://larasdiniz.github.io/PureFlow-2025/src/public/html/home/home.html"
+  }
+ },
+ {
+  "id": "aWQ6MzEzNjk=",
+  "title": "QUE\u00d1ARIS",
+  "challengeDetails": {
+   "title": "BloomWatch: An Earth Observation Application for Global Flowering Phenology"
+  },
+  "locationDetails": {
+   "country": "Peru"
+  },
+  "projectDetails": {
+   "summary": "We developed Que\u00f1aris, a platform for the smart reforestation of que\u00f1ua forests. It is a comprehensive system that combines the use of native microorganisms, NASA satellite data, drones, and artificial intelligence to accelerate tree growth, identify the best areas for reforestation, and monitor the health of the ecosystem.\nThe project addresses critical water scarcity in Arequipa, caused by the degradation of que\u00f1ua forests, which are vital for water retention. While traditional reforestation methods are slow and not very scalable, our platform uses technology to create a massive and efficient strategy. By digitizing the terrain and analyzing phenological data, we can make evidence-based decisions to maximize the impact of each tree planted.\nThis is crucial because the loss of que\u00f1ua forests has a direct impact on water security in Arequipa. The drastic reduction in spring flow (from 14 L/s to 0 in days) threatens the water supply for human consumption, agribusiness (28.5%), energy (67.7%), and mining (11%), creating the risk of food crises and social conflicts. Restoring these forests means restoring the water balance and ensuring a sustainable future for the region.",
+   "dataReferences": "[NDVI, EVI, SAVI, MSAVI, NDMI, NDWI, NBR and NBR2](https://www.earthdata.nasa.gov/data/catalog/lpcloud-hlsl30-vi-2.0)\n[NASA Earthdata Main Portal](https://earthdata.nasa.gov/)\n[Fire Information for Resource Management System (FIRMS)](https://firms.modaps.eosdis.nasa.gov/)\n[Level-1 and Atmosphere Archive & Distribution System (LAADS)](https://ladsweb.modaps.eosdis.nasa.gov/)\n[FIRMS API Documentation](https://firms.modaps.eosdis.nasa.gov/api/)\n[FIRMS Academy - Learning Resources](https://firms.modaps.eosdis.nasa.gov/academy)\n[FIRMS API Data Availability](https://firms.modaps.eosdis.nasa.gov/api/data_availability/)\n[LAADS DAAC Tools and Services](https://ladsweb.modaps.eosdis.nasa.gov/tools-and-services/)\n[Earthdata CMR Search API](https://cmr.earthdata.nasa.gov/search)\n[MODIS Vegetation Index Products - NASA Goddard](https://modis-land.gsfc.nasa.gov/vi.html)\n[FIRMS NBR Documentation NASA](https://firms.modaps.eosdis.nasa.gov/usfs/active_fire/)\n[MODIS Product Characterization](https://modis.gsfc.nasa.gov/data/dataprod/)\n[NASA ARSET Training](https://appliedsciences.nasa.gov/what-we-do/capacity-building/arset)\n[NASA Earthdata Search](https://search.earthdata.nasa.gov/search)\n[MODIS Products on Earthdata](https://search.earthdata.nasa.gov/search?q=MOD13)",
+   "projectLink": "https://quenaris.vercel.app"
+  }
+ },
+ {
+  "id": "aWQ6NDQ2ODQ=",
+  "title": "Resonant Exoplanets",
+  "challengeDetails": {
+   "title": "A World Away: Hunting for Exoplanets with AI"
+  },
+  "locationDetails": {
+   "country": "United States"
+  },
+  "projectDetails": {
+   "summary": "Resonant Worlds Explorer is an AI-powered system that ingests telescope and satellite data, including spectra from missions like JWST, to search for exoplanets and detect possible biosignatures. Unlike traditional tools that rely on approximate floating-point methods, our system integrates Modulus, a new exact-math solver that converts physics and chemistry problems into number theory and solves them without numerical error. This allows us to model planetary atmospheres with high precision, test chemical equilibrium, and distinguish true biosignatures (like O\u2082 + CH\u2084 coexistence) from abiotic false positives.\nWe built a full end-to-end pipeline: fetching NASA data, detecting exoplanets with transit algorithms, validating signals with physics models, and running Modulus-based chemistry checks. Results are presented in a web interface with visual plots and automatically generated scientific reports.\nThis matters because the search for life beyond Earth depends on accuracy. By combining astronomy data, physics validation, and exact chemistry, Resonant Worlds Explorer reduces false positives and provides a reliable way to identify promising candidates for habitability, helping guide future missions and discoveries.",
+   "dataReferences": "[Kepler Mission Data](https://archive.stsci.edu/kepler/)\n[TESS Mission Data](https://archive.stsci.edu/tess/)\n[James Webb Space Telescope (JWST) Data (MAST Archive)](https://archive.stsci.edu/jwst/)\n[Hubble Space Telescope Data (MAST Archive)](https://archive.stsci.edu/hst/)",
+   "projectLink": "https://resonant-planet.vercel.app"
+  }
+ },
+ {
+  "id": "aWQ6NDk3Mzk=",
+  "title": "ROBOKIDS-SPACE-A",
+  "challengeDetails": {
+   "title": "International Space Station 25th Anniversary Apps"
+  },
+  "locationDetails": {
+   "country": "Colombia"
+  },
+  "projectDetails": {
+   "summary": "ROBOKIDS: ISS Challenge is an educational video game developed by the ROBOKIDS-SPACE-A team for the NASA Space Apps Challenge 2025. The project brings space science closer to children and young people through an interactive bilingual experience (English and Spanish) that combines learning, scientific exploration, and environmental awareness.\n\nDeveloped in Python using Pygame, it recreates four essential experiences aboard the International Space Station (ISS): training in the Neutral Buoyancy Laboratory (NBL), exposure to G-forces, Earth observation from the Cupola, and a simulated spacewalk. Guided by Neil Armstrong (as a mentor figure) and the AI companion AstroMentor, players learn about science and sustainability through missions, emotional interaction, and problem-solving challenges.\n\nThe project promotes STEAM learning, critical thinking, and empathy, showing how space research benefits life on Earth. Divided into two main worlds\u2014Training and Exploration\u2014the game connects space education with environmental responsibility, demonstrating that science and fun can inspire a sustainable and inclusive future. It also teaches players the benefits of both engaging with the game and understanding how astronauts\u2019 missions contribute to humanity\u2019s progress.",
+   "dataReferences": "[ NASA. (n.d.-a). International Space Station overview. ](https://www.nasa.gov)\n[ NASA. (n.d.-b). International Space Station 25th Anniversary Apps Challenge.g](https://www.spaceappschallenge.org)\n[  NASA. (n.d.-c). Neutral Buoyancy Laboratory overview. ](https://www.nasa.gov)\n[ NASA. (n.d.-d). Extravehicular Activity Systems and Training. ](https://www.nasa.gov)\n[ NASA. (n.d.-e). Cupola module: Window to the World. ](https://www.nasa.gov)\n[EVA and Environmental Physiology](https://www.nasa.gov/directorates/esdmd/hhp/space-suits-and-exploration-operations/)\n[NASA. (2023a). Cupola: Observing Earth from space. NASA Earth Observatory. ](https://earthobservatory.nasa.gov)\n[NASA. (2023b). Learning in orbit: Educational missions aboard the ISS. NASA STEM Engagement.](https://stem.nasa.gov)\n[NASA. (2024). International Space Station Program Overview. NASA](https://www.nasa.gov/iss)\n[NASA Image and Video Library. (2024). International Space Station media collection. NASA.](https://images.nasa.gov)\n[  Biblioteca de im\u00e1genes y videos de la NASA \u2013 C\u00fapula + Laboratorio de flotabilidad neutral (NBL)](https://images.nasa.gov/)\n[Centro Espacial Johnson de la NASA (Flickr): C\u00fapula + NBL](https://www.flickr.com/photos/nasa2explore/albums/)\n[Investigaci\u00f3n y tecnolog\u00eda de la estaci\u00f3n](https://www.nasa.gov/international-space-station/space-station-research-and-technology/)\n[Portal de datos abiertos de la NASA](https://data.nasa.gov/dataset/?q=ISS+Coords&sort=score+desc%2C+metadata_modified+desc)\n[Descripci\u00f3n general del Laboratorio de flotabilidad neutra ](https://www.nasa.gov/johnson/neutral-buoyancy-laboratory/)\n[Entrada de la Enciclopedia de Sistemas de Actividad Extravehicular ](https://www.nasa.gov/reference/jsc-eva-systems/)",
+   "projectLink": "https://drive.google.com/drive/folders/1A9ZheaijpXFmUQBRPNG5GbwNA8Zf3ZIf?usp=drive_link"
+  }
+ },
+ {
+  "id": "aWQ6Mzk0NDQ=",
+  "title": "So-Cal 2025",
+  "challengeDetails": {
+   "title": "Build a Space Biology Knowledge Engine"
+  },
+  "locationDetails": {
+   "country": "Anywhere in the World"
+  },
+  "projectDetails": {
+   "summary": "I developed a knowledge engine as an interactive web application that analyzes the  608 NASA space biology research papers using AI-powered semantic search and knowledge synthesis. My solution delivers three persona-specific interfaces: scientists get detailed research insights with consensus indicators, investment managers can discover commercial opportunities through trend analysis, and mission architects can access risk assessments and countermeasure effectiveness data. Built with FastAPI, Pinecone, OpenAI GPT-4o, React, TypeScript, and Tailwind CSS, deployed on AWS EC2, the app enables instant, real-time semantic queries across the entire research corpus. The FastAPI backend provides intelligent search, multi-document summarization, consensus analysis, gap identification, and trend detection, while a React TypeScript frontend enables a responsive web and mobile-friendly user experience. The platform reduces research discovery time from hours to minutes, reveals cross-organism research patterns, identifies critical knowledge gaps for long-duration missions, and bridges research silos across biology domains. Creative, novel  features include persona-based data reframing, temporal trend detection to identify emerging research areas, cross-organism gap matrices to analyze research areas that need more attention, and consensus scoring to surface scientific agreement/disagreement across papers.",
+   "dataReferences": "[Space Biology 608 Research Papers](https://github.com/jgalazka/SB_publications/tree/main)\n[NASA Open Science Data Repository](https://www.nasa.gov/osdr/)",
+   "projectLink": "https://innovatestemacademy.com/"
+  }
+ },
+ {
+  "id": "aWQ6NDg0OTM=",
+  "title": "SpaceGenes+",
+  "challengeDetails": {
+   "title": "Build a Space Biology Knowledge Engine"
+  },
+  "locationDetails": {
+   "country": "Germany"
+  },
+  "projectDetails": {
+   "summary": "SpaceGenes+ is an interactive dashboard designed to uncover synergistic gene expression changes in space biology: specifically, how radiation and microgravity together impact astronaut health at the molecular level. Using real NASA GeneLab datasets (OSD-288 Transcriptome analysis of murine spleen in space), our tool identifies genes like TP53, ATM, and GADD45A that exhibit non-additive responses when exposed to multiple spaceflight stressors.\n\nThis dashboard empowers researchers, drug developers, and mission planners to quickly visualize synergy effects across different conditions: radiation only, microgravity only, and combined spaceflight. In future, users will be able to filter by organ system, biological function, and stressor type, enabling faster hypothesis generation and precision targeting for space medicine and cancer biology.\n\nSpaceGenes+ addresses a major challenge: most space omics tools treat stressors in isolation. Yet, in real missions, astronauts experience overlapping biological stress. Recognizing these hidden molecular interactions is essential for developing protective measures and advancing long-duration spaceflight.",
+   "dataReferences": "[GLDS-288 \u2013 RNA-Seq: Mouse Spleen in Spaceflight](https://genelab-data.ndc.nasa.gov/genelab/accession/GLDS-288)\n[NASA GeneLab Platform](https://genelab.nasa.gov)\n[NASA Space Apps Challenge Website](https://www.spaceappschallenge.org/)",
+   "projectLink": "https://spacegenes-plus.framer.website/"
+  }
+ },
+ {
+  "id": "aWQ6MzMxNTQ=",
+  "title": "SPACEWALK",
+  "challengeDetails": {
+   "title": "Stellar Stories: Space Weather Through the Eyes of Earthlings"
+  },
+  "locationDetails": {
+   "country": "South Korea"
+  },
+  "projectDetails": {
+   "summary": "The Three Solar Rascals isn\u2019t just a story \u2014 it\u2019s an interactive space adventure.\nBuilt for iPad, it combines science, storytelling, and learn to let users experience space weather firsthand.\n\nGuided by HERMES, NASA\u2019s space weather observer on the Gateway station, players meet three solar friends \u2014 Flare (solar flares), Radi (radiation storms), and CME (coronal mass ejections) \u2014 each representing a real solar phenomenon.\nBy tilting, shaking, and blowing into the iPad, users launch flares, trigger storms, and send plasma waves across space.\n\nThis project transforms complex heliophysics into a touchable, emotional story, inspiring curiosity and reminding us that no matter where we all live under the same Sun.",
+   "dataReferences": "[HERMES - NASA Science](https://science.nasa.gov/mission/hermes/)\n[Solar Storms and Flares - NASA Science](https://science.nasa.gov/sun/solar-storms-and-flares)\n[Sunspots - NASA Science](https://science.nasa.gov/sun/sunspots/)\n[Heliosphere - NASA Science](https://science.nasa.gov/heliophysics/focus-areas/heliosphere/)\n[Results of the First National Survey of User Needs for Space Weather (NASA resource)](https://www.weather.gov/media/nws/Results-of-the-First-National-Survey-of-User-Needs-for-Space-Weather-2024.pdf)\n[Space Weather - NASA Science](https://science.nasa.gov/heliophysics/focus-areas/space-weather/)\n[NASA | X-Class: A Guide to Solar Flares](https://www.youtube.com/watch?v=oOXVZo7KikE)\n[How Does the Sun\u2019s Magnetosphere Cause Aurora by Rachel Geiter - NASA Science](https://science.nasa.gov/learn/heat/resource/how-does-the-suns-magnetosphere-cause-aurora-by-rachel-geiter/)\n[NASA, NOAA: Sun Reaches Maximum Phase in 11-Year Solar Cycle](https://science.nasa.gov/science-research/heliophysics/nasa-noaa-sun-reaches-maximum-phase-in-11-year-solar-cycle/)\n[Solar Cycle Progression and Forecast - NASA Science](https://www.nasa.gov/solar-cycle-progression-and-forecast/)\n[Solar Cycle Progression - NOAA Scales](https://www.swpc.noaa.gov/products/solar-cycle-progression)\n[Aurora Tutorial - NOAA Scales](https://www.swpc.noaa.gov/content/aurora-tutorial)",
+   "projectLink": "https://github.com/chxhyxn/SpacerWalker"
+  }
+ },
+ {
+  "id": "aWQ6MzE3OTM=",
+  "title": "Stellar Minds",
+  "challengeDetails": {
+   "title": "Will It Rain On My Parade?"
+  },
+  "locationDetails": {
+   "country": "Anywhere in the World"
+  },
+  "projectDetails": {
+   "summary": "WeatherWise solves a global problem: how do you plan weather-dependent activities \nmonths in advance when forecasts only work 7-10 days out? Our platform transforms \nNASA's decades of Earth observation data into actionable probability insights.\n\nUsing historical patterns from NASA's Global Precipitation Measurement mission, \nSoil Moisture Active Passive satellites, and MODIS atmospheric data, WeatherWise \nprovides two critical capabilities: Planning Mode analyzes 20+ years of data to \nshow the probability of rain, extreme heat, or dangerous winds for any future date, \nwhile Forecast Mode refines these predictions with real-time 7-day forecasts as \nthe event approaches.\n\nThe platform features an interactive map interface, visual probability charts, \nextreme weather event analysis, and activity-specific risk scoring for agriculture, \noutdoor events, and construction. Users can download comprehensive analysis reports and make informed decisions about scheduling harvest seasons, planning outdoor weddings, or coordinating large-scale events.\n\nWeatherWise democratizes NASA's satellite data, making scientific weather intelligence accessible to anyone planning activities that depend on favorable conditions.",
+   "dataReferences": "[NASA Earthdata](https://www.earthdata.nasa.gov/)\n[NASA Giovanni (Data Analysis)](https://giovanni.gsfc.nasa.gov/giovanni/)\n[NASA GPM IMERG (Global Precipitation Measurement)](https://gpm.nasa.gov/data/imerg)\n[NASA SMAP (Soil Moisture Active Passive)](https://smap.jpl.nasa.gov/data/)\n[NASA MODIS (Moderate Resolution Imaging Spectroradiometer)](https://modis.gsfc.nasa.gov/data/)",
+   "projectLink": "https://github.com/Amisa-2004/weather-wise.git"
+  }
+ },
+ {
+  "id": "aWQ6Mzc1Mjk=",
+  "title": "Stellar Narrators",
+  "challengeDetails": {
+   "title": "Stellar Stories: Space Weather Through the Eyes of Earthlings"
+  },
+  "locationDetails": {
+   "country": "Brazil"
+  },
+  "projectDetails": {
+   "summary": "Our mission during this challenge was to create a digital children's story. We did this by developing an interactive and immersive interface that invites children and students of all levels to explore Space Weather and its impacts. Through a web solution with intuitive and enjoyable navigation, users interact with three panels, which allow them to choose their Cosmic Narrator, the perspective from which the user explores Space Weather. We transformed the visualization of real data from NASA and partner agencies into clear and entertaining stories, understandable to anyone. The experience is enriched with educational games adapted to each school level, allowing knowledge to be tested in a playful and personalized way. The project aims to promote understanding of Space Weather in a fun, educational way with easy usability and focused on offering the best user experience.",
+   "dataReferences": "[NASA Space Weather Website](https://science.nasa.gov/heliophysics/focus-areas/space-weather/)\n[Solar Storms and Flares](https://science.nasa.gov/sun/solar-storms-and-flares/)\n[How Solar Flares Affect Earth](https://svs.gsfc.nasa.gov/12640/)",
+   "projectLink": "https://68e2ef50e3edf2af3471c386--peppy-nougat-6f892c.netlify.app/"
+  }
+ },
+ {
+  "id": "aWQ6MzM4MTc=",
+  "title": "Team Nomads",
+  "challengeDetails": {
+   "title": "Stellar Stories: Space Weather Through the Eyes of Earthlings"
+  },
+  "locationDetails": {
+   "country": "Bangladesh"
+  },
+  "projectDetails": {
+   "summary": "Stellar Tales is an interactive Progressive Web App that brings space weather to life for children aged 6\u201315. Powered by real-time NASA and NOAA APIs, it transforms solar flares, geomagnetic storms, auroras, and more into engaging stories, visuals, and games. Through six profession-based narratives\u2014astronaut, pilot, farmer, electrician, fisherman, and scientist\u2014kids see how cosmic events affect everyday life on Earth.\n\nAn interactive dashboard displays live solar wind gauges, NASA DONKI event timelines, and clickable aurora maps, while four mini-games\u2014Aurora Forecast, Solar Particle Shooter, Shield the Grid, and a 150+ question quiz\u2014reinforce learning through play. With smart caching, offline access, and multilingual support, Stellar Tales makes real heliophysics data accessible to children everywhere, inspiring curiosity, raising awareness of space weather\u2019s impact on technology and daily life, and sparking the next generation of explorers.",
+   "dataReferences": "[NASA Space Weather Website](https://science.nasa.gov/space-weather-centers-of-excellence/)\n[Solar Storms and Flares](https://science.nasa.gov/sun/solar-storms-and-flares/)\n[Space Weather Centers of Excellence](https://science.nasa.gov/space-weather-centers-of-excellence)\n[Hermes MIssion](https://science.nasa.gov/mission/hermes/)\n[NASA\u2019s Heliophysics Experiment](https://www.nasa.gov/news-release/nasas-heliophysics-experiment-to-study-sun-on-european-mission/)\n[NASA Heliophysics Fleet](https://science.nasa.gov/wp-content/uploads/2020/01/hpd-fleet-chart-jan-2024.jpg)\n[NASA Open APIs](https://api.nasa.gov/)",
+   "projectLink": "https://steller-tales.vercel.app/"
+  }
+ },
+ {
+  "id": "aWQ6MzQ2NDQ=",
+  "title": "TechNova",
+  "challengeDetails": {
+   "title": "Meteor Madness"
+  },
+  "locationDetails": {
+   "country": "Morocco"
+  },
+  "projectDetails": {
+   "summary": "We are Technova, a team of six engineering students from EMINES \u2013 School of Industrial Management, UM6P, Benguerir, Morocco. Our project, Meteor Madness, is a web-based interactive platform that brings asteroid science and planetary defense to life. The application allows users to explore, simulate, and understand the potential consequences of asteroid impacts on Earth.\nThrough its three core modules\u2014Learn, Simulate, and Mitigate\u2014users can first grasp the physics behind asteroid motion and impact dynamics, then visualize Near-Earth Objects (NEOs) within a selected date range, simulate their collision with any chosen location on Earth, and finally explore realistic deflection strategies such as kinetic impactors and laser ablation.\nBy combining real NASA data with validated physical models, Meteor Madness transforms complex space science into an immersive and educational experience. Our goal is to raise global awareness about asteroid hazards and demonstrate how knowledge, technology, and early action can work together to safeguard our planet.",
+   "dataReferences": "[Neo - Feed](https://api.nasa.gov/)",
+   "projectLink": "https://nasa-challenge-five.vercel.app/"
+  }
+ },
+ {
+  "id": "aWQ6MzgxODU=",
+  "title": "TengriSpacers",
+  "challengeDetails": {
+   "title": "Through the Radar Looking Glass: Revealing Earth Processes with SAR"
+  },
+  "locationDetails": {
+   "country": "Kyrgyzstan"
+  },
+  "projectDetails": {
+   "summary": "What we made:\n- An APP (no UI) that shows how Kyrgyzstan\u2019s glaciers are melting now - and how they may change next. Built for water, energy, and safety planning.\n\nWhy it matters\n- Ice is a Kyrgyzstan\u2019s Gold\nGlaciers power drinking water, farming, and hydropower. We knew they\u2019re melting - now we quantify how fast and where first for Ala-Archa and Bishkek. \n\nThe science (simple)\n- We use SAR (radar from space) that works through clouds and at night. We process Sentinel-1 time series to get change maps, trends, and confidence bands. A trained LSTM (Long Short-Term Memory) model adds short-term forecasts.",
+   "dataReferences": "[Alaska Satellite Facility (ASF) Data Search](https://search.asf.alaska.edu/)\n[NASA Earthdata Search](https://search.earthdata.nasa.gov/search)\n[SAR StoryMaps](https://nisar.jpl.nasa.gov/applications/arcgis-storymaps/)",
+   "projectLink": "https://github.com/Apelsinovich/GlacierSAR-Kyrgyzstan"
+  }
+ },
+ {
+  "id": "aWQ6NTIyNjQ=",
+  "title": "The new Saraquatys",
+  "challengeDetails": {
+   "title": "Embiggen Your Eyes!"
+  },
+  "locationDetails": {
+   "country": "Brazil"
+  },
+  "projectDetails": {
+   "summary": "Our project is an immersive experience through time, focusing on space exploration \u2014 using music and images from the Hubble and James Webb telescopes. In this story, the player must identify stars and galaxies across different technological eras. After completing all challenges, the player will be able to explore the universe and identify celestial bodies freely. This makes our platform ideal for those who want to learn more about the universe or explore it.",
+   "dataReferences": "[NASA Blog - Milky Way](https://science.nasa.gov/resource/the-milky-way-galaxy/?utm_source=chatgpt.com)\n[NASA Blog - Andromeda](https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-31/)\n[NASA Blog - Small Magellanic Cloud](https://www.nasa.gov/image-article/taken-under-wing-of-small-magellanic-cloud/?utm_source=chatgpt.com)\n[NASA Blog - NGC 1365](https://science.nasa.gov/photojournal/barred-spiral-galaxy-ngc-1365/?utm_source=chatgpt.com)\n[MAST Data](https://mast.stsci.edu/portal/Mashup/Clients/Mast/Portal.html)",
+   "projectLink": "https://nasa-eyes-to-the-sky.web.app/"
+  }
+ },
+ {
+  "id": "aWQ6MzI2NTA=",
+  "title": "The Newtonians",
+  "challengeDetails": {
+   "title": "A World Away: Hunting for Exoplanets with AI"
+  },
+  "locationDetails": {
+   "country": "Egypt"
+  },
+  "projectDetails": {
+   "summary": "AEXIS is an AI-powered platform designed to automate the identification and classification of exoplanets using NASA\u2019s open datasets from Kepler, K2, and TESS missions. \nIt applies machine learning and deep learning models to analyze stellar light curves and other parameters, significantly reducing manual workload while improving the accuracy of exoplanet detection. \nAEXIS provides an intuitive web interface that allows both researchers and space enthusiasts to explore NASA\u2019s exoplanetary data, visualize model predictions, and contribute to scientific discovery. \nThe system bridges the gap between AI technology and astronomical research, fostering faster insights and new discoveries in space exploration.",
+   "dataReferences": "[Kepler Objects of interests](https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=cumulative)\n[K2 Planets and Candidates](https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=k2pandc)\n[TESS Project Candidates ](https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=TOI)",
+   "projectLink": "https://aexis.netlify.app/"
+  }
+ },
+ {
+  "id": "aWQ6Mzg1MTA=",
+  "title": "ThinkSpace",
+  "challengeDetails": {
+   "title": "Data Pathways to Healthy Cities and Human Settlements"
+  },
+  "locationDetails": {
+   "country": "Anywhere in the World"
+  },
+  "projectDetails": {
+   "summary": "Our project is a web-based platform that unites global public databases with real-time community input to provide a comprehensive view of environmental and social challenges. Using AI, it analyses and condenses complex datasets into clear, neutral, and accessible insights, ensuring that users\u2014from policymakers to planners to the general public\u2014can quickly grasp key issues and trends.\n\nThe platform offers detailed information on air and water pollution, water risks, natural disasters such as droughts, floods, and wildfires, as well as heat stress and population density. Forecasting models extend this further, enabling proactive planning and risk anticipation to support more resilient human settlements.\n\nCommunity engagement adds depth: through feedback and safety-reporting tools, citizens can highlight local issues, such as poorly lit or unsafe areas. This ground-level knowledge complements large-scale data, creating a more complete and accurate picture.\n\nBy merging advanced analytics with community-driven insights, the platform fosters collaboration between citizens and authorities, drives evidence-based decision-making, and helps shape safer, more inclusive, and sustainable cities. In essence, it transforms data into action, bridging global systems and local realities to support better urban planning and more responsive governance.",
+   "dataReferences": "[World Resources Institute (WRI): Aqueduct ](https://www.wri.org/applications/aqueduct/water-risk-atlas/#/?advanced=false&basemap=hydro&indicator=drr_cat&lat=30&lng=-80&mapMode=view&month=1&opacity=0.5&ponderation=DEF&predefined=false&projection=absolute&scenario=optimistic&scope=baseline&threshold&timeScale=annual&year=baseline&zoom=3)\n[Population data](https://search.earthdata.nasa.gov/search/granules?p=C3540929687-ESDIS&pg[0][v]=f&pg[0][gsk]=-start_date&q=C3540929687-ESDIS&tl=1277985600!5!!&lat=37.31804645853936&long=157.8310431463484&zoom=1)",
+   "projectLink": "https://u-plan-seven.vercel.app/"
+  }
+ },
+ {
+  "id": "aWQ6MzQ1MTc=",
+  "title": "Titan",
+  "challengeDetails": {
+   "title": "Deep Dive: Immersive Data Stories from Ocean to Sky"
+  },
+  "locationDetails": {
+   "country": "Brazil"
+  },
+  "projectDetails": {
+   "summary": "Team Titan presents \u201cBlue Point: The Legacy of the Ocean\u201d, an immersive Virtual Reality (VR) experience that transforms raw NASA ocean data into a captivating visual and sound narrative.\n\nOur project addresses the challenge \u201cDeep Dive: Immersive Data Stories from Ocean to Sky\u201d by placing the user in the role of a space explorer whose spacecraft encounters Earth as a potential new home. Through an interactive analysis system, the VR experience takes the user on a journey from space to the ocean depths, highlighting the complex relationship between oceans.",
+   "dataReferences": "[ICEC WEBSCRAPING](https://gis.nnvl.noaa.gov/arcgis/rest/services/ICEC/ICEC_monthly/ImageServer)\n[CO2F WEBSCRAPING ](https://gis.nnvl.noaa.gov/arcgis/rest/services/CO2F/CO2F_yearly/ImageServer)\n[CDHW WEBSCRAPING ](https://gis.nnvl.noaa.gov/arcgis/rest/services/CDHW/CDHW_monthly/ImageServer)\n[SURF WEBSCRAPING](https://gis.nnvl.noaa.gov/arcgis/rest/services/SURF/SURF_monthly/ImageServer)\n[WOAQ WEBSCRAPING](https://gis.nnvl.noaa.gov/arcgis/rest/services/WOAQ/WOAQ_yearly/ImageServer)\n[CDHW DATASET](https://www.ncei.noaa.gov/data/oceans/crw/5km/v3.1/nc/v1.0/monthly/2023/)\n[ICEC DATASET](https://www.ncei.noaa.gov/data/sea-surface-temperature-optimum-interpolation/v2.1/access/avhrr/202001/)\n[SURF DATASET](https://cmr.earthdata.nasa.gov/virtual-directory/collections/C1996881146-POCLOUD/temporal)",
+   "projectLink": "https://drive.google.com/drive/folders/1opsQZ0dDmNQix640JfBP71vXYmlXRRGI?usp=drive_link"
+  }
+ },
+ {
+  "id": "aWQ6MzYxNTM=",
+  "title": "Twisters",
+  "challengeDetails": {
+   "title": "Will It Rain On My Parade?"
+  },
+  "locationDetails": {
+   "country": "Mexico"
+  },
+  "projectDetails": {
+   "summary": "SkySense is a web-app platform that uses NASA Earth observation data and AI analysis to provide ultra-local and personalized weather predictions. Our goal is to help users plan outdoor events, sports, and travel with greater accuracy and confidence. By integrating NASA, Google, and Gemini APIs, SkySense analyzes multiple weather variables such as rain, wind, temperature, humidity, and visibility to generate real-time risk assessments and suggest the safest time windows for activities. \nThe platform also features TwisterBot, a smart conversational assistant that delivers adaptive alerts, reminders, and weather insights directly to the user.\nSkySense addresses the challenge of unreliable, generic forecasts by making meteorological data understandable and actionable. It would empower individuals and organizations to make informed decisions, reduce weather-related risks, and transform uncertainty into confidence.",
+   "dataReferences": "[NASA POWER API (Prediction Of Worldwide Energy Resources)](https://power.larc.nasa.gov/api/temporal/daily/point)\n[NASA Earthdata](https://earthdata.nasa.gov/)\n[Giovanni](https://giovanni.gsfc.nasa.gov/)\n[GES DISC](https://disc.gsfc.nasa.gov/)",
+   "projectLink": "https://skysense.surf/"
+  }
+ },
+ {
+  "id": "aWQ6Mzk2OTQ=",
+  "title": "Vitruvian 6",
+  "challengeDetails": {
+   "title": "Embiggen Your Eyes!"
+  },
+  "locationDetails": {
+   "country": "Bangladesh"
+  },
+  "projectDetails": {
+   "summary": "Cosmo Scope is an immersive, browser-based 3D solar system explorer that transforms real NASA datasets into a gamified learning experience. Users can seamlessly navigate planets, dive into interactive 2D maps, and use a timeline slider to travel through history and observe planetary changes. Built with cutting-edge web technologies, CosmoScope combines authentic space data, smooth 3D/2D transitions, and engaging missions where players act as time-traveling astronauts investigating mysterious signals from Earth. By blending education with interactive storytelling, CosmoScope makes the wonders of space exploration accessible, engaging, and inspiring for learners and enthusiasts of all ages.",
+   "dataReferences": "[APOD (Astronomy Picture of the Day)](https://api.nasa.gov/planetary/apod)\n[Mars Weather API (InSight Lander)](https://api.nasa.gov/insight_weather/)\n[Mars Rover Photos](https://api.nasa.gov/mars-photos/api/v1/rovers/)\n[Near Earth Objects (NEO)](https://api.nasa.gov/neo/rest/v1/feed)\n[LOLA DEM Global](https://lola.gsfc.nasa.gov/data_products.html)\n[NASA GIBS (Global Imagery Browse Services)](https://map1.vis.earthdata.nasa.gov/wmts-geo/wmts.cgi)\n[SRTM ](https://www2.jpl.anasa.gov/srtm/)\n[MODIS Terra ](https://modis.gsfc.nasa.gov)",
+   "projectLink": "https://github.com/Alfa5nm/CosmoScope_v2"
+  }
+ },
+ {
+  "id": "aWQ6NDA1ODY=",
+  "title": "Zumorroda-X",
+  "challengeDetails": {
+   "title": "NASA Farm Navigators: Using NASA Data Exploration in Agriculture"
+  },
+  "locationDetails": {
+   "country": "Egypt"
+  },
+  "projectDetails": {
+   "summary": "Welcome to Henry\u2019s Farm Adventure!\nFor the NASA Farm Navigators Challenge, we didn\u2019t just build a game, we built a global farming quest powered by space data.\n\nMeet Henry, a struggling farmer whose crops keep failing. Instead of giving up, he sets off on an epic journey around the world, guided by real NASA satellite data. Along the way, he meets farmers on the frontlines of climate change, like Bilal in Pakistan, fighting the floods of 2022, and Ramesh in India, surviving brutal heatwaves.\n\nBut this isn\u2019t just a story, it\u2019s you in action. As the player, you step into Henry\u2019s boots and take on mini-games that transform serious challenges into hands-on missions, by solving them, you learn how farmers adapt in real life, how NASA\u2019s data reveals these risks, and how communities can fight back against climate change.\n\nThis is NASA data like you\u2019ve never seen it before, not in charts or reports, but in the palm of your hand, as a playful, high-stakes adventure.",
+   "dataReferences": "[NASA Earth Observatory](https://earthobservatory.nasa.gov/images/149183/the-nile-deltas-disappearing-farmland)\n[NASA Harvest](https://glam.nasaharvest.org/explore)\n[Extreme Heat Data Pathfinder](https://www.earthdata.nasa.gov/data/catalog/sedac-ciesin-sedac-sdei-gehe-1.00)\n[Floods Data Pathfinder](https://search.earthdata.nasa.gov/search/granules?p=C2723754847-GES_DISC&pg[0][v]=f&pg[0][gsk]=-start_date&q=IMERG&sb[0]=67.9871%2C27.97529%2C67.9871%2C27.97529&qt=2022-08-01T00%3A00%3A00.000Z%2C2022-08-02T23%3A59%3A59.999Z&tl=1321577150.739!5!!&lat=26.55266903810636&long=72.28557364181081&zoom=4.335181457135409)\n[Extreme Heat Estimates](https://www.earthdata.nasa.gov/data/catalog/sedac-ciesin-sedac-sdei-gehe-1.00)\n[NTRS - NASA Technical Reports Server](https://ntrs.nasa.gov/citations/20210022691?utm_source=chatgpt.com)\n[Agriculture and Water Management Pathfinder](https://www.earthdata.nasa.gov/data/catalog/sedac-ciesin-sedac-cropclim-giss-db-1.00)\n[U.S. Drought Monitor](https://droughtmonitor.unl.edu/)",
+   "projectLink": "https://henrysfarmadventures.vercel.app/"
+  }
+ }
+]

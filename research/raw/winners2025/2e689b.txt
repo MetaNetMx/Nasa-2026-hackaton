@@ -1,0 +1,101 @@
+
+NASA Space Apps Challenge
+Third-Party Link
+You are being directed to a Third Party site. NASA is not responsible for how third-party sites use any information provided. Users are encouraged to review the privacy policy and/or terms and conditions of the Third Party sites to fully understand what information is collected and how it is used.
+The NASA Space Apps Challenge is happening now! 🎉
+ Have a question? Join us on 
+Space Apps Connect
+.
+About Us
+Space Apps by the Numbers
+Meet the Team
+Brand Guidelines
+Blog
+Past Events
+2025
+2024
+2023
+Contact Us
+Awards
+About Awards
+2025 Global Winners
+2025 Global Finalists
+2025 Honorable Mentions
+2025 Global Nominees
+Explore the Hackathon
+2026 Hackathon
+2026 Local Events
+2026 Challenges
+Find a Team
+Resources
+Participant FAQs
+Participant Guides
+2026 Space Agency Partners
+Login
+or
+Sign Up
+Menu
+Meet the 2025 Global Winners
+This year's 10 winning teams were selected from the 18,860 teams that participated in the 2025 NASA Space Apps Challenge. These winning teams are composed of participants from 8 different countries and territories.
+Each project showcases the creativity and innovation of our global community and how NASA data can be used by anyone, anywhere. These winning projects responded to challenges addressing commercializing low Earth orbit, analyzing meteors, telling the story of space weather, finding exoplanets using Artificial Intelligence, and more.
+“Groundbreaking ideas often begin when people look at the challenges around them and imagine a better way forward. From improving how we respond to space weather or designing recycling systems for life on Mars, it is inspiring to see how these Global Winners used their creativity and skills to address the very same questions NASA scientists work to answer for the betterment of our planet and the Universe.”
+- Karen St. Germain, director of the Earth Science Division in the Science Mission Directorate at NASA Headquarters in Washington, D.C
+Best Use of Science
+SpaceGenes+
+The project relied on understanding synergistic gene responses, such as how radiation and microgravity interact to produce biological effects that would not appear on their own. It highlighted how genes like TP53 and ATM reveal hidden molecular risks that emerge only under combined spaceflight stressors. The challenge also demonstrated how thoughtful design and data visualization can make complex space biology far more accessible.
+View Project
+Best Use of Data
+Resonant Exoplanets
+NASA’s data shows us that the universe is bigger and more mysterious than we ever imagined. Even the smallest signals can lead to new discoveries. We built our project to make those signals more transparent and more trustworthy for everyone. In doing so, we hope we’ve helped people glimpse a bit of the order and wonder woven into creation itself.
+View Project
+Best Use of Technology
+Twisters
+SkySense was built on NASA’s open satellite and weather datasets, giving us a reliable foundation for accurate forecasting. We developed a data pipeline that blends multiple sources, cleans them, and transforms them into clear probability metrics for planning outdoor adventures. We designed, built, and deployed a stable system quickly. In the end, our interface turned scientific tools into an everyday assistant that helps anyone answer a simple question, "Will it rain on my parade?"
+View Project
+Galactic Impact
+Astro Sweepers - We Catch What Space Leaves Behind
+We introduce a 'credit score' for satellites to incentivize responsible behavior and to hold space businesses accountable for what they leave behind. Using NASA’s orbital debris data & a visually engaging prototype, our project shows how these sustainability scores can shape future missions, policies, and investments. Our goal is to build a foundation of a responsible space economy that balances bold innovation with environmental stewardship and accountability, benefiting everyone back on Earth.
+View Project
+Best Mission Concept
+PureFlow
+By testing each design against real-time solar threats, we shift the engineering focus from theoretical habitability to practical resilience in an unpredictable cosmos. Our approach is essential for the future of space exploration because it ensures that long-term interplanetary habitats are built on systems proven to withstand the harsh realities of space, and always puts crew safety first.
+View Project
+Most Inspirational
+Photonics Odyssey
+Our satellite network for India isn’t just better internet; it’s about lifting a child studying under a lantern in remote Ladakh to the same signal strength as a founder in Chennai, proving that no dream or ambition should be out of reach.
+View Project
+Best Use of Storytelling
+HerCode Space
+The story told in “A Solar Tale” is the story we would have loved to hear as children, one meant to spark curiosity about the science all around us. This project is important because it nurtures the natural wonder of childhood from different angles. Our story brings together science, poetry, and history, three powerful sources of knowledge that help us understand the world and connect more deeply with our humanity.
+View Project
+Global Connection
+Gaia+LEO
+Artificial intelligence (AI) is rapidly reshaping society, but it is increasingly straining Earth’s land, water, and energy systems, affecting nearby communities and ecosystems. Our team, Gaia+LEO, shifts where the burden falls by relocating computer infrastructure into space, where energy use and heat rejection have a lower toll. We can ease pressure on fragile systems, reduce local impacts, and enable AI to scale sustainably.
+View Project
+Art & Technology
+Zumorroda-X
+When we first approached this challenge, all we had was some programming experience. But it opened our eyes to something completely new - the story of our planet’s farmlands. We created a pixel-style game called “Henry’s Farm Adventure,” using NASA’s satellite images and data to build an engaging learning experience that highlights the struggles farmers face around the world.
+View Project
+Local Impact
+QUEÑARIS
+Phenological monitoring, digitalization, AI, and biotechnology will strengthen restoration efforts for queñual forests, an ancient Andean tree threatened by deforestation. Its roots help improve water retention for community use. Our project will promote ecotourism as a driver of sustainability and, hopefully, secure water resources and a healthier environment for the Arequipa region.
+View Project
+Learn more about the 10 Global Awards
+NASA Space Apps is funded by NASA's 
+Science Mission Directorate
+ through a contract with 
+Booz Allen Hamilton
+, 
+Mindgrub
+, and 
+SecondMuse
+.
+Copyright ©2026 NASA | 
+Privacy Policy
+ | 
+Legal
+ | 
+Contact
+ | 
+Resources
+Connect with #SpaceApps
