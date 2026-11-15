@@ -325,15 +325,20 @@ const WORLD_CAM: Record<Scene, Cam> = {
 
 /** Smooth camera flights between views plus gentle mouse parallax. */
 function Rig({ view, scene }: { view: View; scene: Scene }) {
-  const { camera, pointer } = useThree()
+  const { camera, pointer, size } = useThree()
   const look = useRef(BODY_CAM.look.clone())
   useFrame((_, dt) => {
     const c = view === 'body' ? BODY_CAM : WORLD_CAM[scene]
     const k = view === 'body' ? 0.12 : scene === 'orbit' ? 0.5 : 0.15
     const par = new THREE.Vector3(pointer.x * k, pointer.y * k * 0.45, 0)
+    // portrait screens: pull back so the avatar fits the width, and aim lower so it sits above the bottom panels
+    const aspect = size.width / Math.max(1, size.height)
+    const back = aspect < 1 ? Math.min(2.4, 1 / Math.pow(aspect, 0.85)) : 1
+    const tgtLook = c.look.clone().add(new THREE.Vector3(0, aspect < 1 ? -0.07 * back : 0, 0))
+    const tgtPos = c.look.clone().add(c.pos.clone().sub(c.look).multiplyScalar(back)).add(par)
     const e = 1 - Math.exp(-Math.min(dt, 1) * 2.8) // frame-rate independent easing
-    camera.position.lerp(c.pos.clone().add(par), e)
-    look.current.lerp(c.look, e)
+    camera.position.lerp(tgtPos, e)
+    look.current.lerp(tgtLook, e)
     camera.lookAt(look.current)
     const pc = camera as THREE.PerspectiveCamera
     pc.fov += (c.fov - pc.fov) * e

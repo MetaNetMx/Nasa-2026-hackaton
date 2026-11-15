@@ -1,8 +1,9 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { CheckIn, assess, loadEntries, type Entry } from './CheckIn'
+import { Boundary } from './Boundary'
 import { Walkthrough, type Step } from './Guide'
 import { loadAvatar, saveAvatar, type PhotoAvatar } from './avatar'
-import { CAREER_LIMIT_MSV, PRESETS, REGIONS, STATUS_ICON, STATUS_TEXT, type Preset } from './content'
+import { CAREER_LIMIT_MSV, CREW_LOOK, PRESETS, REGIONS, STATUS_ICON, STATUS_TEXT, type Preset } from './content'
 import { loadAll, pointStatus, worst, type Analyte, type Mode, type RegionId, type Status } from './data'
 import { ReadinessReplay, YourPulse, type PulseState } from './Readiness'
 import { Anim } from './remotion/Anim'
@@ -76,7 +77,17 @@ function Mission({ d }: { d: Loaded }) {
   const [walk, setWalk] = useState<null | 'guide' | 'story'>(null)
   const [welcome, setWelcome] = useState(() => { try { return !localStorage.getItem(SEEN_KEY) } catch { return true } })
   const [onboard, setOnboard] = useState(false)
+  const [sheet, setSheet] = useState(false)
+  const small = () => window.innerWidth <= 1100
   const [avatar, setAvatar] = useState<PhotoAvatar | null>(loadAvatar)
+  const [crewLooks, setCrewLooks] = useState<Record<string, PhotoAvatar>>({})
+  useEffect(() => {
+    let live = true
+    Promise.all(Object.entries(CREW_LOOK).map(([c, l]) =>
+      fetch(`${import.meta.env.BASE_URL}avatars/${l.file}.json`).then((r) => (r.ok ? r.json() : null)).then((a: PhotoAvatar | null) => [c, a] as const).catch(() => [c, null] as const)))
+      .then((list) => { if (live) setCrewLooks(Object.fromEntries(list.filter(([, a]) => a)) as Record<string, PhotoAvatar>) })
+    return () => { live = false }
+  }, [])
   const rp = useReplay(d.radiation)
   const preset = PRESETS.find((p) => p.id === presetId)!
   const you = person === 'you'
@@ -133,9 +144,9 @@ function Mission({ d }: { d: Loaded }) {
   const closeWelcome = () => { setWelcome(false); try { localStorage.setItem(SEEN_KEY, '1') } catch { /* private mode */ } }
   const startWalk = (w: 'guide' | 'story') => { closeWelcome(); setIntro(false); setWalk(w) }
 
-  const guideSteps = useMemo(() => guide(preset), [preset])
+  const guideSteps = useMemo(() => guide(preset, setSheet), [preset])
   const storySteps = useMemo(() => story(d, preset, etaText, {
-    setPerson, setTp, setMode, setRegion, setView, setDrawer, setShelterAck, setPacket, rp,
+    setPerson, setTp, setMode, setRegion, setView, setDrawer, setShelterAck, setPacket, setSheet, rp,
   }), [d, preset, etaText, rp])
   const bigValue = you ? String(REGION_IDS.filter((r) => status[r] === 'red').length) : mode === 'earth' ? String(reveal.earth) : String(reveal.hidden.length)
   const bigColor = you ? HEX.red : mode === 'earth' ? (reveal.earth ? HEX.yellow : HEX.green) : reveal.hidden.length ? HEX.red : HEX.green
@@ -145,13 +156,13 @@ function Mission({ d }: { d: Loaded }) {
   const radPct = Math.min(100, (rp.stats.ratio / 3) * 100)
 
   return (
-    <div className={`app ${intro ? 'is-intro' : ''}`} style={{ '--accent': preset.accent } as React.CSSProperties}>
+    <div className={`app ${intro ? 'is-intro' : ''} ${sheet ? 'sheet' : ''}`} style={{ '--accent': preset.accent } as React.CSSProperties}>
       <div className="world" aria-label={SCENE_ARIA[preset.scene]}>
-        <Suspense fallback={null}>
+        <Boundary label="3D SCENE"><Suspense fallback={null}>
           <World3D data={d.radiation} i={rp.i} radStatus={rp.status} view={view} scene={preset.scene} accent={preset.accent}
-            status={status} selected={region} onSelect={(r) => { setRegion(r); if (r !== 'radiation') setView('body') }} tags={tags} burstKey={burst}
-            photo={you ? avatar : null} />
-        </Suspense>
+            status={status} selected={region} onSelect={(r) => { setRegion(r); if (r !== 'radiation') setView('body'); if (small()) setSheet(true) }} tags={tags} burstKey={burst}
+            photo={you ? avatar : crewLooks[person] ?? null} />
+        </Suspense></Boundary>
       </div>
       <Orbits />
       <div className="grain" aria-hidden />
@@ -200,7 +211,7 @@ function Mission({ d }: { d: Loaded }) {
           <div className="roster" role="radiogroup" aria-label="Crew avatar">
             {d.crew.crewIds.map((c) => (
               <button key={c} role="radio" aria-checked={person === c} className={person === c ? 'on' : ''} onClick={() => setPerson(c)} title={`${c}: ${STATUS_TEXT[crewStatus[c]]}`}>
-                <span>{c}</span><i style={{ background: HEX[crewStatus[c]] }} />
+                {crewLooks[c] ? <img src={crewLooks[c].img} alt="" /> : null}<span>{c}</span><i style={{ background: HEX[crewStatus[c]] }} />
               </button>
             ))}
             <button role="radio" aria-checked={you} className={you ? 'on' : ''} onClick={() => (avatar ? setPerson('you') : setOnboard(true))} title="Your own avatar, check-ins and camera pulse">
@@ -234,6 +245,7 @@ function Mission({ d }: { d: Loaded }) {
             <button role="radio" aria-checked={mode === 'baseline'} className={mode === 'baseline' ? 'on' : ''} onClick={() => setMode('baseline')}>Own baseline</button>
           </div>
         )}
+        <button className="btn ghost sm details-btn" onClick={() => setSheet(true)}>{REGIONS[region].name} · {STATUS_TEXT[status[region]]} ▴</button>
         {anyRed && !you
           ? <button className="cta" onClick={() => setPacket(true)}>Send summary to Earth · reply {eta === 0 ? 'now' : `in ${etaText}`} <span>↗</span></button>
           : you
@@ -244,12 +256,14 @@ function Mission({ d }: { d: Loaded }) {
       {/* TOP RIGHT: technical information for the selected system */}
       <aside className="tech" key={region + person + tp + mode} data-tour="system">
         <i className="cn tl" /><i className="cn tr" /><i className="cn bl" /><i className="cn br" />
+        <button className="sheet-x" onClick={() => setSheet(false)} aria-label="Close details">✕</button>
         <SystemCard region={region} status={status[region]} analytes={you ? [] : d.crew.analytes} person={person} tp={tp} mode={mode}
           rp={rp} preset={preset} etaText={etaText} you={you} onEscalate={() => setPacket(true)} onOpen={setDrawer} />
       </aside>
 
       <p className="caption" aria-hidden>
-        {you ? (avatar ? 'YOUR PHOTO AVATAR · 2.5D GAUSSIAN SPLATS' : 'YOU · NO PHOTO AVATAR YET') : `DIGITAL AVATAR · ${person} · BASELINE FROM 3 PRE-FLIGHT DRAWS`}
+        {you ? (avatar ? 'YOUR PHOTO AVATAR · PER-PART GAUSSIAN SPLATS' : 'YOU · NO PHOTO AVATAR YET')
+          : `AVATAR ${person} · LOOK FROM NASA ${CREW_LOOK[person]?.mission.toUpperCase() ?? ''} PHOTO ${CREW_LOOK[person]?.photo ?? ''} · DATA: ANONYMISED INSPIRATION4 CREW`}
       </p>
 
       {/* BOTTOM STRIP */}
@@ -257,7 +271,7 @@ function Mission({ d }: { d: Loaded }) {
         <div className="chips" role="tablist" aria-label="Body systems" data-tour="chips">
           {REGION_IDS.map((r) => (
             <button key={r} role="tab" aria-selected={region === r} className={`chip ${region === r ? 'on' : ''}`}
-              onClick={() => { setRegion(r); setView(r === 'radiation' ? 'world' : 'body') }} title={`${REGIONS[r].name}: ${STATUS_TEXT[status[r]]}`}>
+              onClick={() => { setRegion(r); setView(r === 'radiation' ? 'world' : 'body'); if (small()) setSheet(true) }} title={`${REGIONS[r].name}: ${STATUS_TEXT[status[r]]}`}>
               <i className={`st s-${status[r]}`}>{STATUS_ICON[status[r]]}</i>
               {REGIONS[r].name.split(' ')[0].replace('&', '')}
             </button>
@@ -336,12 +350,12 @@ function Mission({ d }: { d: Loaded }) {
         </div>
       )}
       {onboard && (
-        <Suspense fallback={null}>
+        <Boundary label="AVATAR" onReset={() => setOnboard(false)}><Suspense fallback={null}>
           <Onboarding accent={preset.accent} existing={avatar}
             onDone={(a) => { setAvatar(a); saveAvatar(a); setOnboard(false); if (a) { setPerson('you'); setView('body') } }}
             onDelete={() => { setAvatar(null); saveAvatar(null); setPerson(d.crew.crewIds[1] ?? d.crew.crewIds[0]); setOnboard(false) }}
             onClose={() => setOnboard(false)} />
-        </Suspense>
+        </Suspense></Boundary>
       )}
       {walk === 'guide' && <Walkthrough steps={guideSteps} label="INTERFACE GUIDE" onClose={() => setWalk(null)} />}
       {walk === 'story' && <Walkthrough steps={storySteps} label={`USE CASE · ${preset.name.toUpperCase()}`} onClose={() => { setWalk(null); setDrawer(null); rp.setPlaying(true) }} />}
@@ -501,7 +515,8 @@ function Methods({ d }: { d: Loaded }) {
         <li><b>Check-in limits:</b> AHA 2017 blood pressure, ADA glucose, AASM/SRS sleep; after 3 entries the personal baseline also applies.</li>
         <li><b>Digital avatars:</b> each crew member’s avatar holds their own pre-flight baseline ({BASELINE_TPS}). The idea follows NASA’s AVATAR (A Virtual Astronaut Tissue Analog Response) on Artemis II, which flew organ chips made from each astronaut’s own cells as stand-ins for that astronaut. Delta-Me does the same in software with routine measurements; it uses no AVATAR data.</li>
         <li><b>Scenarios:</b> the base, transit and Moon scenes are illustrations. Their delays and typical doses come from the sources shown in each scenario. The blood results are Inspiration4 data in every scenario, and every scenario replays the same ISS TEPC record of the Sept 2017 storm, labelled as a replay. On Mars, Curiosity’s RAD saw that same event roughly double the surface dose rate (Hassler et al. 2018, Space Weather, doi:10.1029/2018SW001959).</li>
-        <li><b>Photo avatar:</b> one full-body photo is segmented and its 33 body landmarks found with MediaPipe Pose Landmarker, running in this browser. Each body pixel becomes a Gaussian splat; depth is inflated from the distance to the body outline (single-photo 2.5D, not a multi-view 3D Gaussian Splatting reconstruction). Organ markers are placed from your shoulders, hips and legs. The photo is stored only on this device.</li>
+        <li><b>Crew avatar looks:</b> built with this app’s per-part Gaussian-splat pipeline from public-domain NASA photographs: {Object.values(CREW_LOOK).map((l, k) => <span key={l.photo}>{k ? ', ' : ''}<a href={l.url} target="_blank" rel="noreferrer">{l.mission} {l.photo}</a></span>)}. They are illustrations: the astronauts in these photos are not the anonymised Inspiration4 crew members whose data is shown, and no identity is linked to any health record.</li>
+        <li><b>Photo avatar:</b> one photo (full body or head and shoulders) is segmented and its 33 body landmarks found with MediaPipe Pose Landmarker, running in this browser. The pose splits the body into parts (head, torso, upper arms, forearms, thighs, shins); each body pixel becomes a Gaussian splat on its part’s rounded cross-section around the bone axis, with a darker back layer closing the part. Parts the photo does not show stay as hologram. Depth is estimated, not scanned: this is single-photo per-part splatting, not a multi-view 3D Gaussian Splatting reconstruction. Organ markers are placed from your shoulders and hips. The photo is stored only on this device.</li>
         <li><b>3D models:</b> NASA 3D Resources (free and without copyright): Astronaut (sampled into the crew hologram), Habitat Demonstration Unit and Mars 2020 Perseverance Rover, Apollo Lunar Module, Skylab, International Space Station. The habitat texture carries NASA markings as built. Organ meshes: HuBMAP CCF 3D Reference Object Library v1.2 (Browne K., Schlehlein H., Herr B.W. II, Quardokus E., Bueckle A., Börner K., 2022; models by Kristen Browne, NIAID 3D Printing and Biovisualization), <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>, simplified for the web; the brain is the Allen Human Reference Atlas 3D model from the same library. Earth from NASA Visible Earth (Blue Marble, night lights); terrain is procedural. The avatar is drawn far larger than real scale; the ISS track sits at its real 408 km altitude.</li>
       </ul>
       <p className="disclaimer">Decision support for training and demonstration. Not a medical device and not a diagnosis. Inspiration4 was a 3-day flight with 4 crew and no in-flight blood draws, so day-after-landing results stand in for “in flight”.</p>
@@ -511,8 +526,9 @@ function Methods({ d }: { d: Loaded }) {
 
 /* ---------- interface guide: every part of the screen ---------- */
 
-function guide(p: Preset): Step[] {
-  return [
+function guide(p: Preset, setSheet: (v: boolean) => void): Step[] {
+  const sheet = (v: boolean) => () => setSheet(v && window.innerWidth <= 1100)
+  const steps: Step[] = [
     { target: 'brand', kicker: 'What this is', title: 'A crew health console for when Earth is far away',
       body: <p>Each crew member has a <b>digital avatar</b>: a 3D twin that holds their own pre-flight baseline. Every new result is compared with that person, not with a population on Earth. It is decision support for the crew, not a diagnosis.</p> },
     { target: 'myavatar', kicker: 'Top bar', title: 'Your own avatar from one photo',
@@ -540,6 +556,8 @@ function guide(p: Preset): Step[] {
     { target: 'help', kicker: 'Any time', title: 'Use case and guide',
       body: <p><b>▶ Use case</b> plays a full mission morning, step by step, in this scenario. <b>? Guide</b> brings back this tour. Arrow keys move between steps; Esc closes.</p> },
   ]
+  // on tablets and phones the technical panel is a sheet: open it for its own step only
+  return steps.map((st) => ({ ...st, apply: sheet(st.target === 'system') }))
 }
 
 /* ---------- use case: one mission morning, driving the real app state ---------- */
@@ -547,7 +565,7 @@ function guide(p: Preset): Step[] {
 type Ctl = {
   setPerson: (v: string) => void; setTp: (v: string) => void; setMode: (v: Mode) => void; setRegion: (v: RegionId) => void
   setView: (v: View) => void; setDrawer: (v: null | 'readiness' | 'pulse' | 'checkin' | 'data') => void
-  setShelterAck: (v: boolean) => void; setPacket: (v: boolean) => void; rp: Replay
+  setShelterAck: (v: boolean) => void; setPacket: (v: boolean) => void; setSheet: (v: boolean) => void; rp: Replay
 }
 
 function story(d: Loaded, p: Preset, eta: string, c: Ctl): Step[] {
@@ -555,28 +573,28 @@ function story(d: Loaded, p: Preset, eta: string, c: Ctl): Step[] {
   const r = compare(d, who, tp)
   const list = r.hidden.map((h) => `${h.label} ${sig(h.z)}`).join(' and ')
   const far = eta !== 'now'
-  const reset = () => { c.setDrawer(null); c.setPacket(false) }
+  const reset = () => { c.setDrawer(null); c.setPacket(false); c.setSheet(false) }
   return [
     { target: 'crew', kicker: `${p.day} · 07:40 · ${p.place}`, title: `Morning check before the ${p.task}`,
       apply: () => { reset(); c.setPerson(who); c.setTp(tp); c.setMode('earth'); c.setRegion('blood'); c.setView('body'); c.rp.jump(6, 0); c.rp.setPlaying(false) },
       body: <><p>Crew member <b>{who}</b> is on today’s {p.task}. Before suiting up, they run the onboard blood analyzer and the result lands on their avatar.</p><p className="fine">Data: real Inspiration4 results for {who}, the day after landing, standing in for an in-flight draw.</p></> },
     { target: 'compare', kicker: '07:41 · Earth lab ranges', title: r.earth ? `Lab ranges flag ${r.earth} of ${r.checks}` : 'Lab ranges: everything is “normal”',
-      apply: () => c.setMode('earth'),
+      apply: () => { c.setMode('earth'); c.setSheet(false) },
       body: <p>Against ranges built from healthy people on Earth, {r.earth ? `only ${r.earth} of ${r.checks} results stand out, none of them alarming` : `all ${r.checks} results look normal`}. With a standard lab report, the {p.task} goes ahead.</p> },
     { target: 'compare', kicker: '07:42 · Own baseline', title: `The avatar finds ${r.hidden.length} hidden shifts`,
-      apply: () => { c.setMode('baseline'); c.setRegion('blood') },
+      apply: () => { c.setMode('baseline'); c.setRegion('blood'); c.setSheet(false) },
       body: <p>Switch to <b>Own baseline</b>. {who}’s avatar holds their three pre-flight draws. Against that baseline, <b>{list}</b> moved more than 3σ while still inside the lab range. On the avatar, the matching organs turn red.</p> },
     { target: 'system', kicker: '07:45 · Act without waiting', title: far ? `Earth is ${eta} away: the crew decides` : 'Call the ground, act now',
-      apply: () => { c.setRegion('blood'); c.setView('body') },
+      apply: () => { c.setRegion('blood'); c.setView('body'); c.setSheet(window.innerWidth <= 1100) },
       body: <><p>The technical panel says what to do now and who to call. {p.red}</p><p>The crew medical officer takes {who} off the {p.task}, and the summary for the flight surgeon is one click away{far ? `; the earliest reply is ${eta} away` : ''}.</p></> },
     { target: 'storm', kicker: '10:15 · Solar particle event', title: 'Shelter warning, no one feels a thing',
       apply: () => { reset(); c.setShelterAck(false); c.setRegion('radiation'); c.setView('world'); c.rp.jump(7, 8); c.rp.setPlaying(false) },
       body: <><p>The dosimeter passes <b>2× its quiet baseline</b> and a shelter Warning fires. Radiation can’t be seen or felt, so the crew moves to the shelter within minutes instead of waiting {far ? eta : 'on a call'}.</p><p className="fine">{p.radNote}</p></> },
     { target: 'drawer', kicker: `13:30 · Go / no-go`, title: `Self-assessment before the rescheduled ${p.task}`,
-      apply: () => { c.setShelterAck(true); c.setView('body'); c.setDrawer('checkin') },
+      apply: () => { c.setShelterAck(true); c.setView('body'); c.setSheet(false); c.setDrawer('checkin') },
       body: <p>The backup crew member takes the {p.task}. Before suiting up, they log a <b>daily check-in</b> (sleep, blood pressure, symptoms) and a 20-second <b>camera pulse</b>. After three check-ins their own baseline applies too. <b>Readiness</b> shows the NASA crew-state model behind the attention check.</p> },
     { target: null, kicker: 'End of the day', title: 'What the avatar changed',
-      apply: () => { c.setDrawer(null) },
+      apply: () => { c.setDrawer(null); c.setSheet(false) },
       body: <><p><b>Without Delta-Me:</b> the {p.task} goes ahead with {r.hidden.length} unflagged changes, and the storm waits on {far ? `a ${eta} reply from Earth` : 'the ground'}.</p><p><b>With Delta-Me:</b> the changes are caught against {who}’s own avatar, the crew is in the shelter in minutes, and a summary is already on its way to the flight surgeon.</p><p className="fine">Decision support for training and demonstration, not a diagnosis.</p></> },
   ]
 }

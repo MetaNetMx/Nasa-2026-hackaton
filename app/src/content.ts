@@ -191,3 +191,15 @@ export const CAREER_LIMIT_MSV = 600 // NASA-STD-3001 Vol. 1 (2022): 600 mSv care
 // NASA caution & warning convention: yellow = caution, red = warning
 export const STATUS_TEXT = { green: 'Nominal', yellow: 'Caution', red: 'Warning', none: 'No data' } as const
 export const STATUS_ICON = { green: '●', yellow: '▲', red: '■', none: '○' } as const
+
+/**
+ * Crew avatar looks: per-part Gaussian-splat avatars built (with this app's own pipeline) from public-domain NASA
+ * EVA photographs. They are illustrations only: the people in these photos are NOT the anonymised Inspiration4
+ * crew members whose blood data is shown.
+ */
+export const CREW_LOOK: Record<string, { file: string; mission: string; photo: string; url: string }> = {
+  C001: { file: 'as11-40-5903', mission: 'Apollo 11', photo: 'AS11-40-5903', url: 'https://images.nasa.gov/details/as11-40-5903' },
+  C002: { file: 'as16-113-18339', mission: 'Apollo 16', photo: 'AS16-113-18339', url: 'https://images.nasa.gov/details/as16-113-18339' },
+  C003: { file: 'as16-114-18423', mission: 'Apollo 16', photo: 'AS16-114-18423', url: 'https://images.nasa.gov/details/as16-114-18423' },
+  C004: { file: 'as17-145-22157', mission: 'Apollo 17', photo: 'AS17-145-22157', url: 'https://images.nasa.gov/details/as17-145-22157' },
+}

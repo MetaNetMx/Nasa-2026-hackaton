@@ -304,22 +304,120 @@ input[type='number'] { background: transparent; color: var(--text); border: 1px 
 .walk-dots i.on { background: var(--accent); width: 16px; }
 .walk-dots i.done { background: var(--muted); }
 
-/* small screens */
-@media (max-width: 1100px) {
-  .tech { display: none; }
-  .scenes button { padding: 8px 9px; }
+/* ---------- responsive ---------- */
+.details-btn, .sheet-x { display: none; }
+@media (min-width: 1700px) {
+  .mission { width: 400px; }
+  .hero { width: 520px; }
+  .hero h2 { font-size: 3rem; }
+  .tech { width: 420px; }
 }
-@media (max-width: 760px) {
-  .top { padding: 10px 16px; }
-  .brand p, .help .btn.ghost { display: none; }
-  .scenes { order: 3; width: 100%; overflow-x: auto; }
-  .mission { top: 104px; left: 16px; right: 16px; width: auto; gap: 10px; }
-  .tags { display: none; }
-  .hero { left: 16px; right: 16px; width: auto; bottom: 150px; gap: 10px; }
-  .hero h2 { font-size: 1.8rem; }
+@media (max-width: 1280px) {
+  .scenes button { padding: 8px 10px; letter-spacing: 0.06em; }
+  .hero h2 { font-size: 2.2rem; }
+  .tech { width: 340px; }
   .caption { display: none; }
-  .strip { padding: 8px 12px; gap: 8px; justify-content: center; }
-  .replay-meta input { width: 90px; }
+}
+/* tablet: the technical panel becomes a slide-up sheet */
+@media (max-width: 1100px) {
+  .details-btn { display: inline-flex; align-self: flex-start; }
+  .scenes { order: 3; width: 100%; }
+  .scenes button { flex: 1 0 auto; justify-content: center; }
+  .mission { top: 108px; }
+  .tech { position: fixed; top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 72vh; z-index: 35; border-width: 1px 0 0; padding: 20px 20px 24px;
+    transform: translateY(105%); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); animation: none; background: var(--panel-solid); }
+  .app.sheet .tech { transform: none; box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.6); }
+  .is-intro .tech { transform: translateY(105%); }
+  .tech .cn { display: none; }
+  .sheet-x { display: grid; place-items: center; position: absolute; top: 10px; right: 12px; width: 30px; height: 30px; border: 1px solid var(--line-hi); background: transparent; cursor: pointer; z-index: 2; }
+  .tech .card-head { padding-right: 40px; }
+  .hero { bottom: 84px; gap: 10px; }
+  .hero-sub { max-width: 100%; }
+  .storm { top: auto; bottom: 150px; width: calc(100vw - 32px); min-width: 0; }
+  .replay-meta input { width: 110px; }
+  .strip { gap: 10px; padding: 8px 16px; }
+}
+/* phone */
+@media (max-width: 760px) {
+  .top { padding: 10px 12px 6px; gap: 8px; }
+  .brand { gap: 8px; }
+  .brand p { display: none; }
+  .logo { width: 30px; height: 30px; }
+  .help .btn { padding: 7px 9px; }
+  .help .btn.ghost:not([data-tour='myavatar']) { display: none; }
+  .scenes { order: 3; width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .scenes button { flex: 1 0 auto; justify-content: center; padding: 8px 10px; }
+  .mission { top: 100px; left: 12px; right: 12px; width: auto; gap: 8px; }
+  .tags { display: none; }
+  .crew .eyebrow { display: none; }
+  .roster button { min-height: 40px; padding: 6px 2px; }
+  .avatar-meta select { max-width: 60%; }
+  .hero { left: 12px; right: 12px; width: auto; bottom: 104px; gap: 8px; }
+  .chip-o { display: none; }
+  .hero-head { gap: 10px; }
+  .hero-head .dots { transform: scale(0.8); transform-origin: left center; width: 88px; }
+  .hero h2 { font-size: 1.55rem; }
+  .hero-sub { font-size: 0.6rem; }
+  .switch { max-width: none; }
+  .switch button { padding: 8px 4px; font-size: 0.6rem; }
+  .cta { padding: 11px 14px; font-size: 0.8rem; align-self: stretch; }
+  .strip { display: grid; grid-template-columns: 1fr auto auto; grid-template-areas: 'chips chips chips' 'rp views more'; gap: 6px 8px; padding: 6px 10px 8px; }
+  .chips { grid-area: chips; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .chip { flex: 0 0 auto; padding: 6px 7px; }
+  .views { grid-area: views; }
+  .rp { grid-area: rp; gap: 8px; min-width: 0; }
+  .replay-meta span { display: none; }
+  .replay-meta input { width: 100%; min-width: 60px; }
+  .dose { grid-template-columns: auto 50px; }
+  .dose small { display: none; }
+  .more { grid-area: more; padding: 7px 9px; }
+  .storm { bottom: 200px; padding: 10px 12px; gap: 10px; flex-wrap: wrap; }
+  .storm .btn { width: 100%; justify-content: center; }
+  .tech { max-height: 58vh; }
+  .drawer { margin-bottom: 0; max-height: 86vh; width: 100vw; }
+  .drawer nav button { padding: 10px 10px; font-size: 0.6rem; }
+  .modal { padding: 16px; }
+  .welcome { padding: 0 0 16px; }
+  .welcome > p, .welcome > .row { padding: 0 16px; }
+  .poster { padding: 18px 16px 14px; }
+  .poster h2 { font-size: 2.9rem; }
+  .poster .bar { height: 18px; }
+  .poster .b1 { top: 44px; } .poster .b2 { top: 68px; } .poster .b3 { top: 92px; }
+  .welcome .row .btn, .welcome .row .cta, .onboard .row .btn, .onboard .row .cta { flex: 1 1 100%; justify-content: center; }
+  .ob-title { font-size: 2.2rem; }
   .ob-proc { grid-template-columns: 1fr; }
-  .poster h2 { font-size: 3rem; }
+  .ob-preview { min-height: 180px; }
+  .ob-preview img { max-height: 180px; }
+  .ob-count { font-size: 6rem; }
+  .walk-card { max-height: 56vh; overflow: auto; }
+  .walk-hole { border-width: 2px; }
+}
+@media (max-width: 400px) {
+  .scenes button { font-size: 0.58rem; padding: 7px 7px; }
+  .hero h2 { font-size: 1.35rem; }
+  .roster button span { font-size: 0.58rem; }
+}
+@media (max-height: 640px) and (min-width: 761px) {
+  .hero h2 { font-size: 1.8rem; }
+  .hero-head .dots { transform: scale(0.8); transform-origin: left center; }
+  .mission { gap: 10px; }
+  .tags { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+.ob-parts { display: flex; flex-wrap: wrap; gap: 4px; }
+.ob-parts span { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.06em; padding: 4px 7px; border: 1px solid var(--line-hi); color: var(--muted); }
+.ob-parts span.on { border-color: var(--accent); color: var(--accent); }
+.boundary { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 45; background: var(--panel-solid); border: 1px solid var(--bad); padding: 16px; display: flex; flex-direction: column; gap: 8px; max-width: min(420px, calc(100vw - 32px)); font-size: 0.84rem; }
+/* one-row strip on every width above phone; chips scroll if they do not fit */
+@media (min-width: 761px) {
+  .strip { flex-wrap: nowrap; }
+  .chips { flex: 1 1 auto; min-width: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .chip { flex: 0 0 auto; }
+}
+@media (min-width: 761px) and (max-width: 1280px) {
+  .replay-meta span { display: none; }
+  .dose small { display: none; }
+  .dose { grid-template-columns: auto 60px; }
 }

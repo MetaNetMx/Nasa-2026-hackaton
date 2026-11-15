@@ -41,7 +41,8 @@ const vert = /* glsl */ `
     vGlow = 0.25 + 0.75 * pow(rim, 1.6) + 0.12 * sin(uTime * 2.0 + seed * 40.0);
     gl_PointSize = (1.4 + 2.2 * vScan + 1.5 * vBeat + seed * 0.8) * (uPx / -mv.z) * (0.6 + 0.4 * a);
     gl_Position = projectionMatrix * mv;
-  }`.replace('uniform vec3 uHeart;', 'uniform vec3 uHeart; uniform float uPx;')
+  }`.replace('uniform vec3 uHeart;', 'uniform vec3 uHeart; uniform float uPx; uniform float uMaxY;')
+  .replace('vec3 p = position;', 'if (position.y > uMaxY) { gl_PointSize = 0.0; gl_Position = vec4(2.0, 2.0, 2.0, 1.0); return; }\n    vec3 p = position;')
 const frag = /* glsl */ `
   uniform vec3 uColor, uBeatColor;
   varying float vGlow, vScan, vBeat;
@@ -101,7 +102,7 @@ function withSeeds(p: number[], n: number[]) {
   return g
 }
 
-function Hologram({ burstAt, beatColor, px, accent }: { burstAt: number; beatColor: string; px: number; accent: string }) {
+function Hologram({ burstAt, beatColor, px, accent, maxY = 99 }: { burstAt: number; beatColor: string; px: number; accent: string; maxY?: number }) {
   const { scene } = useGLTF(SUIT_URL)
   const geo = useMemo(() => sampleSuit(scene), [scene])
   const mat = useRef<THREE.ShaderMaterial>(null)
@@ -109,7 +110,7 @@ function Hologram({ burstAt, beatColor, px, accent }: { burstAt: number; beatCol
   const burst = useRef({ at: burstAt, start: -10 })
   const init = useMemo(
     () => ({
-      uTime: { value: 0 }, uScan: { value: 0 }, uAssemble: { value: 0 }, uBurst: { value: -1 }, uPx: { value: 1 },
+      uTime: { value: 0 }, uScan: { value: 0 }, uAssemble: { value: 0 }, uBurst: { value: -1 }, uPx: { value: 1 }, uMaxY: { value: 99 },
       uHeart: { value: HEART.clone() }, uColor: { value: new THREE.Color('#5eead4') }, uBeatColor: { value: new THREE.Color('#34d399') },
     }),
     [],
@@ -124,6 +125,7 @@ function Hologram({ burstAt, beatColor, px, accent }: { burstAt: number; beatCol
     u.uAssemble.value = Math.min(1, (t - born.current) / 2.6)
     u.uScan.value = 0.9 + 0.95 * Math.sin(t * 0.6)
     u.uPx.value = px
+    u.uMaxY.value = maxY
     ;(u.uBeatColor.value as THREE.Color).set(beatColor)
     ;(u.uColor.value as THREE.Color).lerp(new THREE.Color(accent), 0.08)
     const b = (t - burst.current.start) / 1.1
@@ -158,9 +160,10 @@ const SPLAT_F = /* glsl */ `
   varying vec3 vC; varying float vScan;
   void main() {
     vec2 q = gl_PointCoord - 0.5;
-    float g = exp(-dot(q, q) * 14.0);
-    if (g < 0.18) discard;
-    gl_FragColor = vec4(vC + vScan * 0.25, g);
+    float r2 = dot(q, q);
+    if (r2 > 0.25) discard; // opaque round splat core: no blending or sorting artefacts
+    float g = exp(-r2 * 6.0); // Gaussian falloff kept as shading
+    gl_FragColor = vec4((vC + vScan * 0.25) * (0.82 + 0.18 * g), 1.0);
   }`
 
 function PhotoSplat({ splat, accent }: { splat: Splat; accent: string }) {
@@ -199,7 +202,7 @@ function PhotoSplat({ splat, accent }: { splat: Splat; accent: string }) {
   })
   return (
     <points geometry={geo} frustumCulled={false}>
-      <shaderMaterial ref={mat} vertexShader={SPLAT_V} fragmentShader={SPLAT_F} uniforms={init} vertexColors transparent depthWrite />
+      <shaderMaterial ref={mat} vertexShader={SPLAT_V} fragmentShader={SPLAT_F} uniforms={init} vertexColors depthWrite />
     </points>
   )
 }
@@ -372,9 +375,11 @@ export function Astronaut({ status, selected, onSelect, tags, burstKey, showLabe
   }, [photo])
   return (
     <group>
-      {splat
-        ? <PhotoSplat splat={splat} accent={accent} />
-        : <Suspense fallback={null}><Hologram burstAt={burstKey} px={px} accent={accent} beatColor={STATUS_HEX[status.blood === 'none' ? 'green' : status.blood]} /></Suspense>}
+      {splat && <PhotoSplat splat={splat} accent={accent} />}
+      {/* the hologram fills whatever the photo did not show (e.g. the legs on a desk webcam) */}
+      {(!splat || splat.clipY > 0) && (
+        <Suspense fallback={null}><Hologram burstAt={burstKey} px={px} accent={accent} maxY={splat ? splat.clipY : 99} beatColor={STATUS_HEX[status.blood === 'none' ? 'green' : status.blood]} /></Suspense>
+      )}
       <Suspense fallback={null}>
         <Organs custom={splat?.organs ?? null} status={status} selected={selected} tags={tags} showLabels={showLabels} onSelect={onSelect} />
       </Suspense>

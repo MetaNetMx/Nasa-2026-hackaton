@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import type { PhotoAvatar } from './avatar'
+import { buildSplat, type PhotoAvatar } from './avatar'
 
 type Stage = 'intro' | 'camera' | 'processing' | 'done' | 'error'
 const BASE = import.meta.env.BASE_URL
@@ -28,7 +28,7 @@ async function loadPose(): Promise<Pose> {
 }
 
 /** Person cut out of the photo, cropped to the body, landmarks re-normalised to the crop. */
-function cutOut(src: HTMLCanvasElement, mask: Float32Array, mw: number, mh: number, lm: { x: number; y: number }[]): PhotoAvatar {
+function cutOut(src: HTMLCanvasElement, mask: Float32Array, mw: number, mh: number, lm: { x: number; y: number; visibility?: number }[]): PhotoAvatar {
   let x0 = mw, y0 = mh, x1 = 0, y1 = 0
   for (let y = 0; y < mh; y++) for (let x = 0; x < mw; x++) if (mask[y * mw + x] > 0.5) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y }
   const pad = Math.round((y1 - y0) * 0.03)
@@ -49,7 +49,7 @@ function cutOut(src: HTMLCanvasElement, mask: Float32Array, mw: number, mh: numb
   out.getContext('2d')!.drawImage(full, 0, 0, ow, oh)
   return {
     img: out.toDataURL('image/png'), w: ow, h: oh, created: new Date().toISOString(),
-    lm: lm.map((p) => [(p.x * mw - x0) / cw, (p.y * mh - y0) / ch] as [number, number]),
+    lm: lm.map((p) => [(p.x * mw - x0) / cw, (p.y * mh - y0) / ch, p.visibility ?? 1]),
   }
 }
 
@@ -61,6 +61,7 @@ export function Onboarding({ accent, existing, onDone, onDelete, onClose }: {
   const [err, setErr] = useState('')
   const [count, setCount] = useState<number | null>(null)
   const [result, setResult] = useState<PhotoAvatar | null>(null)
+  const [parts, setParts] = useState<string[]>([])
   const video = useRef<HTMLVideoElement>(null)
   const stream = useRef<MediaStream | null>(null)
 
@@ -73,28 +74,31 @@ export function Onboarding({ accent, existing, onDone, onDelete, onClose }: {
       stream.current = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 960 } }, audio: false })
       setStage('camera')
       requestAnimationFrame(() => { if (video.current && stream.current) { video.current.srcObject = stream.current; void video.current.play() } })
-    } catch {
-      setErr('No camera available or permission denied. Upload a full-body photo instead.')
+    } catch (e) {
+      const name = (e as DOMException)?.name
+      setErr(name === 'NotAllowedError' ? 'Camera permission was denied. Allow the camera in the browser bar, or upload a photo instead.'
+        : name === 'NotFoundError' ? 'No camera found on this device. Upload a photo instead.'
+        : !window.isSecureContext ? 'The camera needs a secure (https) page. Upload a photo instead.'
+        : 'The camera could not start. Upload a photo instead.')
     }
   }
 
+  const capture = () => {
+    const v = video.current
+    if (!v || !v.videoWidth) { setErr('The camera has no picture yet. Try again in a second.'); return }
+    const c = document.createElement('canvas')
+    c.width = v.videoWidth; c.height = v.videoHeight
+    c.getContext('2d')!.drawImage(v, 0, 0)
+    stop()
+    void process(c)
+  }
   const timer = () => {
     let n = 10
     setCount(n)
     const id = setInterval(() => {
       n -= 1
       setCount(n)
-      if (n <= 0) {
-        clearInterval(id)
-        setCount(null)
-        const v = video.current
-        if (!v) return
-        const c = document.createElement('canvas')
-        c.width = v.videoWidth; c.height = v.videoHeight
-        c.getContext('2d')!.drawImage(v, 0, 0)
-        stop()
-        void process(c)
-      }
+      if (n <= 0) { clearInterval(id); setCount(null); capture() }
     }, 1000)
   }
 
@@ -102,7 +106,7 @@ export function Onboarding({ accent, existing, onDone, onDelete, onClose }: {
     if (!f) return
     const im = new Image()
     im.src = URL.createObjectURL(f)
-    await im.decode()
+    try { await im.decode() } catch { setErr('That file could not be read as an image. Try a JPG or PNG.'); setStage('error'); return }
     const k = Math.min(1, 1600 / Math.max(im.naturalWidth, im.naturalHeight))
     const c = document.createElement('canvas')
     c.width = Math.round(im.naturalWidth * k); c.height = Math.round(im.naturalHeight * k)
@@ -117,19 +121,23 @@ export function Onboarding({ accent, existing, onDone, onDelete, onClose }: {
     setLog([])
     try {
       say('LOADING POSE MODEL · ON THIS DEVICE')
-      const pose = await loadPose()
+      let pose: Pose
+      try { pose = await loadPose() } catch (e) { throw new Error(`The pose model could not load (${e instanceof Error ? e.message : 'network'}). Check your connection and try again.`) }
       say('SEGMENTING BODY')
       const r = pose.detect(c)
       const lm = r.landmarks[0]
       const m = r.segmentationMasks?.[0]
-      if (!lm || !m) throw new Error('No person found. Stand facing the camera with your whole body in the frame.')
+      if (!lm || !m) { pose.close(); throw new Error('No person found. Face the camera with at least your head and shoulders in the frame, in good light.') }
       const vis = (i: number) => lm[i]?.visibility ?? 1
-      if (vis(0) < 0.5 || Math.min(vis(27), vis(28)) < 0.4) throw new Error('We need your whole body, head to feet. Step back so your feet are in the frame.')
+      if (vis(0) < 0.5 || vis(11) < 0.5 || vis(12) < 0.5) { m.close(); pose.close(); throw new Error('We could not see your head and both shoulders. Face the camera and move back a little.') }
       say('ESTIMATING POSE · 33 LANDMARKS')
       const a = cutOut(c, m.getAsFloat32Array(), m.width, m.height, lm)
       m.close(); pose.close()
-      say(`PLACING ~${(a.w * a.h * 0.45 * 2 / 1000).toFixed(0)}K GAUSSIAN SPLATS`)
+      say('SPLITTING INTO BODY PARTS')
+      const sp = await buildSplat(a)
+      say(`PLACING ${(sp.count / 1000).toFixed(0)}K GAUSSIAN SPLATS ON ${sp.parts.length} PARTS`)
       say('ANCHORING ORGANS TO YOUR POSE')
+      setParts(sp.parts)
       setResult(a)
       setStage('done')
     } catch (e) {
@@ -149,10 +157,10 @@ export function Onboarding({ accent, existing, onDone, onDelete, onClose }: {
         {stage === 'intro' && (
           <>
             <h2 className="ob-title">ONE PHOTO.<br /><span>YOUR AVATAR.</span></h2>
-            <p>Take one full-body photo, head to feet, facing the camera with arms slightly away from your body. Delta-Me cuts you out of the photo, detects your pose, and rebuilds you in 3D as Gaussian splats with your organs placed on your own body.</p>
+            <p>Take one photo facing the camera, arms slightly away from your body. Delta-Me finds your pose, splits you into body parts (head, torso, arms, legs) and rebuilds each part in 3D as Gaussian splats, with your organs placed on your own body.</p>
             <ul className="ob-steps">
-              <li><b>01</b> Stand 2–3 m from the camera, plain background if you can</li>
-              <li><b>02</b> Start the 10-second timer and step into the frame</li>
+              <li><b>01</b> Full body works best; head and shoulders is enough</li>
+              <li><b>02</b> Parts the photo does not show stay as hologram</li>
               <li><b>03</b> Your avatar appears in the mission world</li>
             </ul>
             <p className="fine">The photo is processed in your browser and saved only on this device. It never leaves it. Delete it any time.</p>
@@ -174,9 +182,11 @@ export function Onboarding({ accent, existing, onDone, onDelete, onClose }: {
               </svg>
               {count != null && <div className="ob-count">{count}</div>}
             </div>
-            <p className="fine">Fit your whole body inside the outline.</p>
+            <p className="fine">Fit as much of your body as you can inside the outline: at least head and shoulders.</p>
+            {err && <p className="ob-err">{err}</p>}
             <div className="row">
-              <button className="cta" onClick={timer} disabled={count != null}>{count != null ? 'Get in position…' : 'Start 10 s timer'} <span>↗</span></button>
+              <button className="cta" onClick={capture} disabled={count != null}>Capture now <span>↗</span></button>
+              <button className="btn ghost" onClick={timer} disabled={count != null}>{count != null ? 'Get in position…' : '10 s timer'}</button>
               <button className="btn ghost" onClick={() => { stop(); setStage('intro') }}>Back</button>
             </div>
           </>
@@ -193,7 +203,8 @@ export function Onboarding({ accent, existing, onDone, onDelete, onClose }: {
               {stage === 'done' && (
                 <>
                   <h3>AVATAR READY</h3>
-                  <p className="fine">Single-photo 2.5D splats: depth is estimated from your outline, not scanned.</p>
+                  <p className="ob-parts">{(['head', 'torso', 'arms', 'legs']).map((q) => <span key={q} className={parts.includes(q) ? 'on' : ''}>{q.toUpperCase()} {parts.includes(q) ? '✓' : '· HOLOGRAM'}</span>)}</p>
+                  <p className="fine">Per-part splats from one photo: each part’s depth is estimated from its outline and bone axis, not scanned.</p>
                   <button className="cta" onClick={() => onDone(result)}>Enter the mission <span>↗</span></button>
                 </>
               )}

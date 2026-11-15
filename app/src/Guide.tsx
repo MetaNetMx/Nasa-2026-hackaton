@@ -75,6 +75,8 @@ const same = (a: Rect | null, b: Rect | null) =>
 /** Put the card beside the highlighted area, on whichever side has room. */
 function place(h: Rect | null): React.CSSProperties {
   const W = Math.min(360, window.innerWidth - 32), vw = window.innerWidth, vh = window.innerHeight, gap = 16
+  // phones: full-width card on the opposite half from the highlighted area
+  if (vw <= 760) return h && h.top + h.height / 2 > vh / 2 ? { left: 8, right: 8, top: 8 } : { left: 8, right: 8, bottom: 8 }
   if (!h) return { width: W, left: (vw - W) / 2, top: Math.max(16, vh / 2 - 170) }
   const clampTop = (t: number) => Math.max(16, Math.min(vh - 340, t))
   if (h.left + h.width + gap + W < vw - 8) return { width: W, left: h.left + h.width + gap, top: clampTop(h.top) }
