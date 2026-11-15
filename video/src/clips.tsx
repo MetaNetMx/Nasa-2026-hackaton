@@ -112,7 +112,7 @@ export function Storm() {
   const dayStart = (d: number) => d * 1440
   return (
     <Frame tag="03 / 03" source="NASA CDAWEB · ISS TEPC DOSIMETER">
-      <Headline>A real solar storm<br />Sept 11, 2017</Headline>
+      <Headline>A real solar storm<br />Sept 10–11, 2017</Headline>
       <svg width={1920} height={1080} style={{ position: 'absolute', inset: 0 }}>
         <line x1={X0} x2={X1} y1={Y(2)} y2={Y(2)} stroke={C.bad} strokeDasharray="8 8" opacity={0.8} />
         <text x={X0} y={Y(2) - 12} fill={C.bad} fontFamily={MONO} fontSize={20}>SHELTER LINE · 2× QUIET</text>
@@ -138,7 +138,7 @@ export function Storm() {
       {red && (
         <div style={{ position: 'absolute', left: 96, bottom: 66, display: 'flex', gap: 18, alignItems: 'center', border: `2px solid ${C.bad}`, borderLeftWidth: 10, padding: '14px 22px', background: 'rgba(40,6,12,0.9)', opacity: interpolate(flash, [0, 1], [0.5, 1], clamp) }}>
           <Mono style={{ fontSize: 26, color: '#ff8fa3', fontWeight: 700 }}>WARNING · GO TO THE STORM SHELTER</Mono>
-          <Mono style={{ fontSize: 20, color: '#f2c9d0' }}>alert in minutes · Earth reply from Mars: 40 min</Mono>
+          <Mono style={{ fontSize: 20, color: '#f2c9d0' }}>on-board alert · Earth reply from Mars: 40 min</Mono>
         </div>
       )}
     </Frame>

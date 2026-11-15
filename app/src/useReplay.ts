@@ -5,7 +5,7 @@ const W = 180 // minutes in the storm-detector window
 export const RED = 2.0
 export const YELLOW = 1.7
 // Shelter decisions use dose at |lat| >= 40 deg outside the South Atlantic Anomaly, where solar
-// particles enter. On Sept 4-10 2017 this stayed under 1.5x normal; the Sept 10 storm reached 12x.
+// particles enter. On Sept 4-10 2017 this peaked at 1.5x normal; the Sept 2017 storm reached 13x on Sept 11.
 export const inSAA = (lat: number, lon: number) => lon > -90 && lon < 10 && lat > -50 && lat < 5
 
 export function useReplay(data: RadiationData) {
