@@ -147,9 +147,9 @@ export type Preset = {
   red: string
 }
 
-const SEP2017_ISS = 'Dose replay: real ISS TEPC record of the Sept 2017 solar storm.'
-const SEP2017_MARS = 'Dose replay: the real ISS TEPC record of the Sept 2017 solar storm. The same event reached the Mars surface, where Curiosity’s RAD saw dose rates about double (Hassler et al. 2018, Space Weather).'
-const SEP2017_DEEP = 'Dose replay: the real ISS TEPC record of the Sept 2017 solar storm, used as the event clock. Outside Earth’s magnetic field the same storm would hit harder; no deep-space record is replayed here.'
+const SEP2017_ISS = 'Dose replay: real ISS TEPC record of the Sept 2017 solar storm. NOAA’s S1 alert came at 16:45 UTC on Sept 10; inside the station the dose first rose at 04:15 UTC on Sept 11, because Earth’s magnetic field shields the ISS except on high-latitude passes.'
+const SEP2017_MARS = 'Dose replay: the real ISS TEPC record of the Sept 2017 solar storm. The same event reached the Mars surface, where Curiosity’s RAD saw dose rates about double (Hassler et al. 2018, Space Weather). In this ISS record the dose rises about 12 h after NOAA’s alert because Earth’s magnetic field shields the station; Mars has no global magnetic field to do that.'
+const SEP2017_DEEP = 'Dose replay: the real ISS TEPC record of the Sept 2017 solar storm, used as the event clock. Beyond Earth’s magnetic shielding the same storm would hit harder and sooner: GOES saw ≥100 MeV protons at 16:25 UTC on Sept 10, about 12 h before this ISS record rises. No deep-space record is replayed here.'
 
 export const PRESETS: Preset[] = [
   {
@@ -179,7 +179,7 @@ export const PRESETS: Preset[] = [
   {
     id: 'iss', name: 'ISS (low Earth orbit)', tab: 'ISS', accent: '#4C8DFF', scene: 'orbit', place: 'International Space Station, 408 km', day: 'Flight day 120', task: 'spacewalk',
     delayText: 'near real-time', oneWaySec: 0,
-    delaySource: 'Continuous link to Mission Control',
+    delaySource: 'Relayed to Mission Control through TDRS satellites, about 0.6–1 s latency (NASA, NTRS 20160014037)',
     doseRef: 0.9, doseRefText: '≈0.9 mSv/day measured by ISS TEPC, Sept 2017 (this app’s data)',
     radNote: SEP2017_ISS,
     red: 'Call the flight surgeon now (private medical conference).',

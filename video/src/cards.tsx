@@ -41,6 +41,30 @@ export function AppShot() {
   )
 }
 
+/** README banner: a static still (no frame-based fades), brand lockup over the real app on Mars. */
+export function Banner() {
+  const fade = 'linear-gradient(90deg, transparent 0%, transparent 22%, #000 42%)'
+  return (
+    <AbsoluteFill style={{ background: C.bg, color: C.text, fontFamily: SANS, overflow: 'hidden' }}>
+      <Img src={staticFile('app-mars.png')} style={{ position: 'absolute', top: 0, right: -60, height: '100%', WebkitMaskImage: fade, maskImage: fade }} />
+      <div style={{ position: 'absolute', top: 96, left: 0, width: 560, height: 10, background: C.accent, opacity: 0.85 }} />
+      <div style={{ position: 'absolute', left: 96, top: 150 }}>
+        <div style={{ fontFamily: MONO, fontSize: 20, letterSpacing: 5, color: C.accent }}>OPERATOR · CREW MEDICAL · NASA SPACE APPS 2026</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 30, marginTop: 26 }}>
+          <div style={{ width: 108, height: 108, background: C.accent, color: '#111', display: 'grid', placeItems: 'center', fontSize: 76, fontWeight: 900 }}>Δ</div>
+          <div style={{ fontSize: 128, fontWeight: 900, fontStretch: '125%', lineHeight: 1, letterSpacing: -2 }}>DELTA<span style={{ color: C.accent }}>-</span>ME</div>
+        </div>
+        <div style={{ fontSize: 34, fontWeight: 700, fontStretch: '112%', marginTop: 30 }}>YOUR OWN BASELINE, 20 MINUTES FROM HELP.</div>
+        <div style={{ fontFamily: MONO, fontSize: 18, letterSpacing: 2, color: C.muted, marginTop: 20 }}>DIGITAL CREW AVATARS · PERSONAL BASELINES · SOLAR-STORM ALERTS</div>
+      </div>
+      <div style={{ position: 'absolute', left: 96, bottom: 40, fontFamily: MONO, fontSize: 18, letterSpacing: 3, color: C.muted }}>
+        <span style={{ background: '#0a0a0a', padding: '4px 10px' }}>[DATA: <span style={{ color: C.accent }}>NASA OSDR · NASA CDAWEB · DATA.NASA.GOV · NOAA SWPC</span>]</span>
+      </div>
+      <AbsoluteFill style={{ opacity: 0.08, mixBlendMode: 'overlay', backgroundImage: grain(0) }} />
+    </AbsoluteFill>
+  )
+}
+
 /** 27–30 s: name, line, URL. */
 export function EndCard() {
   const f = useCurrentFrame()

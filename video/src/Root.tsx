@@ -1,5 +1,5 @@
-import { Composition, Series } from 'remotion'
-import { AppShot, EndCard, Title } from './cards'
+import { Composition, Series, Still } from 'remotion'
+import { AppShot, Banner, EndCard, Title } from './cards'
 import { CrewWide, McvDrop, Storm } from './clips'
 
 const FPS = 30
@@ -37,6 +37,7 @@ export function Root() {
       <Composition id="Storm" component={Storm} durationInFrames={6 * FPS} {...v} />
       <Composition id="DataCut" component={DataCut} durationInFrames={20 * FPS} {...v} />
       <Composition id="Pitch30" component={Pitch30} durationInFrames={30 * FPS} {...v} />
+      <Still id="Banner" component={Banner} width={1800} height={600} />
     </>
   )
 }

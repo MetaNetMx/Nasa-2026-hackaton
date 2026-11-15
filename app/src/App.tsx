@@ -10,7 +10,7 @@ import { Anim } from './remotion/Anim'
 import { DotNumber } from './remotion/DotNumber'
 import { Intro } from './remotion/Intro'
 import { useReplay, type Replay } from './useReplay'
-import { LIVE_SOURCE, useLive, type Live } from './useLive'
+import { LIVE_SOURCE, P100_ALERT, useLive, type Live } from './useLive'
 import type { View } from './World3D'
 
 const World3D = lazy(() => import('./World3D').then((m) => ({ default: m.World3D })))
@@ -186,7 +186,7 @@ function Mission({ d }: { d: Loaded }) {
           <div>
             <b>WARNING · SOLAR PARTICLE EVENT · GO TO THE STORM SHELTER</b>
             <span>{isLive
-              ? `LIVE · NOAA S${live.scale} radiation storm · GOES ≥10 MeV protons ${live.flux10.toFixed(0)} pfu · ${live.time.slice(11, 16)} UTC`
+              ? `LIVE · NOAA S${live.scale} radiation storm · GOES protons ≥10 MeV ${pfu(live.flux10)} pfu, ≥100 MeV ${pfu(live.flux100)} pfu · ${live.time.slice(11, 16)} UTC`
               : `${doseLabel[0].toUpperCase() + doseLabel.slice(1)} ${rp.stats.ratio.toFixed(1)}× quiet baseline · Sept 2017 replay ${rp.time.slice(5)}`} · ground reply {eta === 0 ? 'now' : `in ${etaText}: act now`}</span>
           </div>
           <button className="btn danger" onClick={() => setShelterAck(true)}>I’m in the shelter</button>
@@ -298,7 +298,7 @@ function Mission({ d }: { d: Loaded }) {
           {isLive ? (
             <div className="replay-meta">
               <span>{live.error ? 'NOAA FEED UNAVAILABLE' : live.loading ? 'CONNECTING TO NOAA…' : `GOES-${live.satellite} · ≥10 MEV PROTONS · ${live.time.slice(11, 16)} UTC`}</span>
-              <span className="live-v">{live.loading || live.error ? '—' : `${live.flux10 < 1 ? live.flux10.toFixed(2) : live.flux10.toFixed(0)} pfu · S${live.scale}`}</span>
+              <span className="live-v">{live.loading || live.error ? '—' : `${pfu(live.flux10)} pfu · S${live.scale}${live.flux100 >= P100_ALERT ? ` · ≥100 MeV ${pfu(live.flux100)} pfu` : ''}`}</span>
             </div>
           ) : (
             <>
@@ -514,6 +514,8 @@ function Spark({ a, person, tp }: { a: Analyte; person: string; tp: string }) {
 }
 
 const fmt = (v: number) => (Math.abs(v) >= 100 ? v.toFixed(0) : Math.abs(v) >= 10 ? v.toFixed(1) : v.toFixed(2))
+/** proton flux in pfu, as NOAA plots it */
+const pfu = (f: number) => (f < 1 ? f.toFixed(2) : f.toFixed(0))
 
 function packetText(d: Loaded, person: string, tp: string, mode: Mode, preset: Preset, eta: string, status: Record<RegionId, Status>, rp: Replay, live: Live | null = null) {
   const lines = [`DELTA-ME SUMMARY · ${preset.place} · ${preset.day} · earliest reply ${eta}`, `Person: ${person}${person === 'you' ? '' : ` · draw ${tp}`} · comparison: ${mode === 'baseline' ? 'personal baseline' : 'lab range'}`, '']
@@ -527,7 +529,7 @@ function packetText(d: Loaded, person: string, tp: string, mode: Mode, preset: P
     }
   }
   lines.push('', live
-    ? `Radiation (live, NOAA SWPC): ${STATUS_TEXT[status.radiation]} · S${live.scale} · GOES >=10 MeV ${live.flux10.toFixed(2)} pfu · ${live.time}`
+    ? `Radiation (live, NOAA SWPC): ${STATUS_TEXT[status.radiation]} · S${live.scale} · GOES >=10 MeV ${live.flux10.toFixed(2)} pfu, >=100 MeV ${live.flux100.toFixed(2)} pfu · ${live.time}`
     : `Radiation: ${STATUS_TEXT[rp.status]} · ${preset.scene === 'orbit' ? 'polar dose' : 'dose rate'} ${rp.stats.ratio.toFixed(1)}× quiet baseline · Sept 2017 replay ${rp.time}`)
   return lines.join('\n')
 }
@@ -538,13 +540,13 @@ function Methods({ d }: { d: Loaded }) {
       <ul>
         <li><b>Evidence, stated honestly:</b> with 3 baseline draws a single value beyond 3 SD happens by chance about {(d.crew.evidence.pSingle * 100).toFixed(1)}% of the time. Crossings per return draw: {Object.entries(d.crew.evidence.crossings).map(([k, v]) => `${k} ${v.beyond3}/${v.checks} (≈${v.expectedByChance} by chance)`).join(' · ')}, so single crossings alone do not show a flight effect. The confirmed signal is crew-wide: {d.crew.evidence.crewWide.map((c) => `${c.label} at ${c.tp}, all crew same direction, mean ${c.meanZ} SD`).join('; ')}; the largest crew-wide shift at the recovery draws was {d.crew.evidence.recoveryNullMaxMeanZ} SD (n = {d.crew.evidence.recoveryNullN}). Four people, one flight: a hypothesis worth flying, not a proven effect.</li>
         <li><b>Crew blood work:</b> {d.crew.source.mission}. {d.crew.source.datasets.map((s) => <a key={s.id} href={s.url} target="_blank" rel="noreferrer">{s.id} {s.name} ↗ </a>)} Timepoints: {d.crew.source.timepoints}. {d.crew.source.method}</li>
-        <li><b>Radiation:</b> {d.radiation.source.instrument}, <a href={d.radiation.source.url} target="_blank" rel="noreferrer">NASA dataset ↗</a>, Sept 4–15 2017 ({d.radiation.source.unit}). Daily dose: {Object.entries(d.radiation.dailyMsv).map(([k, v]) => `${k.slice(5)} ${v.toFixed(2)}`).join(' · ')} mSv. Storm alert = mean dose at |latitude| ≥ 40° outside the South Atlantic Anomaly over the last 3 h vs. Sept 4–9: red ≥ 2×, watch ≥ 1.7×.</li>
-        <li><b>Live radiation:</b> NOAA Space Weather Prediction Center public JSON: GOES primary integral proton flux (≥10 MeV, ≥100 MeV, 5-minute data) and NOAA space weather scales, polled every 5 minutes. S-scale from ≥10 MeV flux (S1 ≥ 10 pfu, S2 ≥ 100 pfu…). This is near-Earth data at geostationary orbit, not a dosimeter on the crew’s vehicle.</li>
+        <li><b>Radiation:</b> {d.radiation.source.instrument}, <a href={d.radiation.source.url} target="_blank" rel="noreferrer">NASA dataset ↗</a>, Sept 4–15 2017 ({d.radiation.source.unit}). Daily dose: {Object.entries(d.radiation.dailyMsv).map(([k, v]) => `${k.slice(5)} ${v.toFixed(2)}`).join(' · ')} mSv. Storm alert = mean dose at |latitude| ≥ 40° outside the South Atlantic Anomaly over the last 3 h vs. Sept 4–9: red ≥ 2×, watch ≥ 1.7×. It first fires at 05:52 UTC on Sept 11 and does not fire on any earlier day. Timing: NOAA’s S1 alert came at 16:45 UTC on Sept 10 (GOES ≥10 MeV protons ≥ 10 pfu; ≥100 MeV protons from 16:25, per NASA DONKI), but the station’s dose first rose at 04:15 UTC on Sept 11, because Earth’s magnetic field shields the ISS except on high-latitude passes.</li>
+        <li><b>Live radiation:</b> NOAA Space Weather Prediction Center public JSON: GOES primary integral proton flux (≥10 MeV, ≥100 MeV, 5-minute data) and NOAA space weather scales, polled every 5 minutes. S-scale from ≥10 MeV flux (S1 ≥ 10 pfu, S2 ≥ 100 pfu, S3 ≥ 1,000 pfu…). Crew rule: Caution at S1–S2, or when ≥100 MeV protons reach NOAA’s 1 pfu alert level; Warning (storm shelter) at S3+, the first level where <a href="https://www.swpc.noaa.gov/noaa-scales-explanation" target="_blank" rel="noreferrer">NOAA’s scale ↗</a> names astronauts (“radiation hazard avoidance recommended for astronauts on EVA”). NASA’s Space Radiation Analysis Group watches the ≥100 MeV protons, which get through spacecraft walls, when it advises on sheltering. This is near-Earth data at geostationary orbit, not a dosimeter on the crew’s vehicle.</li>
         <li><b>Readiness:</b> logistic regression on <a href={d.readiness.source.url} target="_blank" rel="noreferrer">{d.readiness.source.dataset} ↗</a>, subjects {d.readiness.source.subjects.join(', ')}; leave-one-subject-out AUC {Object.entries(d.readiness.looAuc).map(([k, v]) => `${k}: ${v}`).join(', ')}. Labels follow the experiment timeline, so part of the signal may be drift over the session.</li>
         <li><b>Camera pulse:</b> green-channel photoplethysmography on the forehead, 20 s, dominant frequency 42–180 bpm. Runs on this device only.</li>
         <li><b>Check-in limits:</b> AHA 2017 blood pressure, ADA glucose, AASM/SRS sleep; after 3 entries the personal baseline also applies.</li>
         <li><b>Digital avatars:</b> each crew member’s avatar holds their own pre-flight baseline ({BASELINE_TPS}). The idea follows NASA’s AVATAR (A Virtual Astronaut Tissue Analog Response) on Artemis II, which flew organ chips made from each astronaut’s own cells as stand-ins for that astronaut. Delta-Me does the same in software with routine measurements; it uses no AVATAR data.</li>
-        <li><b>Scenarios:</b> the base, transit and Moon scenes are illustrations. Their delays and typical doses come from the sources shown in each scenario. The blood results are Inspiration4 data in every scenario, and every scenario replays the same ISS TEPC record of the Sept 2017 storm, labelled as a replay. On Mars, Curiosity’s RAD saw that same event roughly double the surface dose rate (Hassler et al. 2018, Space Weather, doi:10.1029/2018SW001959).</li>
+        <li><b>Scenarios:</b> the base, transit and Moon scenes are illustrations. Their delays and typical doses come from the sources shown in each scenario. The blood results are Inspiration4 data in every scenario, and every scenario replays the same ISS TEPC record of the Sept 2017 storm, labelled as a replay. Beyond Earth’s magnetic shielding (Moon, transit, Mars) the dose would rise when the storm arrives there, not about 12 h later as in this ISS record. On Mars, Curiosity’s RAD saw that same event roughly double the surface dose rate (Hassler et al. 2018, Space Weather, doi:10.1029/2018SW001959).</li>
         <li><b>Crew avatar looks:</b> built with this app’s per-part Gaussian-splat pipeline from public-domain NASA photographs: {Object.values(CREW_LOOK).map((l, k) => <span key={l.photo}>{k ? ', ' : ''}<a href={l.url} target="_blank" rel="noreferrer">{l.mission} {l.photo}</a></span>)}. They are illustrations: the astronauts in these photos are not the anonymised Inspiration4 crew members whose data is shown, and no identity is linked to any health record.</li>
         <li><b>Photo avatar:</b> one photo (full body or head and shoulders) is segmented and its 33 body landmarks found with MediaPipe Pose Landmarker, running in this browser. The pose splits the body into parts (head, torso, upper arms, forearms, thighs, shins); each body pixel becomes a Gaussian splat on its part’s rounded cross-section around the bone axis, with a darker back layer closing the part. Parts the photo does not show stay as hologram. Depth is estimated, not scanned: this is single-photo per-part splatting, not a multi-view 3D Gaussian Splatting reconstruction. Organ markers are placed from your shoulders and hips. The photo is stored only on this device.</li>
         <li><b>3D models:</b> NASA 3D Resources (free and without copyright): Astronaut (sampled into the crew hologram), Habitat Demonstration Unit and Mars 2020 Perseverance Rover, Apollo Lunar Module, Skylab, International Space Station. The habitat texture carries NASA markings as built. Organ meshes: HuBMAP CCF 3D Reference Object Library v1.2 (Browne K., Schlehlein H., Herr B.W. II, Quardokus E., Bueckle A., Börner K., 2022; models by Kristen Browne, NIAID 3D Printing and Biovisualization), <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>, simplified for the web; the brain is the Allen Human Reference Atlas 3D model from the same library. Earth from NASA Visible Earth (Blue Marble, night lights); terrain is procedural. The avatar is drawn far larger than real scale; the ISS track sits at its real 408 km altitude.</li>
@@ -580,7 +582,7 @@ function guide(p: Preset, setSheet: (v: boolean) => void): Step[] {
     { target: 'views', kicker: 'Bottom strip', title: 'Body or World view',
       body: <p><b>Body</b> zooms in on the avatar with organ labels. <b>World</b> pulls back to show where the crew is, with NASA 3D models: the Habitat Demonstration Unit on Mars, the Apollo Lunar Module on the Moon, a Skylab-type habitat in transit, or the ISS over Earth with its real radiation track.</p> },
     { target: 'replay', kicker: 'Bottom strip', title: 'Radiation monitor',
-      body: <><p><b>2017</b> plays the real minute-by-minute dosimeter record of the September 2017 solar storm: at 1.7× the quiet baseline it turns Caution, at 2× a shelter Warning fires.</p><p><b>Live</b> switches to real-time space weather from NOAA: GOES satellite proton flux and the official S-scale, refreshed every 5 minutes. S1 = Caution, S2+ = shelter Warning.</p></> },
+      body: <><p><b>2017</b> plays the real minute-by-minute dosimeter record of the September 2017 solar storm: at 1.7× the quiet baseline it turns Caution, at 2× a shelter Warning fires.</p><p><b>Live</b> switches to real-time space weather from NOAA: GOES satellite proton flux and the official S-scale, refreshed every 5 minutes. S1–S2, or ≥100 MeV protons at NOAA’s 1 pfu alert level, = Caution; S3+ = shelter Warning, the first level where NOAA’s scale names astronauts.</p></> },
     { target: 'tools', kicker: 'Bottom strip', title: 'Tools: the self-assessment',
       body: <ul className="walk-list"><li><b>Readiness model</b>: attention from heart rate, breathing and skin signals (NASA crew-state data).</li><li><b>Camera pulse</b>: a 20-second pulse from your webcam; stays on this device.</li><li><b>Daily check-in</b>: sleep, blood pressure, glucose, symptoms; after three entries your own baseline applies.</li><li><b>Data &amp; methods</b>: every source and threshold.</li></ul> },
     { target: 'help', kicker: 'Any time', title: 'Use case and guide',
@@ -633,27 +635,31 @@ function story(d: Loaded, p: Preset, eta: string, c: Ctl): Step[] {
 }
 
 
-/** Live near-Earth radiation: NOAA SWPC GOES proton flux, last 24 h on a log scale with the S1/S2 lines. */
+/** Live near-Earth radiation: NOAA SWPC GOES proton flux, last 24 h on a log scale with the S1 (Caution) and S3 (Warning) lines. */
 function LivePanel({ live, preset }: { live: Live; preset: Preset }) {
   if (live.loading) return <p className="fine">Connecting to NOAA SWPC…</p>
   if (live.error) return <p className="ob-err">Live feed unavailable: {live.error}. Switch back to the 2017 replay.</p>
   const W = 320, H = 90, pts = live.series
   const t0 = pts[0]?.t ?? 0, t1 = pts[pts.length - 1]?.t ?? 1
-  const lo = -1, hi = 3 // 0.1 to 1000 pfu
+  const lo = -1, hi = 4 // 0.1 to 10,000 pfu
   const X = (t: number) => ((t - t0) / Math.max(1, t1 - t0)) * W
   const Y = (f: number) => H - ((Math.log10(Math.max(f, 0.1)) - lo) / (hi - lo)) * H
-  const fmt = (f: number) => (f < 1 ? f.toFixed(2) : f.toFixed(0))
-  const near = preset.scene === 'orbit' || preset.scene === 'moon'
+  const where = {
+    orbit: 'The ISS sits inside Earth’s magnetic field, which shields it except on high-latitude passes, so its cabin dose can lag this feed by hours (about 12 h in Sept 2017).',
+    moon: 'A crew on the Moon gets close to this flux: it is beyond most of Earth’s magnetic shielding.',
+    mars: 'This is near-Earth space weather: a crew at Mars sees storms from a different angle and timing.',
+    transit: 'This is near-Earth space weather: a crew at Mars sees storms from a different angle and timing.',
+  }[preset.scene]
   return (
     <>
       <div className="kpis">
         <div><b className={`s-${live.status}`}>S{live.scale}</b><span>NOAA radiation storm scale now</span></div>
-        <div><b>{fmt(live.flux10)}</b><span>pfu ≥10 MeV protons</span></div>
-        <div><b>{fmt(live.max24)}</b><span>pfu ≥10 MeV, 24 h max</span></div>
+        <div><b>{pfu(live.flux10)}</b><span>pfu ≥10 MeV protons</span></div>
+        <div><b className={live.flux100 >= P100_ALERT ? 's-yellow' : ''}>{pfu(live.flux100)}</b><span>pfu ≥100 MeV protons (alert at 1)</span></div>
         <div><b>{live.probS1 != null ? `${live.probS1}%` : '—'}</b><span>NOAA chance of S1+ today</span></div>
       </div>
-      <svg className="spark" viewBox={`0 0 ${W} ${H + 14}`} role="img" aria-label="GOES proton flux, last 24 hours">
-        {[[10, 'S1'], [100, 'S2']].map(([f, l]) => (
+      <svg className="spark" viewBox={`0 0 ${W} ${H + 14}`} role="img" aria-label="GOES ≥10 MeV proton flux, last 24 hours">
+        {[[10, 'S1 · CAUTION'], [1000, 'S3 · WARNING']].map(([f, l]) => (
           <g key={l as string}><line x1={0} x2={W} y1={Y(f as number)} y2={Y(f as number)} stroke="#8c8c8c" strokeDasharray="3 4" strokeOpacity={0.6} />
             <text x={W - 2} y={Y(f as number) - 3} textAnchor="end" fontSize="8" fontFamily="Space Mono, monospace" fill="#8c8c8c">{l}</text></g>
         ))}
@@ -661,7 +667,7 @@ function LivePanel({ live, preset }: { live: Live; preset: Preset }) {
         <text x={0} y={H + 12} fontSize="8" fontFamily="Space Mono, monospace" fill="#8c8c8c">−24 h</text>
         <text x={W} y={H + 12} textAnchor="end" fontSize="8" fontFamily="Space Mono, monospace" fill="#8c8c8c">{live.time.slice(11, 16)} UTC</text>
       </svg>
-      <p className="fine wide">Live from NOAA SWPC: GOES-{live.satellite} ≥10 MeV proton flux at geostationary orbit, refreshed every 5 min. Crew rule here: S1 = Caution (limit EVA), S2+ = Warning (storm shelter). {near ? 'Directly relevant near Earth (ISS, Moon).' : 'This is near-Earth space weather: a crew at Mars sees storms from a different angle and timing.'} <a href={LIVE_SOURCE} target="_blank" rel="noreferrer">NOAA source ↗</a></p>
+      <p className="fine wide">Live from NOAA SWPC: GOES-{live.satellite} proton flux at geostationary orbit, refreshed every 5 min. Crew rule here: S1–S2, or ≥100 MeV protons at NOAA’s 1 pfu alert level, = Caution (limit EVA, be ready to shelter); S3+ = Warning (storm shelter), the first level where NOAA’s scale names astronauts. NASA’s radiation team watches the ≥100 MeV protons because they get through spacecraft walls. {where} <a href={LIVE_SOURCE} target="_blank" rel="noreferrer">NOAA source ↗</a></p>
     </>
   )
 }
