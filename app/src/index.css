@@ -115,7 +115,7 @@ input[type='number'] { background: transparent; color: var(--text); border: 1px 
 .chip-o { align-self: flex-start; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; color: var(--accent); border: 1px solid var(--accent); padding: 5px 10px; border-radius: 999px; background: rgba(10, 10, 10, 0.6); }
 .hero-head { display: flex; align-items: center; gap: 16px; }
 .hero h2 { font-size: 2.6rem; line-height: 0.95; font-weight: 900; font-stretch: 112%; letter-spacing: -0.01em; text-transform: uppercase; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.6); }
-.hero-sub { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; color: var(--text); background: rgba(10, 10, 10, 0.7); padding: 6px 9px; align-self: flex-start; text-transform: uppercase; }
+.hero-sub { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; color: var(--text); background: rgba(10, 10, 10, 0.7); padding: 6px 9px; align-self: flex-start; }
 .switch { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line-hi); background: rgba(10, 10, 10, 0.6); max-width: 360px; }
 .switch button { border: 0; background: transparent; color: var(--muted); padding: 9px 8px; cursor: pointer; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; }
 .switch button.on { background: var(--text); color: #111; font-weight: 700; }
@@ -421,3 +421,13 @@ input[type='number'] { background: transparent; color: var(--text); border: 1px 
   .dose small { display: none; }
   .dose { grid-template-columns: auto 60px; }
 }
+.cf { font-style: normal; margin-left: 6px; font-size: 0.52rem; letter-spacing: 0.08em; padding: 1px 4px; border: 1px solid var(--warn); color: var(--warn); vertical-align: middle; }
+.cf.on { border-color: var(--bad); color: var(--bad); }
+.radmode { display: flex; border: 1px solid var(--line-hi); }
+.radmode button { border: 0; background: none; color: var(--muted); padding: 6px 9px; cursor: pointer; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 5px; }
+.radmode button.on { background: var(--text); color: #111; font-weight: 700; }
+.live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--bad); animation: blink 1.4s infinite; }
+.replay-meta .live-v { font-family: var(--mono); font-size: 0.72rem; color: var(--text); letter-spacing: 0.04em; }
+@media (max-width: 760px) { .radmode button { padding: 6px 6px; } .replay-meta .live-v { font-size: 0.62rem; } }
+.switch button.hint { color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); animation: hintPulse 1.6s ease-in-out infinite; }
+@keyframes hintPulse { 50% { box-shadow: inset 0 0 0 1px transparent; } }

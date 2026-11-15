@@ -10,6 +10,7 @@ import { Anim } from './remotion/Anim'
 import { DotNumber } from './remotion/DotNumber'
 import { Intro } from './remotion/Intro'
 import { useReplay, type Replay } from './useReplay'
+import { LIVE_SOURCE, useLive, type Live } from './useLive'
 import type { View } from './World3D'
 
 const World3D = lazy(() => import('./World3D').then((m) => ({ default: m.World3D })))
@@ -32,14 +33,14 @@ const SCENE_ARIA = {
 /** Earth-range flags and hidden (>=3 sigma, inside lab range) shifts for one person at one draw. */
 function compare(d: Loaded, person: string, tp: string) {
   let earth = 0, checks = 0
-  const rows: { label: string; z: number; inRange: boolean }[] = [], hidden: { label: string; z: number }[] = []
+  const rows: { label: string; z: number; inRange: boolean }[] = [], hidden: { label: string; z: number; confirm?: 'crew' | 'repeat' }[] = []
   for (const a of d.crew.analytes) {
     const p = a.crew[person]?.points.find((x) => x.tp === tp)
     if (!p || p.lo == null || p.z == null) continue
     checks++
     const inRange = pointStatus(p, 'earth') === 'green'
     if (!inRange) earth++
-    else if (Math.abs(p.z) >= 3) hidden.push({ label: short(a.label), z: p.z })
+    else if (Math.abs(p.z) >= 3) hidden.push({ label: short(a.label), z: p.z, confirm: p.confirm })
     rows.push({ label: short(a.label), z: p.z, inRange })
   }
   rows.sort((x, y) => Math.abs(y.z) - Math.abs(x.z))
@@ -78,6 +79,7 @@ function Mission({ d }: { d: Loaded }) {
   const [welcome, setWelcome] = useState(() => { try { return !localStorage.getItem(SEEN_KEY) } catch { return true } })
   const [onboard, setOnboard] = useState(false)
   const [sheet, setSheet] = useState(false)
+  const [tried, setTried] = useState(false)
   const small = () => window.innerWidth <= 1100
   const [avatar, setAvatar] = useState<PhotoAvatar | null>(loadAvatar)
   const [crewLooks, setCrewLooks] = useState<Record<string, PhotoAvatar>>({})
@@ -89,12 +91,17 @@ function Mission({ d }: { d: Loaded }) {
     return () => { live = false }
   }, [])
   const rp = useReplay(d.radiation)
+  const [radMode, setRadMode] = useState<'replay' | 'live'>('replay')
+  const live = useLive(radMode === 'live')
+  const isLive = radMode === 'live'
+  const radStatus: Status = isLive ? (live.error || live.loading ? 'none' : live.status) : rp.status
   const preset = PRESETS.find((p) => p.id === presetId)!
   const you = person === 'you'
   const orbit = preset.scene === 'orbit'
 
   useEffect(() => { const t = setTimeout(() => setIntro(false), 4700); return () => clearTimeout(t) }, [])
-  useEffect(() => { if (rp.status !== 'red') setShelterAck(false) }, [rp.status])
+  useEffect(() => { if (radStatus !== 'red') setShelterAck(false) }, [radStatus])
+  useEffect(() => { if (isLive) rp.setPlaying(false) }, [isLive]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { setBurst((b) => b + 1) }, [mode, person, tp])
 
   const checkin = useMemo(() => assess(entries), [entries])
@@ -104,7 +111,7 @@ function Mission({ d }: { d: Loaded }) {
     const s = {} as Record<RegionId, Status>
     const tg: Partial<Record<RegionId, string>> = {}
     for (const r of REGION_IDS) {
-      if (r === 'radiation') { s[r] = rp.status; continue }
+      if (r === 'radiation') { s[r] = radStatus; continue }
       if (you) {
         const own = checkin.filter((c) => c.ind.region === r)
         const list = own.map((c) => c.s)
@@ -125,7 +132,7 @@ function Mission({ d }: { d: Loaded }) {
       }
     }
     return { status: s, tags: tg }
-  }, [d, person, tp, mode, rp.status, you, checkin, pulseStatus, pulse])
+  }, [d, person, tp, mode, radStatus, you, checkin, pulseStatus, pulse])
 
   const reveal = useMemo(() => (you ? { earth: 0, hidden: [], checks: 0, rows: [] } : compare(d, person, tp)), [d, person, tp, you])
 
@@ -146,12 +153,12 @@ function Mission({ d }: { d: Loaded }) {
 
   const guideSteps = useMemo(() => guide(preset, setSheet), [preset])
   const storySteps = useMemo(() => story(d, preset, etaText, {
-    setPerson, setTp, setMode, setRegion, setView, setDrawer, setShelterAck, setPacket, setSheet, rp,
+    setPerson, setTp, setMode, setRegion, setView, setDrawer, setShelterAck, setPacket, setSheet, setRadMode, rp,
   }), [d, preset, etaText, rp])
   const bigValue = you ? String(REGION_IDS.filter((r) => status[r] === 'red').length) : mode === 'earth' ? String(reveal.earth) : String(reveal.hidden.length)
   const bigColor = you ? HEX.red : mode === 'earth' ? (reveal.earth ? HEX.yellow : HEX.green) : reveal.hidden.length ? HEX.red : HEX.green
 
-  const hiddenLine = reveal.hidden.length ? reveal.hidden.map((h) => `${h.label} ${sig(h.z)}`).join(' · ') : 'none beyond 3σ'
+  const hiddenLine = reveal.hidden.length ? reveal.hidden.map((h) => `${h.label} ${sig(h.z)} ${h.confirm === 'crew' ? '(all crew: confirmed)' : h.confirm === 'repeat' ? '(repeated: confirmed)' : '(repeat the draw)'}`).join(' · ') : 'none beyond 3σ'
   const anyRed = REGION_IDS.some((r) => r !== 'radiation' && status[r] === 'red')
   const radPct = Math.min(100, (rp.stats.ratio / 3) * 100)
 
@@ -159,7 +166,7 @@ function Mission({ d }: { d: Loaded }) {
     <div className={`app ${intro ? 'is-intro' : ''} ${sheet ? 'sheet' : ''}`} style={{ '--accent': preset.accent } as React.CSSProperties}>
       <div className="world" aria-label={SCENE_ARIA[preset.scene]}>
         <Boundary label="3D SCENE"><Suspense fallback={null}>
-          <World3D data={d.radiation} i={rp.i} radStatus={rp.status} view={view} scene={preset.scene} accent={preset.accent}
+          <World3D data={d.radiation} i={rp.i} radStatus={radStatus} view={view} scene={preset.scene} accent={preset.accent}
             status={status} selected={region} onSelect={(r) => { setRegion(r); if (r !== 'radiation') setView('body'); if (small()) setSheet(true) }} tags={tags} burstKey={burst}
             photo={you ? avatar : crewLooks[person] ?? null} />
         </Suspense></Boundary>
@@ -173,12 +180,14 @@ function Mission({ d }: { d: Loaded }) {
         </div>
       )}
 
-      {rp.status === 'red' && !shelterAck && (
+      {radStatus === 'red' && !shelterAck && (
         <div className="storm" role="alert" data-tour="storm">
           <span className="storm-ico" aria-hidden><svg width="26" height="26" viewBox="0 0 24 24"><path d="M12 2L1 21h22z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /><path d="M12 9v5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><circle cx="12" cy="17.3" r="1.2" fill="currentColor" /></svg></span>
           <div>
             <b>WARNING · SOLAR PARTICLE EVENT · GO TO THE STORM SHELTER</b>
-            <span>{doseLabel[0].toUpperCase() + doseLabel.slice(1)} {rp.stats.ratio.toFixed(1)}× quiet baseline · Sept 2017 replay {rp.time.slice(5)} · ground reply {eta === 0 ? 'now' : `in ${etaText}: act now`}</span>
+            <span>{isLive
+              ? `LIVE · NOAA S${live.scale} radiation storm · GOES ≥10 MeV protons ${live.flux10.toFixed(0)} pfu · ${live.time.slice(11, 16)} UTC`
+              : `${doseLabel[0].toUpperCase() + doseLabel.slice(1)} ${rp.stats.ratio.toFixed(1)}× quiet baseline · Sept 2017 replay ${rp.time.slice(5)}`} · ground reply {eta === 0 ? 'now' : `in ${etaText}: act now`}</span>
           </div>
           <button className="btn danger" onClick={() => setShelterAck(true)}>I’m in the shelter</button>
         </div>
@@ -238,11 +247,11 @@ function Mission({ d }: { d: Loaded }) {
           </div>
           <h2>{you ? <>SYSTEMS AT<br />WARNING</> : mode === 'earth' ? <>FLAGGED BY<br />EARTH RANGES</> : <>HIDDEN SHIFTS<br />FOUND</>}</h2>
         </div>
-        <p className="hero-sub">{you ? 'From your check-ins and camera pulse' : mode === 'earth' ? `of ${reveal.checks} results · ${person} · draw ${tp}` : `${hiddenLine} · inside the lab range`}</p>
+        <p className="hero-sub">{you ? 'From your check-ins and camera pulse' : mode === 'earth' ? `of ${reveal.checks} results · ${person} · draw ${tp}` : `${hiddenLine} · all inside the lab range`}</p>
         {!you && (
           <div className="switch" role="radiogroup" aria-label="Compare against">
             <button role="radio" aria-checked={mode === 'earth'} className={mode === 'earth' ? 'on' : ''} onClick={() => setMode('earth')}>Earth lab ranges</button>
-            <button role="radio" aria-checked={mode === 'baseline'} className={mode === 'baseline' ? 'on' : ''} onClick={() => setMode('baseline')}>Own baseline</button>
+            <button role="radio" aria-checked={mode === 'baseline'} className={`${mode === 'baseline' ? 'on' : ''} ${!tried && mode === 'earth' ? 'hint' : ''}`} onClick={() => { setMode('baseline'); setTried(true) }}>Own baseline</button>
           </div>
         )}
         <button className="btn ghost sm details-btn" onClick={() => setSheet(true)}>{REGIONS[region].name} · {STATUS_TEXT[status[region]]} ▴</button>
@@ -258,7 +267,7 @@ function Mission({ d }: { d: Loaded }) {
         <i className="cn tl" /><i className="cn tr" /><i className="cn bl" /><i className="cn br" />
         <button className="sheet-x" onClick={() => setSheet(false)} aria-label="Close details">✕</button>
         <SystemCard region={region} status={status[region]} analytes={you ? [] : d.crew.analytes} person={person} tp={tp} mode={mode}
-          rp={rp} preset={preset} etaText={etaText} you={you} onEscalate={() => setPacket(true)} onOpen={setDrawer} />
+          rp={rp} live={isLive ? live : null} onLive={setRadMode} preset={preset} etaText={etaText} you={you} onEscalate={() => setPacket(true)} onOpen={setDrawer} />
       </aside>
 
       <p className="caption" aria-hidden>
@@ -282,15 +291,28 @@ function Mission({ d }: { d: Loaded }) {
           <button className={view === 'world' ? 'on' : ''} onClick={() => setView('world')}>World</button>
         </div>
         <div className="rp" data-tour="replay">
-          <button className="icon" aria-label={rp.playing ? 'Pause replay' : 'Play replay'} onClick={() => rp.setPlaying(!rp.playing)}><PlayIcon playing={rp.playing} /></button>
-          <div className="replay-meta">
-            <span>{orbit ? 'ISS DOSIMETER' : 'DOSIMETER · SEPT 2017 REPLAY'} · {rp.time.slice(5, 16)}</span>
-            <input aria-label="Replay position" type="range" min={0} max={rp.n - 1} value={rp.i} onChange={(e) => rp.setI(Number(e.target.value))} />
+          <div className="radmode" role="radiogroup" aria-label="Radiation source">
+            <button role="radio" aria-checked={!isLive} className={!isLive ? 'on' : ''} onClick={() => setRadMode('replay')}>2017</button>
+            <button role="radio" aria-checked={isLive} className={isLive ? 'on' : ''} onClick={() => setRadMode('live')}><i className="live-dot" />Live</button>
           </div>
-          <div className="dose" title={`${doseLabel} vs quiet baseline`}>
-            <b className={`s-${rp.status}`}>{rp.stats.ratio.toFixed(1)}×</b>
-            <span className="hatch"><i style={{ width: `${radPct}%` }} className={`s-${rp.status}`} /></span>
-            <small>QUIET → STORM</small>
+          {isLive ? (
+            <div className="replay-meta">
+              <span>{live.error ? 'NOAA FEED UNAVAILABLE' : live.loading ? 'CONNECTING TO NOAA…' : `GOES-${live.satellite} · ≥10 MEV PROTONS · ${live.time.slice(11, 16)} UTC`}</span>
+              <span className="live-v">{live.loading || live.error ? '—' : `${live.flux10 < 1 ? live.flux10.toFixed(2) : live.flux10.toFixed(0)} pfu · S${live.scale}`}</span>
+            </div>
+          ) : (
+            <>
+              <button className="icon" aria-label={rp.playing ? 'Pause replay' : 'Play replay'} onClick={() => rp.setPlaying(!rp.playing)}><PlayIcon playing={rp.playing} /></button>
+              <div className="replay-meta">
+                <span>{orbit ? 'ISS DOSIMETER' : 'DOSIMETER · SEPT 2017 REPLAY'} · {rp.time.slice(5, 16)}</span>
+                <input aria-label="Replay position" type="range" min={0} max={rp.n - 1} value={rp.i} onChange={(e) => rp.setI(Number(e.target.value))} />
+              </div>
+            </>
+          )}
+          <div className="dose" title={isLive ? 'NOAA solar radiation storm scale' : `${doseLabel} vs quiet baseline`}>
+            <b className={`s-${radStatus}`}>{isLive ? (live.loading || live.error ? '—' : `S${live.scale}`) : `${rp.stats.ratio.toFixed(1)}×`}</b>
+            <span className="hatch"><i style={{ width: `${isLive ? Math.max(2, Math.min(100, ((Math.log10(Math.max(live.flux10, 0.1)) + 1) / 4) * 100)) : radPct}%` }} className={`s-${radStatus}`} /></span>
+            <small>{isLive ? 'S0 → S3' : 'QUIET → STORM'}</small>
           </div>
         </div>
         <button className="more" data-tour="tools" onClick={() => setDrawer('readiness')}>Tools ▴</button>
@@ -321,9 +343,9 @@ function Mission({ d }: { d: Loaded }) {
         <div className="drawer-bg center" onClick={() => setPacket(false)}>
           <div className="modal panel" onClick={(e) => e.stopPropagation()} role="dialog" aria-label="Summary for the ground">
             <p className="eyebrow">SUMMARY FOR THE FLIGHT SURGEON · REPLY IN {etaText.toUpperCase()}</p>
-            <pre>{packetText(d, person, tp, mode, preset, etaText, status, rp)}</pre>
+            <pre>{packetText(d, person, tp, mode, preset, etaText, status, rp, isLive ? live : null)}</pre>
             <div className="row">
-              <button className="btn" onClick={() => navigator.clipboard?.writeText(packetText(d, person, tp, mode, preset, etaText, status, rp))}>Copy</button>
+              <button className="btn" onClick={() => navigator.clipboard?.writeText(packetText(d, person, tp, mode, preset, etaText, status, rp, isLive ? live : null))}>Copy</button>
               <button className="btn ghost" onClick={() => setPacket(false)}>Close</button>
             </div>
           </div>
@@ -339,10 +361,11 @@ function Mission({ d }: { d: Loaded }) {
               <h2>DELTA<span>-</span>ME</h2>
               <p className="poster-type">— DIGITAL CREW AVATARS —</p>
             </div>
-            <p>Every crew member gets a <b>digital avatar</b> built from their own pre-flight data, the software side of NASA’s AVATAR idea of flying a stand-in for each astronaut. New results are compared with that avatar, so changes that Earth lab ranges call normal still get caught, even when the doctor is {eta >= 60 ? `${etaText} away` : 'only a call away'}.</p>
+            <p><b>Earth’s “normal” was measured on Earth.</b> On real NASA data from the Inspiration4 crew, lab ranges called every red-cell result normal the day after landing. Compared with each person’s own pre-flight baseline, <b>red-cell size fell in all four crew</b>, a crew-wide shift bigger than any seen at their recovery draws.</p>
+            <p>Delta-Me gives every astronaut a digital avatar of their own baseline, so changes like this get caught, and confirmed before anyone acts, even when the doctor is {eta >= 60 ? `${etaText} away` : 'only a call away'}.</p>
             <div className="row">
-              <button className="cta" onClick={() => { closeWelcome(); setOnboard(true) }}>Create my avatar from a photo <span>↗</span></button>
-              <button className="btn ghost" onClick={() => startWalk('story')}>▶ Use case · {storySteps.length} steps</button>
+              <button className="cta" onClick={() => startWalk('story')}>See it in {storySteps.length} steps <span>↗</span></button>
+              <button className="btn ghost" onClick={() => { closeWelcome(); setOnboard(true) }}>Create my avatar</button>
               <button className="btn ghost" onClick={() => startWalk('guide')}>Explain the interface</button>
               <button className="btn ghost" onClick={closeWelcome}>Skip</button>
             </div>
@@ -378,8 +401,8 @@ function Orbits() {
 
 const short = (label: string) => label.split(' (')[0]
 
-function SystemCard({ region, status, analytes, person, tp, mode, rp, preset, etaText, you, onEscalate, onOpen }: {
-  region: RegionId; status: Status; analytes: Analyte[]; person: string; tp: string; mode: Mode; rp: Replay; preset: (typeof PRESETS)[number]
+function SystemCard({ region, status, analytes, person, tp, mode, rp, live, onLive, preset, etaText, you, onEscalate, onOpen }: {
+  region: RegionId; status: Status; analytes: Analyte[]; person: string; tp: string; mode: Mode; rp: Replay; live: Live | null; onLive: (m: 'replay' | 'live') => void; preset: (typeof PRESETS)[number]
   etaText: string; you: boolean; onEscalate: () => void; onOpen: (k: 'readiness' | 'pulse' | 'checkin' | 'data') => void
 }) {
   const R = REGIONS[region]
@@ -400,6 +423,7 @@ function SystemCard({ region, status, analytes, person, tp, mode, rp, preset, et
       {(status === 'yellow' || status === 'red') && (
         <div className={`act s-${status}`}>
           <b>{status === 'red' ? 'Do now' : 'Next step'}</b>
+          {status === 'yellow' && mode === 'baseline' && <p className="who">One reading beyond your own range can be chance (about 3% per test with only 3 baseline draws). Repeat the draw before acting.</p>}
           <p>{status === 'red' ? R.act.red : R.act.yellow}</p>
           {status === 'red' && region !== 'radiation' && (
             <>
@@ -410,7 +434,8 @@ function SystemCard({ region, status, analytes, person, tp, mode, rp, preset, et
         </div>
       )}
 
-      {region === 'radiation' && (
+      {region === 'radiation' && live && <LivePanel live={live} preset={preset} />}
+      {region === 'radiation' && !live && (
         <div className="kpis">
           <div><b className={`s-${rp.status}`}>{rp.stats.ratio.toFixed(1)}×</b><span>{preset.scene === 'orbit' ? 'polar dose' : 'dose rate'} vs quiet baseline</span></div>
           <div><b>{rp.stats.last24Msv.toFixed(2)}</b><span>mSv last 24 h (replay)</span></div>
@@ -419,6 +444,7 @@ function SystemCard({ region, status, analytes, person, tp, mode, rp, preset, et
           <div className="wide">
             <button className="btn ghost sm" onClick={() => rp.jump(6, 0)}>Sep 10 · quiet</button>
             <button className="btn ghost sm" onClick={() => rp.jump(7, 8)}>Sep 11 · storm</button>
+            <button className="btn sm" onClick={() => onLive('live')}>Live now</button>
           </div>
           <p className="fine wide">{preset.radNote} Typical dose here: {preset.doseRefText}.</p>
         </div>
@@ -433,7 +459,7 @@ function SystemCard({ region, status, analytes, person, tp, mode, rp, preset, et
             return (
               <li key={a.key} className={open === a.key ? 'open' : ''}>
                 <button onClick={() => setOpen(open === a.key ? null : a.key)}>
-                  <span className="r-name">{short(a.label)}</span>
+                  <span className="r-name">{short(a.label)}{mode === 'baseline' && p!.z != null && Math.abs(p!.z) >= 3 && <em className={`cf ${p!.confirm ? 'on' : ''}`}>{p!.confirm === 'crew' ? 'ALL CREW' : p!.confirm === 'repeat' ? 'REPEATED' : 'REPEAT DRAW'}</em>}</span>
                   <span className="r-val">{fmt(p!.v)} <small>{a.unit}</small></span>
                   <span className={`r-z s-${s}`}>{mode === 'baseline' && p!.z != null ? `${p!.z > 0 ? '+' : '−'}${Math.abs(p!.z).toFixed(1)}σ` : STATUS_ICON[s]}</span>
                   <RangeBar p={p!} base={a.crew[person].baseline} sd={a.sd} mode={mode} s={s} />
@@ -489,7 +515,7 @@ function Spark({ a, person, tp }: { a: Analyte; person: string; tp: string }) {
 
 const fmt = (v: number) => (Math.abs(v) >= 100 ? v.toFixed(0) : Math.abs(v) >= 10 ? v.toFixed(1) : v.toFixed(2))
 
-function packetText(d: Loaded, person: string, tp: string, mode: Mode, preset: Preset, eta: string, status: Record<RegionId, Status>, rp: Replay) {
+function packetText(d: Loaded, person: string, tp: string, mode: Mode, preset: Preset, eta: string, status: Record<RegionId, Status>, rp: Replay, live: Live | null = null) {
   const lines = [`DELTA-ME SUMMARY · ${preset.place} · ${preset.day} · earliest reply ${eta}`, `Person: ${person}${person === 'you' ? '' : ` · draw ${tp}`} · comparison: ${mode === 'baseline' ? 'personal baseline' : 'lab range'}`, '']
   for (const r of REGION_IDS) if (status[r] === 'red' || status[r] === 'yellow') lines.push(`${STATUS_TEXT[status[r]].toUpperCase().padEnd(8)} ${REGIONS[r].name}`)
   if (person !== 'you') {
@@ -500,7 +526,9 @@ function packetText(d: Loaded, person: string, tp: string, mode: Mode, preset: P
       if (p && (s === 'red' || s === 'yellow')) lines.push(`  ${a.label}: ${p.v} ${a.unit} (lab ${p.lo}–${p.hi}${p.z != null ? `; ${p.z > 0 ? '+' : ''}${p.z} SD vs baseline` : ''})`)
     }
   }
-  lines.push('', `Radiation: ${STATUS_TEXT[rp.status]} · ${preset.scene === 'orbit' ? 'polar dose' : 'dose rate'} ${rp.stats.ratio.toFixed(1)}× quiet baseline · Sept 2017 replay ${rp.time}`)
+  lines.push('', live
+    ? `Radiation (live, NOAA SWPC): ${STATUS_TEXT[status.radiation]} · S${live.scale} · GOES >=10 MeV ${live.flux10.toFixed(2)} pfu · ${live.time}`
+    : `Radiation: ${STATUS_TEXT[rp.status]} · ${preset.scene === 'orbit' ? 'polar dose' : 'dose rate'} ${rp.stats.ratio.toFixed(1)}× quiet baseline · Sept 2017 replay ${rp.time}`)
   return lines.join('\n')
 }
 
@@ -508,8 +536,10 @@ function Methods({ d }: { d: Loaded }) {
   return (
     <div className="methods">
       <ul>
+        <li><b>Evidence, stated honestly:</b> with 3 baseline draws a single value beyond 3 SD happens by chance about {(d.crew.evidence.pSingle * 100).toFixed(1)}% of the time. Crossings per return draw: {Object.entries(d.crew.evidence.crossings).map(([k, v]) => `${k} ${v.beyond3}/${v.checks} (≈${v.expectedByChance} by chance)`).join(' · ')}, so single crossings alone do not show a flight effect. The confirmed signal is crew-wide: {d.crew.evidence.crewWide.map((c) => `${c.label} at ${c.tp}, all crew same direction, mean ${c.meanZ} SD`).join('; ')}; the largest crew-wide shift at the recovery draws was {d.crew.evidence.recoveryNullMaxMeanZ} SD (n = {d.crew.evidence.recoveryNullN}). Four people, one flight: a hypothesis worth flying, not a proven effect.</li>
         <li><b>Crew blood work:</b> {d.crew.source.mission}. {d.crew.source.datasets.map((s) => <a key={s.id} href={s.url} target="_blank" rel="noreferrer">{s.id} {s.name} ↗ </a>)} Timepoints: {d.crew.source.timepoints}. {d.crew.source.method}</li>
         <li><b>Radiation:</b> {d.radiation.source.instrument}, <a href={d.radiation.source.url} target="_blank" rel="noreferrer">NASA dataset ↗</a>, Sept 4–15 2017 ({d.radiation.source.unit}). Daily dose: {Object.entries(d.radiation.dailyMsv).map(([k, v]) => `${k.slice(5)} ${v.toFixed(2)}`).join(' · ')} mSv. Storm alert = mean dose at |latitude| ≥ 40° outside the South Atlantic Anomaly over the last 3 h vs. Sept 4–9: red ≥ 2×, watch ≥ 1.7×.</li>
+        <li><b>Live radiation:</b> NOAA Space Weather Prediction Center public JSON: GOES primary integral proton flux (≥10 MeV, ≥100 MeV, 5-minute data) and NOAA space weather scales, polled every 5 minutes. S-scale from ≥10 MeV flux (S1 ≥ 10 pfu, S2 ≥ 100 pfu…). This is near-Earth data at geostationary orbit, not a dosimeter on the crew’s vehicle.</li>
         <li><b>Readiness:</b> logistic regression on <a href={d.readiness.source.url} target="_blank" rel="noreferrer">{d.readiness.source.dataset} ↗</a>, subjects {d.readiness.source.subjects.join(', ')}; leave-one-subject-out AUC {Object.entries(d.readiness.looAuc).map(([k, v]) => `${k}: ${v}`).join(', ')}. Labels follow the experiment timeline, so part of the signal may be drift over the session.</li>
         <li><b>Camera pulse:</b> green-channel photoplethysmography on the forehead, 20 s, dominant frequency 42–180 bpm. Runs on this device only.</li>
         <li><b>Check-in limits:</b> AHA 2017 blood pressure, ADA glucose, AASM/SRS sleep; after 3 entries the personal baseline also applies.</li>
@@ -550,7 +580,7 @@ function guide(p: Preset, setSheet: (v: boolean) => void): Step[] {
     { target: 'views', kicker: 'Bottom strip', title: 'Body or World view',
       body: <p><b>Body</b> zooms in on the avatar with organ labels. <b>World</b> pulls back to show where the crew is, with NASA 3D models: the Habitat Demonstration Unit on Mars, the Apollo Lunar Module on the Moon, a Skylab-type habitat in transit, or the ISS over Earth with its real radiation track.</p> },
     { target: 'replay', kicker: 'Bottom strip', title: 'Radiation monitor',
-      body: <p>Plays the real minute-by-minute dosimeter record of the <b>September 2017 solar storm</b>. The number and hatched bar show the dose rate against the quiet baseline: at 1.7× it turns Caution, at 2× a shelter Warning fires. Drag to scrub; the Radiation system has jump buttons.</p> },
+      body: <><p><b>2017</b> plays the real minute-by-minute dosimeter record of the September 2017 solar storm: at 1.7× the quiet baseline it turns Caution, at 2× a shelter Warning fires.</p><p><b>Live</b> switches to real-time space weather from NOAA: GOES satellite proton flux and the official S-scale, refreshed every 5 minutes. S1 = Caution, S2+ = shelter Warning.</p></> },
     { target: 'tools', kicker: 'Bottom strip', title: 'Tools: the self-assessment',
       body: <ul className="walk-list"><li><b>Readiness model</b>: attention from heart rate, breathing and skin signals (NASA crew-state data).</li><li><b>Camera pulse</b>: a 20-second pulse from your webcam; stays on this device.</li><li><b>Daily check-in</b>: sleep, blood pressure, glucose, symptoms; after three entries your own baseline applies.</li><li><b>Data &amp; methods</b>: every source and threshold.</li></ul> },
     { target: 'help', kicker: 'Any time', title: 'Use case and guide',
@@ -565,36 +595,73 @@ function guide(p: Preset, setSheet: (v: boolean) => void): Step[] {
 type Ctl = {
   setPerson: (v: string) => void; setTp: (v: string) => void; setMode: (v: Mode) => void; setRegion: (v: RegionId) => void
   setView: (v: View) => void; setDrawer: (v: null | 'readiness' | 'pulse' | 'checkin' | 'data') => void
-  setShelterAck: (v: boolean) => void; setPacket: (v: boolean) => void; setSheet: (v: boolean) => void; rp: Replay
+  setShelterAck: (v: boolean) => void; setPacket: (v: boolean) => void; setSheet: (v: boolean) => void; setRadMode: (m: 'replay' | 'live') => void; rp: Replay
 }
 
 function story(d: Loaded, p: Preset, eta: string, c: Ctl): Step[] {
   const who = 'C002', tp = 'R+1'
   const r = compare(d, who, tp)
   const list = r.hidden.map((h) => `${h.label} ${sig(h.z)}`).join(' and ')
+  const cw = d.crew.evidence.crewWide.find((x) => x.tp === tp)
+  const crewMcv = cw ? cw.meanZ.toFixed(1).replace('-', '−') : '—'
+  const nullMax = d.crew.evidence.recoveryNullMaxMeanZ?.toFixed(1) ?? '—'
   const far = eta !== 'now'
   const reset = () => { c.setDrawer(null); c.setPacket(false); c.setSheet(false) }
   return [
     { target: 'crew', kicker: `${p.day} · 07:40 · ${p.place}`, title: `Morning check before the ${p.task}`,
-      apply: () => { reset(); c.setPerson(who); c.setTp(tp); c.setMode('earth'); c.setRegion('blood'); c.setView('body'); c.rp.jump(6, 0); c.rp.setPlaying(false) },
+      apply: () => { reset(); c.setRadMode('replay'); c.setPerson(who); c.setTp(tp); c.setMode('earth'); c.setRegion('blood'); c.setView('body'); c.rp.jump(6, 0); c.rp.setPlaying(false) },
       body: <><p>Crew member <b>{who}</b> is on today’s {p.task}. Before suiting up, they run the onboard blood analyzer and the result lands on their avatar.</p><p className="fine">Data: real Inspiration4 results for {who}, the day after landing, standing in for an in-flight draw.</p></> },
     { target: 'compare', kicker: '07:41 · Earth lab ranges', title: r.earth ? `Lab ranges flag ${r.earth} of ${r.checks}` : 'Lab ranges: everything is “normal”',
       apply: () => { c.setMode('earth'); c.setSheet(false) },
       body: <p>Against ranges built from healthy people on Earth, {r.earth ? `only ${r.earth} of ${r.checks} results stand out, none of them alarming` : `all ${r.checks} results look normal`}. With a standard lab report, the {p.task} goes ahead.</p> },
     { target: 'compare', kicker: '07:42 · Own baseline', title: `The avatar finds ${r.hidden.length} hidden shifts`,
       apply: () => { c.setMode('baseline'); c.setRegion('blood'); c.setSheet(false) },
-      body: <p>Switch to <b>Own baseline</b>. {who}’s avatar holds their three pre-flight draws. Against that baseline, <b>{list}</b> moved more than 3σ while still inside the lab range. On the avatar, the matching organs turn red.</p> },
+      body: <><p>Switch to <b>Own baseline</b>. {who}’s avatar holds their three pre-flight draws. Against that baseline, <b>{list}</b> moved more than 3σ, still inside the lab range.</p><p>One reading can be chance, so Delta-Me checks for confirmation. <b>MCV (red-cell size) fell in all four crew</b>, averaging {crewMcv}σ, a bigger crew-wide shift than any seen at the recovery draws (max {nullMax}σ). That is a Warning. Sodium moved in {who} alone: Caution, repeat the draw.</p></> },
     { target: 'system', kicker: '07:45 · Act without waiting', title: far ? `Earth is ${eta} away: the crew decides` : 'Call the ground, act now',
       apply: () => { c.setRegion('blood'); c.setView('body'); c.setSheet(window.innerWidth <= 1100) },
       body: <><p>The technical panel says what to do now and who to call. {p.red}</p><p>The crew medical officer takes {who} off the {p.task}, and the summary for the flight surgeon is one click away{far ? `; the earliest reply is ${eta} away` : ''}.</p></> },
     { target: 'storm', kicker: '10:15 · Solar particle event', title: 'Shelter warning, no one feels a thing',
-      apply: () => { reset(); c.setShelterAck(false); c.setRegion('radiation'); c.setView('world'); c.rp.jump(7, 8); c.rp.setPlaying(false) },
+      apply: () => { reset(); c.setRadMode('replay'); c.setShelterAck(false); c.setRegion('radiation'); c.setView('world'); c.rp.jump(7, 8); c.rp.setPlaying(false) },
       body: <><p>The dosimeter passes <b>2× its quiet baseline</b> and a shelter Warning fires. Radiation can’t be seen or felt, so the crew moves to the shelter within minutes instead of waiting {far ? eta : 'on a call'}.</p><p className="fine">{p.radNote}</p></> },
     { target: 'drawer', kicker: `13:30 · Go / no-go`, title: `Self-assessment before the rescheduled ${p.task}`,
       apply: () => { c.setShelterAck(true); c.setView('body'); c.setSheet(false); c.setDrawer('checkin') },
       body: <p>The backup crew member takes the {p.task}. Before suiting up, they log a <b>daily check-in</b> (sleep, blood pressure, symptoms) and a 20-second <b>camera pulse</b>. After three check-ins their own baseline applies too. <b>Readiness</b> shows the NASA crew-state model behind the attention check.</p> },
     { target: null, kicker: 'End of the day', title: 'What the avatar changed',
       apply: () => { c.setDrawer(null); c.setSheet(false) },
-      body: <><p><b>Without Delta-Me:</b> the {p.task} goes ahead with {r.hidden.length} unflagged changes, and the storm waits on {far ? `a ${eta} reply from Earth` : 'the ground'}.</p><p><b>With Delta-Me:</b> the changes are caught against {who}’s own avatar, the crew is in the shelter in minutes, and a summary is already on its way to the flight surgeon.</p><p className="fine">Decision support for training and demonstration, not a diagnosis.</p></> },
+      body: <><p><b>Without Delta-Me:</b> the {p.task} goes ahead on a “normal” lab report, and the storm waits on {far ? `a ${eta} reply from Earth` : 'the ground'}.</p><p><b>With Delta-Me:</b> a crew-wide red-cell shift is confirmed against each person’s own baseline, a single odd value is re-tested instead of over-trusted, the crew is in the shelter in minutes, and a summary is on its way to the flight surgeon.</p><p className="fine">Decision support for training and demonstration, not a diagnosis.</p></> },
   ]
+}
+
+
+/** Live near-Earth radiation: NOAA SWPC GOES proton flux, last 24 h on a log scale with the S1/S2 lines. */
+function LivePanel({ live, preset }: { live: Live; preset: Preset }) {
+  if (live.loading) return <p className="fine">Connecting to NOAA SWPC…</p>
+  if (live.error) return <p className="ob-err">Live feed unavailable: {live.error}. Switch back to the 2017 replay.</p>
+  const W = 320, H = 90, pts = live.series
+  const t0 = pts[0]?.t ?? 0, t1 = pts[pts.length - 1]?.t ?? 1
+  const lo = -1, hi = 3 // 0.1 to 1000 pfu
+  const X = (t: number) => ((t - t0) / Math.max(1, t1 - t0)) * W
+  const Y = (f: number) => H - ((Math.log10(Math.max(f, 0.1)) - lo) / (hi - lo)) * H
+  const fmt = (f: number) => (f < 1 ? f.toFixed(2) : f.toFixed(0))
+  const near = preset.scene === 'orbit' || preset.scene === 'moon'
+  return (
+    <>
+      <div className="kpis">
+        <div><b className={`s-${live.status}`}>S{live.scale}</b><span>NOAA radiation storm scale now</span></div>
+        <div><b>{fmt(live.flux10)}</b><span>pfu ≥10 MeV protons</span></div>
+        <div><b>{fmt(live.max24)}</b><span>pfu ≥10 MeV, 24 h max</span></div>
+        <div><b>{live.probS1 != null ? `${live.probS1}%` : '—'}</b><span>NOAA chance of S1+ today</span></div>
+      </div>
+      <svg className="spark" viewBox={`0 0 ${W} ${H + 14}`} role="img" aria-label="GOES proton flux, last 24 hours">
+        {[[10, 'S1'], [100, 'S2']].map(([f, l]) => (
+          <g key={l as string}><line x1={0} x2={W} y1={Y(f as number)} y2={Y(f as number)} stroke="#8c8c8c" strokeDasharray="3 4" strokeOpacity={0.6} />
+            <text x={W - 2} y={Y(f as number) - 3} textAnchor="end" fontSize="8" fontFamily="Space Mono, monospace" fill="#8c8c8c">{l}</text></g>
+        ))}
+        <polyline fill="none" style={{ stroke: 'var(--accent)' }} strokeWidth={1.4} points={pts.map((p) => `${X(p.t).toFixed(1)},${Y(p.f).toFixed(1)}`).join(' ')} />
+        <text x={0} y={H + 12} fontSize="8" fontFamily="Space Mono, monospace" fill="#8c8c8c">−24 h</text>
+        <text x={W} y={H + 12} textAnchor="end" fontSize="8" fontFamily="Space Mono, monospace" fill="#8c8c8c">{live.time.slice(11, 16)} UTC</text>
+      </svg>
+      <p className="fine wide">Live from NOAA SWPC: GOES-{live.satellite} ≥10 MeV proton flux at geostationary orbit, refreshed every 5 min. Crew rule here: S1 = Caution (limit EVA), S2+ = Warning (storm shelter). {near ? 'Directly relevant near Earth (ISS, Moon).' : 'This is near-Earth space weather: a crew at Mars sees storms from a different angle and timing.'} <a href={LIVE_SOURCE} target="_blank" rel="noreferrer">NOAA source ↗</a></p>
+    </>
+  )
 }
