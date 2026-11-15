@@ -1,86 +1,19 @@
-import { Html } from '@react-three/drei'
+import { Html, useGLTF } from '@react-three/drei'
 import { useFrame, type ThreeEvent } from '@react-three/fiber'
-import { useMemo, useRef, useState } from 'react'
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three'
+import { MeshSurfaceSampler } from 'three/examples/jsm/math/MeshSurfaceSampler.js'
+import { buildSplat, type OrganDef, type PhotoAvatar, type Splat } from './avatar'
 import type { RegionId, Status } from './data'
 import { REGIONS } from './content'
 
-export const STATUS_HEX: Record<Status, string> = { green: '#34d399', yellow: '#fbbf24', red: '#f87171', none: '#5b6b88' }
+const SUIT_URL = `${import.meta.env.BASE_URL}models/astronaut.glb`
 
-/* ---------- procedural hologram body (point cloud, body units: feet at y=0, head ~1.75) ---------- */
+export const STATUS_HEX: Record<Status, string> = { green: '#3ddc84', yellow: '#f5d90a', red: '#ff3355', none: '#5f5f5f' }
+
+/* ---------- hologram body (point cloud, body units: feet at y=0, head ~1.75) ---------- */
 
 type V = [number, number, number]
-function capsule(out: number[], nrm: number[], a: V, b: V, r0: number, r1: number, count: number) {
-  const A = new THREE.Vector3(...a), B = new THREE.Vector3(...b)
-  const axis = B.clone().sub(A)
-  const len = axis.length()
-  axis.normalize()
-  const u = Math.abs(axis.x) > 0.9 ? new THREE.Vector3(0, 0, 1) : new THREE.Vector3(1, 0, 0)
-  const v1 = u.clone().cross(axis).normalize()
-  const v2 = axis.clone().cross(v1).normalize()
-  for (let k = 0; k < count; k++) {
-    const t = Math.random(), th = Math.random() * Math.PI * 2
-    const r = r0 + (r1 - r0) * t
-    const n = v1.clone().multiplyScalar(Math.cos(th)).add(v2.clone().multiplyScalar(Math.sin(th)))
-    const p = A.clone().addScaledVector(axis, t * len).addScaledVector(n, r)
-    out.push(p.x, p.y, p.z)
-    nrm.push(n.x, n.y, n.z)
-  }
-}
-function ellipsoid(out: number[], nrm: number[], c: V, r: V, count: number, yCut?: [number, number]) {
-  for (let k = 0; k < count; k++) {
-    const u = Math.random() * 2 - 1, th = Math.random() * Math.PI * 2
-    if (yCut && (u < yCut[0] || u > yCut[1])) { k--; continue }
-    const s = Math.sqrt(1 - u * u)
-    const n = [s * Math.cos(th), u, s * Math.sin(th)]
-    out.push(c[0] + r[0] * n[0], c[1] + r[1] * n[1], c[2] + r[2] * n[2])
-    nrm.push(n[0] / r[0], n[1] / r[1], n[2] / r[2])
-  }
-}
-function torso(out: number[], nrm: number[], count: number) {
-  for (let k = 0; k < count; k++) {
-    const y = 0.92 + Math.random() * 0.54
-    const t = (y - 0.92) / 0.54
-    const w = 0.165 - 0.035 * Math.sin(Math.PI * Math.min(1, t * 1.4)) + (0.07 * Math.max(0, t - 0.6)) / 0.4
-    const d = 0.1 + 0.015 * Math.sin(Math.PI * t)
-    const th = Math.random() * Math.PI * 2
-    out.push(w * Math.cos(th), y, d * Math.sin(th))
-    nrm.push(Math.cos(th) / w, 0, Math.sin(th) / d)
-  }
-}
-
-function buildBody() {
-  const p: number[] = [], n: number[] = []
-  ellipsoid(p, n, [0, 1.63, 0], [0.092, 0.118, 0.104], 3200)
-  capsule(p, n, [0, 1.44, 0], [0, 1.53, 0], 0.052, 0.046, 500)
-  torso(p, n, 7000)
-  ellipsoid(p, n, [0, 1.42, 0], [0.235, 0.06, 0.11], 1200, [-0.2, 1])
-  for (const s of [-1, 1]) {
-    ellipsoid(p, n, [s * 0.2, 1.42, 0], [0.06, 0.06, 0.06], 400)
-    // arms slightly raised and bent: a floating, microgravity pose
-    capsule(p, n, [s * 0.215, 1.41, 0], [s * 0.33, 1.2, 0.05], 0.048, 0.04, 1300)
-    capsule(p, n, [s * 0.33, 1.2, 0.05], [s * 0.4, 0.98, 0.16], 0.04, 0.032, 1100)
-    ellipsoid(p, n, [s * 0.415, 0.93, 0.19], [0.03, 0.055, 0.025], 400)
-    capsule(p, n, [s * 0.09, 0.95, 0], [s * 0.12, 0.53, 0.08], 0.085, 0.055, 2400)
-    capsule(p, n, [s * 0.12, 0.53, 0.08], [s * 0.12, 0.12, -0.02], 0.055, 0.04, 1900)
-    ellipsoid(p, n, [s * 0.125, 0.07, 0.03], [0.045, 0.035, 0.1], 500)
-  }
-  const count = p.length / 3
-  const g = new THREE.BufferGeometry()
-  g.setAttribute('position', new THREE.Float32BufferAttribute(p, 3))
-  g.setAttribute('normal', new THREE.Float32BufferAttribute(n, 3))
-  g.normalizeNormals()
-  const seed = new Float32Array(count), scatter = new Float32Array(count * 3)
-  for (let k = 0; k < count; k++) {
-    seed[k] = Math.random()
-    const u = Math.random() * 2 - 1, th = Math.random() * Math.PI * 2, r = 1.2 + Math.random() * 2.5
-    const s = Math.sqrt(1 - u * u)
-    scatter.set([r * s * Math.cos(th), 0.9 + r * u, r * s * Math.sin(th)], k * 3)
-  }
-  g.setAttribute('seed', new THREE.BufferAttribute(seed, 1))
-  g.setAttribute('scatter', new THREE.BufferAttribute(scatter, 3))
-  return g
-}
 
 const HEART = new THREE.Vector3(0.035, 1.3, 0.04)
 
@@ -120,8 +53,56 @@ const frag = /* glsl */ `
     gl_FragColor = vec4(c, (vGlow * 0.55 + vScan + vBeat * 0.8) * (1.0 - d * 1.6));
   }`
 
-function Hologram({ burstAt, beatColor, px }: { burstAt: number; beatColor: string; px: number }) {
-  const geo = useMemo(buildBody, [])
+/** Point cloud sampled from the surface of NASA's Astronaut model (NASA 3D Resources), in body units. */
+function sampleSuit(root: THREE.Object3D, count = 26000) {
+  root.updateMatrixWorld(true)
+  const geos: THREE.BufferGeometry[] = []
+  root.traverse((o) => {
+    const m = o as THREE.Mesh
+    if (!m.isMesh) return
+    const g = m.geometry.clone().applyMatrix4(m.matrixWorld)
+    if (!g.attributes.normal) g.computeVertexNormals()
+    geos.push(g)
+  })
+  const box = new THREE.Box3().setFromObject(root)
+  const c = box.getCenter(new THREE.Vector3()), k = 1.75 / (box.max.y - box.min.y)
+  const area = geos.map((g) => { let a = 0; const P = g.attributes.position, I = g.index; const A = new THREE.Vector3(), B = new THREE.Vector3(), C = new THREE.Vector3(); const n = I ? I.count : P.count; for (let t = 0; t < n; t += 3) { const i0 = I ? I.getX(t) : t, i1 = I ? I.getX(t + 1) : t + 1, i2 = I ? I.getX(t + 2) : t + 2; A.fromBufferAttribute(P, i0); B.fromBufferAttribute(P, i1); C.fromBufferAttribute(P, i2); a += B.sub(A).cross(C.sub(A)).length() / 2 } return a })
+  const total = area.reduce((x, y) => x + y, 0) || 1
+  const p: number[] = [], n: number[] = []
+  const pos = new THREE.Vector3(), nrm = new THREE.Vector3()
+  geos.forEach((g, gi) => {
+    const sampler = new MeshSurfaceSampler(new THREE.Mesh(g)).build()
+    const m = Math.round((count * area[gi]) / total)
+    for (let k2 = 0; k2 < m; k2++) {
+      sampler.sample(pos, nrm)
+      p.push((pos.x - c.x) * k, (pos.y - box.min.y) * k, (pos.z - c.z) * k)
+      n.push(nrm.x, nrm.y, nrm.z)
+    }
+  })
+  return withSeeds(p, n)
+}
+
+function withSeeds(p: number[], n: number[]) {
+  const count = p.length / 3
+  const g = new THREE.BufferGeometry()
+  g.setAttribute('position', new THREE.Float32BufferAttribute(p, 3))
+  g.setAttribute('normal', new THREE.Float32BufferAttribute(n, 3))
+  g.normalizeNormals()
+  const seed = new Float32Array(count), scatter = new Float32Array(count * 3)
+  for (let k = 0; k < count; k++) {
+    seed[k] = Math.random()
+    const u = Math.random() * 2 - 1, th = Math.random() * Math.PI * 2, r = 1.2 + Math.random() * 2.5
+    const s = Math.sqrt(1 - u * u)
+    scatter.set([r * s * Math.cos(th), 0.9 + r * u, r * s * Math.sin(th)], k * 3)
+  }
+  g.setAttribute('seed', new THREE.BufferAttribute(seed, 1))
+  g.setAttribute('scatter', new THREE.BufferAttribute(scatter, 3))
+  return g
+}
+
+function Hologram({ burstAt, beatColor, px, accent }: { burstAt: number; beatColor: string; px: number; accent: string }) {
+  const { scene } = useGLTF(SUIT_URL)
+  const geo = useMemo(() => sampleSuit(scene), [scene])
   const mat = useRef<THREE.ShaderMaterial>(null)
   const born = useRef<number | null>(null)
   const burst = useRef({ at: burstAt, start: -10 })
@@ -143,12 +124,81 @@ function Hologram({ burstAt, beatColor, px }: { burstAt: number; beatColor: stri
     u.uScan.value = 0.9 + 0.95 * Math.sin(t * 0.6)
     u.uPx.value = px
     ;(u.uBeatColor.value as THREE.Color).set(beatColor)
+    ;(u.uColor.value as THREE.Color).lerp(new THREE.Color(accent), 0.08)
     const b = (t - burst.current.start) / 1.1
     u.uBurst.value = b >= 0 && b <= 1 ? b * 1.9 : -1
   })
   return (
     <points geometry={geo} frustumCulled={false}>
       <shaderMaterial ref={mat} vertexShader={vert} fragmentShader={frag} uniforms={init} transparent depthWrite={false} blending={THREE.AdditiveBlending} />
+    </points>
+  )
+}
+
+/* ---------- photo avatar: single-photo 2.5D Gaussian splats ---------- */
+
+const SPLAT_V = /* glsl */ `
+  uniform float uTime, uAssemble, uSize, uProj, uScan, uTint;
+  uniform vec3 uAccent;
+  attribute float seed; attribute vec3 scatter;
+  varying vec3 vC; varying float vScan;
+  void main() {
+    float a = clamp(uAssemble * 1.25 - seed * 0.25, 0.0, 1.0);
+    a = 1.0 - pow(1.0 - a, 3.0);
+    vec3 p = mix(scatter, position, a);
+    vec4 mv = modelViewMatrix * vec4(p, 1.0);
+    float sc = length(modelMatrix[0].xyz);
+    vScan = smoothstep(0.035, 0.0, abs(position.y - uScan));
+    vC = mix(color, uAccent, uTint + vScan * 0.55);
+    gl_PointSize = max(1.0, uSize * sc * uProj / -mv.z) * (0.4 + 0.6 * a);
+    gl_Position = projectionMatrix * mv;
+  }`
+const SPLAT_F = /* glsl */ `
+  varying vec3 vC; varying float vScan;
+  void main() {
+    vec2 q = gl_PointCoord - 0.5;
+    float g = exp(-dot(q, q) * 14.0);
+    if (g < 0.18) discard;
+    gl_FragColor = vec4(vC + vScan * 0.25, g);
+  }`
+
+function PhotoSplat({ splat, accent }: { splat: Splat; accent: string }) {
+  const geo = useMemo(() => {
+    const g = new THREE.BufferGeometry()
+    g.setAttribute('position', new THREE.BufferAttribute(splat.pos, 3))
+    g.setAttribute('color', new THREE.BufferAttribute(splat.col, 3))
+    const seed = new Float32Array(splat.count), scatter = new Float32Array(splat.count * 3)
+    for (let k = 0; k < splat.count; k++) {
+      seed[k] = Math.random()
+      const u = Math.random() * 2 - 1, th = Math.random() * Math.PI * 2, r = 1 + Math.random() * 2, s = Math.sqrt(1 - u * u)
+      scatter.set([r * s * Math.cos(th), 0.9 + r * u, r * s * Math.sin(th)], k * 3)
+    }
+    g.setAttribute('seed', new THREE.BufferAttribute(seed, 1))
+    g.setAttribute('scatter', new THREE.BufferAttribute(scatter, 3))
+    return g
+  }, [splat])
+  const mat = useRef<THREE.ShaderMaterial>(null)
+  const born = useRef<number | null>(null)
+  const init = useMemo(() => ({
+    uTime: { value: 0 }, uAssemble: { value: 0 }, uSize: { value: splat.size }, uProj: { value: 800 }, uScan: { value: 0 }, uTint: { value: 0.12 },
+    uAccent: { value: new THREE.Color(accent) },
+  }), [splat]) // eslint-disable-line react-hooks/exhaustive-deps
+  const buf = useMemo(() => new THREE.Vector2(), [])
+  useFrame(({ clock, gl, camera }) => {
+    const u = mat.current?.uniforms
+    if (!u) return
+    const t = clock.getElapsedTime()
+    if (born.current == null) born.current = t
+    u.uTime.value = t
+    u.uAssemble.value = Math.min(1, (t - born.current) / 2.4)
+    u.uScan.value = 0.9 + 0.95 * Math.sin(t * 0.6)
+    gl.getDrawingBufferSize(buf)
+    u.uProj.value = buf.y / (2 * Math.tan(((camera as THREE.PerspectiveCamera).fov * Math.PI) / 360))
+    ;(u.uAccent.value as THREE.Color).lerp(new THREE.Color(accent), 0.08)
+  })
+  return (
+    <points geometry={geo} frustumCulled={false}>
+      <shaderMaterial ref={mat} vertexShader={SPLAT_V} fragmentShader={SPLAT_F} uniforms={init} vertexColors transparent depthWrite />
     </points>
   )
 }
@@ -177,7 +227,7 @@ const HALO_F = /* glsl */ `
     gl_FragColor = vec4(uColor, f * uCore);
   }`
 
-const ORGANS: { id: RegionId; parts: { p: V; r: number; s?: V }[]; label: V }[] = [
+const ORGANS: OrganDef[] = [
   { id: 'brain', parts: [{ p: [0, 1.655, 0.005], r: 0.068, s: [1, 0.8, 1.1] }], label: [0.14, 1.74, 0] },
   { id: 'blood', parts: [{ p: [0.035, 1.3, 0.04], r: 0.048 }], label: [0.24, 1.36, 0] },
   { id: 'liver', parts: [{ p: [-0.065, 1.18, 0.035], r: 0.06, s: [1.4, 0.7, 0.9] }], label: [-0.28, 1.22, 0] },
@@ -264,17 +314,32 @@ export type AstronautProps = {
   burstKey: number
   showLabels: boolean
   px: number
+  accent: string
+  /** the user's photo avatar; crew members use the NASA-suit hologram */
+  photo: PhotoAvatar | null
 }
 
-/** The astronaut in body units (feet at 0, head ~1.75). The parent scene places and scales it. */
-export function Astronaut({ status, selected, onSelect, tags, burstKey, showLabels, px }: AstronautProps) {
+/** The avatar in body units (feet at 0, head ~1.75). The parent scene places and scales it. */
+export function Astronaut({ status, selected, onSelect, tags, burstKey, showLabels, px, accent, photo }: AstronautProps) {
+  const [splat, setSplat] = useState<Splat | null>(null)
+  useEffect(() => {
+    let live = true
+    setSplat(null)
+    if (photo) buildSplat(photo).then((s) => { if (live) setSplat(s) }).catch(() => { if (live) setSplat(null) })
+    return () => { live = false }
+  }, [photo])
+  const organs = splat?.organs ?? ORGANS
   return (
     <group>
-      <Hologram burstAt={burstKey} px={px} beatColor={STATUS_HEX[status.blood === 'none' ? 'green' : status.blood]} />
-      {ORGANS.map((o) => (
+      {splat
+        ? <PhotoSplat splat={splat} accent={accent} />
+        : <Suspense fallback={null}><Hologram burstAt={burstKey} px={px} accent={accent} beatColor={STATUS_HEX[status.blood === 'none' ? 'green' : status.blood]} /></Suspense>}
+      {organs.map((o) => (
         <Organ key={o.id} {...o} status={status[o.id]} selected={selected === o.id} tag={tags[o.id]} showLabels={showLabels} onSelect={onSelect} />
       ))}
       <Shield status={status.radiation} onSelect={() => onSelect('radiation')} />
     </group>
   )
 }
+
+useGLTF.preload(SUIT_URL)

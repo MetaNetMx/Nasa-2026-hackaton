@@ -124,45 +124,70 @@ export const REGIONS: Record<RegionId, Region> = {
   },
 }
 
+export type Scene = 'orbit' | 'moon' | 'transit' | 'mars'
+
 export type Preset = {
   id: string
   name: string
+  /** short tab label */
+  tab: string
+  /** surface accent colour: drives the UI and the hologram (status colours stay fixed) */
+  accent: string
+  scene: Scene
+  place: string
+  day: string
+  task: string
   delayText: string
   oneWaySec: number
   delaySource: string
   doseRef: number
   doseRefText: string
+  /** where the replayed dose record comes from, said plainly for this scenario */
+  radNote: string
   red: string
 }
 
+const SEP2017_ISS = 'Dose replay: real ISS TEPC record of the Sept 2017 solar storm.'
+const SEP2017_MARS = 'Dose replay: the real ISS TEPC record of the Sept 2017 solar storm. The same event reached the Mars surface, where Curiosity’s RAD saw dose rates about double (Hassler et al. 2018, Space Weather).'
+const SEP2017_DEEP = 'Dose replay: the real ISS TEPC record of the Sept 2017 solar storm, used as the event clock. Outside Earth’s magnetic field the same storm would hit harder; no deep-space record is replayed here.'
+
 export const PRESETS: Preset[] = [
   {
-    id: 'iss', name: 'ISS (low Earth orbit)', delayText: 'near real-time', oneWaySec: 0,
-    delaySource: 'Continuous link to Mission Control',
-    doseRef: 0.9, doseRefText: '≈0.9 mSv/day measured by ISS TEPC, Sept 2017 (this app’s data)',
-    red: 'Call the flight surgeon now (private medical conference).',
+    id: 'mars-surface', name: 'Mars surface base', tab: 'Mars surface', accent: '#FF7A1A', scene: 'mars', place: 'Jezero Crater base, Mars', day: 'Sol 214', task: 'EVA to the sample depot',
+    delayText: 'up to 20 min one way', oneWaySec: 1200,
+    delaySource: 'NASA HRP: Distance from Earth hazard',
+    doseRef: 0.64, doseRefText: '0.64 mSv/day on the Mars surface (MSL RAD, Hassler et al. 2014, Science)',
+    radNote: SEP2017_MARS,
+    red: 'Act now with the crew medical officer. A summary goes to Earth; the earliest reply is 40 min away.',
   },
   {
-    id: 'moon', name: 'Moon surface (Artemis)', delayText: '1.3 s one way', oneWaySec: 1.3,
+    id: 'mars-transit', name: 'Mars transit', tab: 'Mars transit', accent: '#3FE0C5', scene: 'transit', place: 'Earth–Mars cruise', day: 'Flight day 96', task: 'EVA to repair the antenna',
+    delayText: 'up to 20 min one way', oneWaySec: 1200,
+    delaySource: 'NASA HRP: Distance from Earth hazard',
+    doseRef: 1.84, doseRefText: '1.84 mSv/day in cruise (MSL RAD, Zeitlin et al. 2013, Science)',
+    radNote: SEP2017_DEEP,
+    red: 'Act now with the crew medical officer. A summary goes to Earth; the earliest reply is 40 min away.',
+  },
+  {
+    id: 'moon', name: 'Moon surface (Artemis)', tab: 'Moon', accent: '#EDE3C8', scene: 'moon', place: 'Lunar south pole, Artemis base camp', day: 'Surface day 5', task: 'moonwalk to the crater rim',
+    delayText: '1.3 s one way', oneWaySec: 1.3,
     delaySource: '384,400 km ÷ speed of light',
     doseRef: 1.37, doseRefText: '1.37 mSv/day on the lunar surface (Chang’e-4 LND, Zhang et al. 2020, Science Advances)',
+    radNote: SEP2017_DEEP,
     red: 'Call the flight surgeon now; expect a short audio lag.',
   },
   {
-    id: 'mars-transit', name: 'Mars transit', delayText: 'up to 20 min one way', oneWaySec: 1200,
-    delaySource: 'NASA HRP: Distance from Earth hazard',
-    doseRef: 1.84, doseRefText: '1.84 mSv/day in cruise (MSL RAD, Zeitlin et al. 2013, Science)',
-    red: 'Act now with the crew medical officer. A summary goes to Earth; the earliest reply is 40 min away.',
-  },
-  {
-    id: 'mars-surface', name: 'Mars surface base', delayText: 'up to 20 min one way', oneWaySec: 1200,
-    delaySource: 'NASA HRP: Distance from Earth hazard',
-    doseRef: 0.64, doseRefText: '0.64 mSv/day on the Mars surface (MSL RAD, Hassler et al. 2014, Science)',
-    red: 'Act now with the crew medical officer. A summary goes to Earth; the earliest reply is 40 min away.',
+    id: 'iss', name: 'ISS (low Earth orbit)', tab: 'ISS', accent: '#4C8DFF', scene: 'orbit', place: 'International Space Station, 408 km', day: 'Flight day 120', task: 'spacewalk',
+    delayText: 'near real-time', oneWaySec: 0,
+    delaySource: 'Continuous link to Mission Control',
+    doseRef: 0.9, doseRefText: '≈0.9 mSv/day measured by ISS TEPC, Sept 2017 (this app’s data)',
+    radNote: SEP2017_ISS,
+    red: 'Call the flight surgeon now (private medical conference).',
   },
 ]
 
 export const CAREER_LIMIT_MSV = 600 // NASA-STD-3001 Vol. 1 (2022): 600 mSv career effective dose
 
-export const STATUS_TEXT = { green: 'In range', yellow: 'Watch', red: 'Act', none: 'No data' } as const
+// NASA caution & warning convention: yellow = caution, red = warning
+export const STATUS_TEXT = { green: 'Nominal', yellow: 'Caution', red: 'Warning', none: 'No data' } as const
 export const STATUS_ICON = { green: '●', yellow: '▲', red: '■', none: '○' } as const

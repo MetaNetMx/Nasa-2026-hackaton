@@ -112,7 +112,7 @@ export function Pulse({ onResult }: Props) {
     const last = g.slice(-150)
     const mn = Math.min(...last), mx = Math.max(...last)
     ctx.clearRect(0, 0, c.width, c.height)
-    ctx.strokeStyle = '#5eead4'
+    ctx.strokeStyle = getComputedStyle(document.querySelector('.app') ?? document.documentElement).getPropertyValue('--accent').trim() || '#ff7a1a'
     ctx.lineWidth = 2
     ctx.beginPath()
     last.forEach((v, k) => {
