@@ -327,15 +327,16 @@ const WORLD_CAM: Record<Scene, Cam> = {
 function Rig({ view, scene }: { view: View; scene: Scene }) {
   const { camera, pointer } = useThree()
   const look = useRef(BODY_CAM.look.clone())
-  useFrame(() => {
+  useFrame((_, dt) => {
     const c = view === 'body' ? BODY_CAM : WORLD_CAM[scene]
     const k = view === 'body' ? 0.12 : scene === 'orbit' ? 0.5 : 0.15
     const par = new THREE.Vector3(pointer.x * k, pointer.y * k * 0.45, 0)
-    camera.position.lerp(c.pos.clone().add(par), 0.045)
-    look.current.lerp(c.look, 0.045)
+    const e = 1 - Math.exp(-Math.min(dt, 1) * 2.8) // frame-rate independent easing
+    camera.position.lerp(c.pos.clone().add(par), e)
+    look.current.lerp(c.look, e)
     camera.lookAt(look.current)
     const pc = camera as THREE.PerspectiveCamera
-    pc.fov += (c.fov - pc.fov) * 0.045
+    pc.fov += (c.fov - pc.fov) * e
     pc.updateProjectionMatrix()
   })
   return null
@@ -411,7 +412,7 @@ function Environment({ scene, data, i, radStatus }: { scene: Scene; data: Radiat
       <directionalLight position={[-6, 1.5, 4]} intensity={2.2} color="#fff4e6" />
       <MarsGlobe />
       <Glow position={[3.4, 7.4, -30]} color="#9cc7ff" size={0.06} label="Earth · 20 light-min away" />
-      <Suspense fallback={null}><NasaModel url={MODELS.skylab} width={2.2} position={[2.2, BODY_Y - 0.5, -3.4]} rotation={[0.15, -0.7, 0.2]} /></Suspense>
+      <Suspense fallback={null}><NasaModel url={MODELS.skylab} width={2.2} position={[3.1, BODY_Y - 0.55, -4.6]} rotation={[0.15, -0.7, 0.2]} /></Suspense>
     </>
   )
 }

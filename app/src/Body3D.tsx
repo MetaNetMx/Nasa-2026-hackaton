@@ -75,8 +75,9 @@ function sampleSuit(root: THREE.Object3D, count = 26000) {
     const m = Math.round((count * area[gi]) / total)
     for (let k2 = 0; k2 < m; k2++) {
       sampler.sample(pos, nrm)
-      p.push((pos.x - c.x) * k, (pos.y - box.min.y) * k, (pos.z - c.z) * k)
-      n.push(nrm.x, nrm.y, nrm.z)
+      // the NASA model faces -z; turn it to face the viewer (+z)
+      p.push(-(pos.x - c.x) * k, (pos.y - box.min.y) * k, -(pos.z - c.z) * k)
+      n.push(-nrm.x, nrm.y, -nrm.z)
     }
   })
   return withSeeds(p, n)
@@ -227,56 +228,91 @@ const HALO_F = /* glsl */ `
     gl_FragColor = vec4(uColor, f * uCore);
   }`
 
-const ORGANS: OrganDef[] = [
-  { id: 'brain', parts: [{ p: [0, 1.655, 0.005], r: 0.068, s: [1, 0.8, 1.1] }], label: [0.14, 1.74, 0] },
-  { id: 'blood', parts: [{ p: [0.035, 1.3, 0.04], r: 0.048 }], label: [0.24, 1.36, 0] },
-  { id: 'liver', parts: [{ p: [-0.065, 1.18, 0.035], r: 0.06, s: [1.4, 0.7, 0.9] }], label: [-0.28, 1.22, 0] },
-  { id: 'immune', parts: [{ p: [0.1, 1.17, -0.01], r: 0.036, s: [0.8, 1.2, 0.8] }], label: [0.3, 1.16, 0] },
-  { id: 'metabolic', parts: [{ p: [0.03, 1.1, 0.06], r: 0.042, s: [1.3, 0.8, 0.8] }], label: [0.26, 1.04, 0] },
-  { id: 'kidney', parts: [{ p: [-0.065, 1.04, -0.05], r: 0.032, s: [0.8, 1.3, 0.8] }, { p: [0.065, 1.04, -0.05], r: 0.032, s: [0.8, 1.3, 0.8] }], label: [-0.28, 1.0, 0] },
-  { id: 'bone', parts: [{ p: [-0.105, 0.74, 0.04], r: 0.03, s: [1, 6.5, 1] }, { p: [0.105, 0.74, 0.04], r: 0.03, s: [1, 6.5, 1] }, { p: [-0.12, 0.32, 0.03], r: 0.025, s: [1, 7, 1] }, { p: [0.12, 0.32, 0.03], r: 0.025, s: [1, 7, 1] }], label: [-0.28, 0.6, 0] },
-]
+/*
+ * Anatomical organ meshes: HuBMAP CCF 3D Reference Object Library v1.2 (CC BY 4.0), simplified for the web.
+ * All organs share one reference frame in metres, so their real positions and sizes line up with each other;
+ * VH_Y lifts that frame onto our body units (feet at 0, head top ~1.75).
+ */
+const ORGAN_URL = (f: string) => `${import.meta.env.BASE_URL}models/organs/${f}.glb`
+const ORGAN_FILES: Partial<Record<RegionId, string[]>> = {
+  brain: ['brain'], blood: ['heart'], liver: ['liver'], immune: ['spleen'], metabolic: ['pancreas'], kidney: ['kidney_l', 'kidney_r'], bone: ['pelvis'],
+}
+const ALL_ORGAN_URLS = Object.values(ORGAN_FILES).flat().map((f) => ORGAN_URL(f!))
+const VH_Y = 0.79
+const SUIT_Z = 0.02
+const LABEL_X: Partial<Record<RegionId, number>> = { brain: 0.18, blood: 0.26, liver: -0.3, immune: 0.3, metabolic: 0.28, kidney: -0.3, bone: -0.3 }
 
-function Organ({ id, parts, label, status, selected, tag, showLabels, onSelect }: {
-  id: RegionId; parts: { p: V; r: number; s?: V }[]; label: V; status: Status; selected: boolean; tag?: string; showLabels: boolean; onSelect: (r: RegionId) => void
+type OrganMesh = { geo: THREE.BufferGeometry; center: THREE.Vector3 }
+
+/** Each organ file as one geometry centred on its own middle, plus where that middle sits in the reference body. */
+function useOrganMeshes(): Record<string, OrganMesh> {
+  const gltfs = useGLTF(ALL_ORGAN_URLS)
+  return useMemo(() => {
+    const out: Record<string, OrganMesh> = {}
+    const files = Object.values(ORGAN_FILES).flat() as string[]
+    gltfs.forEach((g, i) => {
+      g.scene.updateMatrixWorld(true)
+      let geo: THREE.BufferGeometry | null = null
+      g.scene.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh && !geo) geo = m.geometry.clone().applyMatrix4(m.matrixWorld) })
+      if (!geo) return
+      const gg = geo as THREE.BufferGeometry
+      if (!gg.attributes.normal) gg.computeVertexNormals()
+      gg.computeBoundingBox()
+      const center = gg.boundingBox!.getCenter(new THREE.Vector3())
+      gg.translate(-center.x, -center.y, -center.z)
+      out[files[i]] = { geo: gg, center }
+    })
+    return out
+  }, [gltfs])
+}
+
+/** Default organ placement for the crew hologram: the reference anatomy itself, lifted onto the body. */
+function defaultOrgans(meshes: Record<string, OrganMesh>): OrganDef[] {
+  return (Object.keys(ORGAN_FILES) as RegionId[]).map((id) => {
+    const parts = ORGAN_FILES[id]!.map((f) => { const c = meshes[f]?.center ?? new THREE.Vector3(); return { p: [c.x, c.y + VH_Y, c.z + SUIT_Z] as V, k: 1 } })
+    const y = parts.reduce((a, q) => a + q.p[1], 0) / parts.length
+    return { id, parts, label: [LABEL_X[id] ?? 0.3, y, 0] as V }
+  })
+}
+
+function Organ({ id, parts, label, status, selected, tag, showLabels, onSelect, meshes, xray }: {
+  id: RegionId; parts: { p: V; k: number }[]; label: V; status: Status; selected: boolean; tag?: string; showLabels: boolean; onSelect: (r: RegionId) => void
+  meshes: Record<string, OrganMesh>; xray: boolean
 }) {
   const refs = useRef<(THREE.Group | null)[]>([])
   const [hover, setHover] = useState(false)
   const color = STATUS_HEX[status]
+  const files = ORGAN_FILES[id] ?? []
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime()
-    const k0 = status === 'red' ? 1 + 0.2 * Math.max(0, Math.sin(t * 7.2)) : 1 + 0.04 * Math.sin(t * 2)
-    const k = selected || hover ? k0 * 1.15 : k0
-    refs.current.forEach((g, i) => {
-      if (!g) return
-      const s = parts[i].s ?? [1, 1, 1]
-      g.scale.set(s[0] * k, s[1] * k, s[2] * k)
-    })
+    const k0 = status === 'red' ? 1 + 0.12 * Math.max(0, Math.sin(t * 7.2)) : 1 + 0.025 * Math.sin(t * 2)
+    const k = selected || hover ? k0 * 1.12 : k0
+    refs.current.forEach((g, i) => { if (g) g.scale.setScalar(parts[i].k * k) })
   })
   const click = (e: ThreeEvent<MouseEvent>) => { e.stopPropagation(); onSelect(id) }
   const showTag = showLabels && (selected || hover || status === 'red' || status === 'yellow')
   return (
     <group>
-      {parts.map((pt, k) => (
-        <group key={k} position={pt.p} ref={(g) => { refs.current[k] = g }}>
-          <mesh
-            onClick={click}
-            onPointerOver={(e) => { e.stopPropagation(); setHover(true); document.body.style.cursor = 'pointer' }}
-            onPointerOut={() => { setHover(false); document.body.style.cursor = '' }}
-          >
-            <sphereGeometry args={[pt.r, 32, 24]} />
-            <shaderMaterial key={color + (selected ? 's' : '')} vertexShader={ORGAN_V} fragmentShader={ORGAN_F}
-              uniforms={{ uColor: { value: new THREE.Color(color) }, uCore: { value: selected ? 0.55 : 0.28 } }}
-              transparent depthWrite={false} blending={THREE.AdditiveBlending} />
-          </mesh>
-          <mesh scale={2.4}>
-            <sphereGeometry args={[pt.r, 24, 16]} />
-            <shaderMaterial key={color + 'h'} vertexShader={ORGAN_V} fragmentShader={HALO_F}
-              uniforms={{ uColor: { value: new THREE.Color(color) }, uCore: { value: status === 'red' ? 0.5 : 0.22 } }}
-              transparent depthWrite={false} blending={THREE.AdditiveBlending} />
-          </mesh>
-        </group>
-      ))}
+      {parts.map((pt, k) => {
+        const m = meshes[files[Math.min(k, files.length - 1)]]
+        if (!m) return null
+        return (
+          <group key={k} position={pt.p} ref={(g) => { refs.current[k] = g }}>
+            <mesh geometry={m.geo} onClick={click} renderOrder={xray ? 10 : 0}
+              onPointerOver={(e) => { e.stopPropagation(); setHover(true); document.body.style.cursor = 'pointer' }}
+              onPointerOut={() => { setHover(false); document.body.style.cursor = '' }}>
+              <shaderMaterial key={color + (selected ? 's' : '')} vertexShader={ORGAN_V} fragmentShader={ORGAN_F}
+                uniforms={{ uColor: { value: new THREE.Color(color) }, uCore: { value: selected || hover ? 0.5 : 0.24 } }}
+                transparent depthWrite={false} depthTest={!xray} blending={THREE.AdditiveBlending} />
+            </mesh>
+            <mesh geometry={m.geo} scale={1.35} renderOrder={xray ? 10 : 0}>
+              <shaderMaterial key={color + 'h'} vertexShader={ORGAN_V} fragmentShader={HALO_F}
+                uniforms={{ uColor: { value: new THREE.Color(color) }, uCore: { value: status === 'red' ? 0.4 : 0.14 } }}
+                transparent depthWrite={false} depthTest={!xray} blending={THREE.AdditiveBlending} />
+            </mesh>
+          </group>
+        )
+      })}
       {showTag && (
         <Html position={label} style={{ pointerEvents: 'none' }} zIndexRange={[10, 0]}>
           <div className={`tag3d s-${status} ${label[0] < 0 ? 'left' : ''}`}>
@@ -287,6 +323,12 @@ function Organ({ id, parts, label, status, selected, tag, showLabels, onSelect }
       )}
     </group>
   )
+}
+
+function Organs({ custom, ...rest }: { custom: OrganDef[] | null; status: Record<RegionId, Status>; selected: RegionId; tags: Partial<Record<RegionId, string>>; showLabels: boolean; onSelect: (r: RegionId) => void }) {
+  const meshes = useOrganMeshes()
+  const defs = useMemo(() => custom ?? defaultOrgans(meshes), [custom, meshes])
+  return <>{defs.map((o) => <Organ key={o.id} {...o} meshes={meshes} xray={!!custom} status={rest.status[o.id]} selected={rest.selected === o.id} tag={rest.tags[o.id]} showLabels={rest.showLabels} onSelect={rest.onSelect} />)}</>
 }
 
 /** Radiation shell around the body; flickers during a solar particle event. */
@@ -328,18 +370,18 @@ export function Astronaut({ status, selected, onSelect, tags, burstKey, showLabe
     if (photo) buildSplat(photo).then((s) => { if (live) setSplat(s) }).catch(() => { if (live) setSplat(null) })
     return () => { live = false }
   }, [photo])
-  const organs = splat?.organs ?? ORGANS
   return (
     <group>
       {splat
         ? <PhotoSplat splat={splat} accent={accent} />
         : <Suspense fallback={null}><Hologram burstAt={burstKey} px={px} accent={accent} beatColor={STATUS_HEX[status.blood === 'none' ? 'green' : status.blood]} /></Suspense>}
-      {organs.map((o) => (
-        <Organ key={o.id} {...o} status={status[o.id]} selected={selected === o.id} tag={tags[o.id]} showLabels={showLabels} onSelect={onSelect} />
-      ))}
+      <Suspense fallback={null}>
+        <Organs custom={splat?.organs ?? null} status={status} selected={selected} tags={tags} showLabels={showLabels} onSelect={onSelect} />
+      </Suspense>
       <Shield status={status.radiation} onSelect={() => onSelect('radiation')} />
     </group>
   )
 }
 
 useGLTF.preload(SUIT_URL)
+useGLTF.preload(ALL_ORGAN_URLS)
