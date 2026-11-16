@@ -67,6 +67,17 @@ function FadeOut({ total }: { total: number }) {
   return <AbsoluteFill style={{ background: '#000', opacity: interpolate(f, [total - 10, total], [0, 0.85], clamp), pointerEvents: 'none' }} />
 }
 
+/** Space Apps rule: SI-assisted video must carry a visible watermark. Small, constant, bottom-right. */
+function SIMark() {
+  return (
+    <AbsoluteFill style={{ pointerEvents: 'none' }}>
+      <div style={{ position: 'absolute', right: 28, bottom: 22, fontFamily: MONO, fontSize: 17, letterSpacing: 1.5, color: 'rgba(237,237,237,0.72)', background: 'rgba(8,8,8,0.55)', padding: '4px 10px', borderRadius: 3 }}>
+        SI-ASSISTED EDIT &amp; GRAPHICS · CLAUDE · REAL FOOTAGE &amp; NASA DATA
+      </div>
+    </AbsoluteFill>
+  )
+}
+
 /** Source chip that slides in while the speaker says "this is real NASA data…". */
 function SourceChip({ text, len }: { text: string; len: number }) {
   const f = useCurrentFrame()
@@ -147,6 +158,7 @@ export function DraftA() {
       <Sequence from={w.storm[0] - 50} durationInFrames={60}><Audio src={staticFile('sfx/riser.wav')} volume={0.14} /></Sequence>
       <Captions words={e.words} hide={[w.not40, w.end]} />
       <Finish />
+      <SIMark />
       <FadeOut total={T} />
       <Bed total={T} />
     </AbsoluteFill>
@@ -194,6 +206,7 @@ export function DraftB() {
       <Sequence from={w.end[0]} durationInFrames={len(w.end)}><TeamEnd /></Sequence>
       <Captions words={e.words} hide={[w.not40, w.end, w.crew]} />
       <Finish />
+      <SIMark />
       <FadeOut total={T} />
       <Bed total={T} />
     </AbsoluteFill>

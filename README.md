@@ -575,6 +575,15 @@ We would rather show the limits than hide them.
 14. NASA-STD-3001 Volume 1, *Crew Health*: 600 mSv career effective dose limit [V1 4030]. Summary in NASA OCHMO's radiation protection technical brief. https://www.nasa.gov/wp-content/uploads/2023/03/radiation-protection-technical-brief-ochmo.pdf
 15. National Research Council (2000). *Radiation and the International Space Station: Recommendations to Reduce Risk*. National Academies Press. https://doi.org/10.17226/9725
 
+## Use of Super Intelligence (SI)
+
+We used SI tools to build this project, and we mark where:
+
+- **Code and data pipeline:** most of the app code (`app/`), the Python scripts that turn the NASA files into JSON (`scripts/`), the figure generator (`docs/figures/make_figures.py`) and the video project (`video/`) were written with Claude (Anthropic) through Claude Code, under our direction and review. Each commit made with SI says so in its message and carries `Agent-Harness` / `Agent-Model` trailers (metadata).
+- **Text:** this README, the in-app explanations and the research notes in `research/` were drafted with Claude and checked by us against the cited sources.
+- **Video:** the demo shows our real recorded takes and real NASA data. The edit, captions, charts and motion graphics were produced by SI-written Remotion code, and the sound effects were synthesized by SI-written code (no music or voice generation; the voices are ours). The video carries a visible "SI-ASSISTED" watermark.
+- **Not generated:** no image- or video-generation model was used. The photo avatars are built on the device by MediaPipe pose detection and our splatting code; the crew looks come from public NASA Apollo photographs; 3D models come from NASA 3D Resources and HuBMAP. SI output does not use or modify NASA logos or insignia.
+
 ## Credits and licenses
 
 - **Data:** NASA Open Science Data Repository (Inspiration4 OSD-569 and OSD-575), NASA CDAWeb (ISS TEPC), data.nasa.gov (Crew State Monitoring), NOAA Space Weather Prediction Center.
