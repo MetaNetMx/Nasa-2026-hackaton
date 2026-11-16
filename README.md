@@ -9,7 +9,7 @@
 
 <p align="center">
   <a href="https://delta-me-astronaut-health.netlify.app"><b>Live demo</b></a> ·
-  <a href="video/renders/Pitch30.mp4"><b>30-second video</b></a> ·
+  <a href="video/renders/DeltaMe-SpaceApps-Demo-30s.mp4"><b>30-second video</b></a> ·
   <a href="#abstract"><b>Abstract</b></a> ·
   <a href="#5-results"><b>Results</b></a> ·
   <a href="#9-run-it-locally"><b>Run it</b></a>
