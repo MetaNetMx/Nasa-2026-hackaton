@@ -1,6 +1,7 @@
 import { Composition, Series, Still } from 'remotion'
 import { AppShot, Banner, EndCard, Title } from './cards'
 import { CrewWide, McvDrop, Storm } from './clips'
+import { DraftA, DraftB, durations } from './edit/Drafts'
 
 const FPS = 30
 /** All three data shots back to back (20 s), for a quick cut. */
@@ -37,6 +38,9 @@ export function Root() {
       <Composition id="Storm" component={Storm} durationInFrames={6 * FPS} {...v} />
       <Composition id="DataCut" component={DataCut} durationInFrames={20 * FPS} {...v} />
       <Composition id="Pitch30" component={Pitch30} durationInFrames={30 * FPS} {...v} />
+      {/* Camera-led edits of the founder's recorded takes (A-roll) with the data clips as B-roll */}
+      <Composition id="DraftA-DataInMotion" component={DraftA} durationInFrames={durations.A} {...v} />
+      <Composition id="DraftB-FounderFocus" component={DraftB} durationInFrames={durations.B} {...v} />
       <Still id="Banner" component={Banner} width={1800} height={600} />
     </>
   )

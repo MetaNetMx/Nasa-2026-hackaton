@@ -1,0 +1,627 @@
+{
+ "name": "draftA",
+ "fps": 30,
+ "total": 898,
+ "cuts": [
+  {
+   "take": 10,
+   "from": 41.08,
+   "to": 41.78,
+   "rate": 1.12,
+   "start": 0,
+   "len": 19,
+   "beat": 0
+  },
+  {
+   "take": 10,
+   "from": 42.1,
+   "to": 44.98,
+   "rate": 1.12,
+   "start": 19,
+   "len": 77,
+   "beat": 0,
+   "soft": true
+  },
+  {
+   "take": 10,
+   "from": 45.32,
+   "to": 48.88,
+   "rate": 1.12,
+   "start": 96,
+   "len": 95,
+   "beat": 1
+  },
+  {
+   "take": 5,
+   "from": 17.14,
+   "to": 18.96,
+   "rate": 1.24,
+   "start": 191,
+   "len": 44,
+   "beat": 2
+  },
+  {
+   "take": 5,
+   "from": 19.54,
+   "to": 22.48,
+   "rate": 1.24,
+   "start": 235,
+   "len": 71,
+   "beat": 2,
+   "soft": true
+  },
+  {
+   "take": 5,
+   "from": 22.92,
+   "to": 25.98,
+   "rate": 1.24,
+   "start": 306,
+   "len": 74,
+   "beat": 3
+  },
+  {
+   "take": 10,
+   "from": 17.62,
+   "to": 18.53,
+   "rate": 1.12,
+   "start": 380,
+   "len": 24,
+   "beat": 4
+  },
+  {
+   "take": 10,
+   "from": 18.66,
+   "to": 19.73,
+   "rate": 1.12,
+   "start": 404,
+   "len": 29,
+   "beat": 4,
+   "soft": true
+  },
+  {
+   "take": 10,
+   "from": 19.85,
+   "to": 20.84,
+   "rate": 1.12,
+   "start": 433,
+   "len": 27,
+   "beat": 4,
+   "soft": true
+  },
+  {
+   "take": 10,
+   "from": 21.16,
+   "to": 24.62,
+   "rate": 1.12,
+   "start": 460,
+   "len": 93,
+   "beat": 5
+  },
+  {
+   "take": 5,
+   "from": 39.48,
+   "to": 40.2,
+   "rate": 1.24,
+   "start": 553,
+   "len": 17,
+   "beat": 6
+  },
+  {
+   "take": 5,
+   "from": 40.76,
+   "to": 43.18,
+   "rate": 1.24,
+   "start": 570,
+   "len": 59,
+   "beat": 6,
+   "soft": true
+  },
+  {
+   "take": 5,
+   "from": 43.48,
+   "to": 45.2,
+   "rate": 1.24,
+   "start": 629,
+   "len": 42,
+   "beat": 6,
+   "soft": true
+  },
+  {
+   "take": 8,
+   "from": 41.72,
+   "to": 42.18,
+   "rate": 1.12,
+   "start": 671,
+   "len": 12,
+   "beat": 7
+  },
+  {
+   "take": 8,
+   "from": 42.61,
+   "to": 46.4,
+   "rate": 1.12,
+   "start": 683,
+   "len": 102,
+   "beat": 7,
+   "soft": true
+  },
+  {
+   "take": 5,
+   "from": 53.94,
+   "to": 55.42,
+   "rate": 1.24,
+   "start": 785,
+   "len": 36,
+   "beat": 8
+  },
+  {
+   "take": 10,
+   "from": 35.26,
+   "to": 35.83,
+   "rate": 1.12,
+   "start": 821,
+   "len": 15,
+   "beat": 9
+  },
+  {
+   "take": 10,
+   "from": 36.25,
+   "to": 36.96,
+   "rate": 1.12,
+   "start": 836,
+   "len": 19,
+   "beat": 9,
+   "soft": true
+  },
+  {
+   "take": 10,
+   "from": 37.36,
+   "to": 38.14,
+   "rate": 1.12,
+   "start": 855,
+   "len": 21,
+   "beat": 9,
+   "soft": true
+  }
+ ],
+ "words": [
+  {
+   "w": "On",
+   "a": 3,
+   "b": 8,
+   "key": false
+  },
+  {
+   "w": "Mars,",
+   "a": 8,
+   "b": 17,
+   "key": false
+  },
+  {
+   "w": "your",
+   "a": 21,
+   "b": 24,
+   "key": false
+  },
+  {
+   "w": "doctor",
+   "a": 24,
+   "b": 34,
+   "key": false
+  },
+  {
+   "w": "is",
+   "a": 34,
+   "b": 44,
+   "key": false
+  },
+  {
+   "w": "40",
+   "a": 44,
+   "b": 62,
+   "key": true
+  },
+  {
+   "w": "minutes",
+   "a": 62,
+   "b": 81,
+   "key": true
+  },
+  {
+   "w": "away.",
+   "a": 81,
+   "b": 92,
+   "key": false
+  },
+  {
+   "w": "This",
+   "a": 99,
+   "b": 105,
+   "key": false
+  },
+  {
+   "w": "is",
+   "a": 105,
+   "b": 112,
+   "key": false
+  },
+  {
+   "w": "real",
+   "a": 115,
+   "b": 121,
+   "key": false
+  },
+  {
+   "w": "NASA",
+   "a": 121,
+   "b": 129,
+   "key": true
+  },
+  {
+   "w": "data",
+   "a": 129,
+   "b": 136,
+   "key": false
+  },
+  {
+   "w": "from",
+   "a": 136,
+   "b": 145,
+   "key": false
+  },
+  {
+   "w": "the",
+   "a": 145,
+   "b": 150,
+   "key": false
+  },
+  {
+   "w": "Inspiration4",
+   "a": 150,
+   "b": 175,
+   "key": false
+  },
+  {
+   "w": "crew.",
+   "a": 175,
+   "b": 187,
+   "key": false
+  },
+  {
+   "w": "The",
+   "a": 193,
+   "b": 198,
+   "key": false
+  },
+  {
+   "w": "day",
+   "a": 198,
+   "b": 205,
+   "key": false
+  },
+  {
+   "w": "after",
+   "a": 205,
+   "b": 219,
+   "key": false
+  },
+  {
+   "w": "landing,",
+   "a": 219,
+   "b": 233,
+   "key": false
+  },
+  {
+   "w": "red-cell",
+   "a": 236,
+   "b": 250,
+   "key": false
+  },
+  {
+   "w": "size",
+   "a": 250,
+   "b": 260,
+   "key": false
+  },
+  {
+   "w": "fell",
+   "a": 260,
+   "b": 269,
+   "key": false
+  },
+  {
+   "w": "in",
+   "a": 269,
+   "b": 285,
+   "key": false
+  },
+  {
+   "w": "all",
+   "a": 285,
+   "b": 294,
+   "key": true
+  },
+  {
+   "w": "four.",
+   "a": 294,
+   "b": 302,
+   "key": true
+  },
+  {
+   "w": "Every",
+   "a": 308,
+   "b": 323,
+   "key": false
+  },
+  {
+   "w": "Earth",
+   "a": 323,
+   "b": 334,
+   "key": false
+  },
+  {
+   "w": "lab",
+   "a": 334,
+   "b": 342,
+   "key": false
+  },
+  {
+   "w": "range",
+   "a": 342,
+   "b": 352,
+   "key": false
+  },
+  {
+   "w": "said",
+   "a": 352,
+   "b": 362,
+   "key": false
+  },
+  {
+   "w": "normal.",
+   "a": 362,
+   "b": 376,
+   "key": true
+  },
+  {
+   "w": "Measured",
+   "a": 383,
+   "b": 392,
+   "key": false
+  },
+  {
+   "w": "against",
+   "a": 392,
+   "b": 404,
+   "key": false
+  },
+  {
+   "w": "each",
+   "a": 404,
+   "b": 416,
+   "key": false
+  },
+  {
+   "w": "astronaut's",
+   "a": 416,
+   "b": 433,
+   "key": false
+  },
+  {
+   "w": "own",
+   "a": 433,
+   "b": 442,
+   "key": true
+  },
+  {
+   "w": "baseline,",
+   "a": 442,
+   "b": 455,
+   "key": true
+  },
+  {
+   "w": "that",
+   "a": 463,
+   "b": 466,
+   "key": false
+  },
+  {
+   "w": "shift",
+   "a": 466,
+   "b": 473,
+   "key": false
+  },
+  {
+   "w": "is",
+   "a": 473,
+   "b": 482,
+   "key": false
+  },
+  {
+   "w": "bigger",
+   "a": 482,
+   "b": 492,
+   "key": true
+  },
+  {
+   "w": "than",
+   "a": 492,
+   "b": 503,
+   "key": false
+  },
+  {
+   "w": "anything",
+   "a": 503,
+   "b": 518,
+   "key": false
+  },
+  {
+   "w": "after",
+   "a": 518,
+   "b": 529,
+   "key": false
+  },
+  {
+   "w": "recovery.",
+   "a": 529,
+   "b": 548,
+   "key": false
+  },
+  {
+   "w": "Delta-Me",
+   "a": 555,
+   "b": 570,
+   "key": false
+  },
+  {
+   "w": "checks",
+   "a": 570,
+   "b": 582,
+   "key": false
+  },
+  {
+   "w": "every",
+   "a": 582,
+   "b": 603,
+   "key": false
+  },
+  {
+   "w": "crew",
+   "a": 603,
+   "b": 611,
+   "key": false
+  },
+  {
+   "w": "member",
+   "a": 611,
+   "b": 629,
+   "key": false
+  },
+  {
+   "w": "against",
+   "a": 629,
+   "b": 644,
+   "key": false
+  },
+  {
+   "w": "themselves.",
+   "a": 644,
+   "b": 667,
+   "key": true
+  },
+  {
+   "w": "And",
+   "a": 674,
+   "b": 679,
+   "key": false
+  },
+  {
+   "w": "in",
+   "a": 679,
+   "b": 686,
+   "key": false
+  },
+  {
+   "w": "a",
+   "a": 686,
+   "b": 691,
+   "key": false
+  },
+  {
+   "w": "real",
+   "a": 691,
+   "b": 699,
+   "key": false
+  },
+  {
+   "w": "solar",
+   "a": 699,
+   "b": 708,
+   "key": false
+  },
+  {
+   "w": "storm,",
+   "a": 708,
+   "b": 720,
+   "key": true
+  },
+  {
+   "w": "it",
+   "a": 727,
+   "b": 730,
+   "key": false
+  },
+  {
+   "w": "calls",
+   "a": 730,
+   "b": 736,
+   "key": false
+  },
+  {
+   "w": "for",
+   "a": 736,
+   "b": 744,
+   "key": false
+  },
+  {
+   "w": "the",
+   "a": 744,
+   "b": 751,
+   "key": false
+  },
+  {
+   "w": "shelter",
+   "a": 751,
+   "b": 761,
+   "key": true
+  },
+  {
+   "w": "in",
+   "a": 761,
+   "b": 771,
+   "key": false
+  },
+  {
+   "w": "minutes,",
+   "a": 771,
+   "b": 780,
+   "key": false
+  },
+  {
+   "w": "not",
+   "a": 787,
+   "b": 805,
+   "key": false
+  },
+  {
+   "w": "40.",
+   "a": 805,
+   "b": 817,
+   "key": false
+  },
+  {
+   "w": "Delta-Me,",
+   "a": 824,
+   "b": 836,
+   "key": false
+  },
+  {
+   "w": "your",
+   "a": 839,
+   "b": 846,
+   "key": false
+  },
+  {
+   "w": "own",
+   "a": 846,
+   "b": 859,
+   "key": false
+  },
+  {
+   "w": "baseline.",
+   "a": 859,
+   "b": 872,
+   "key": false
+  }
+ ]
+}

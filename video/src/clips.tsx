@@ -138,7 +138,7 @@ export function Storm() {
       {red && (
         <div style={{ position: 'absolute', left: 96, bottom: 66, display: 'flex', gap: 18, alignItems: 'center', border: `2px solid ${C.bad}`, borderLeftWidth: 10, padding: '14px 22px', background: 'rgba(40,6,12,0.9)', opacity: interpolate(flash, [0, 1], [0.5, 1], clamp) }}>
           <Mono style={{ fontSize: 26, color: '#ff8fa3', fontWeight: 700 }}>WARNING · GO TO THE STORM SHELTER</Mono>
-          <Mono style={{ fontSize: 20, color: '#f2c9d0' }}>on-board alert · Earth reply from Mars: 40 min</Mono>
+          <Mono style={{ fontSize: 20, color: '#f2c9d0' }}>on-board alert · Earth reply from Mars: up to 40 min</Mono>
         </div>
       )}
     </Frame>

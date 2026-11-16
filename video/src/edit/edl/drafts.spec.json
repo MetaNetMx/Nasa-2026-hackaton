@@ -1,0 +1,276 @@
+[
+ {
+  "name": "draftA",
+  "beats": [
+   {
+    "take": 10,
+    "text": "On Mars, your doctor is 40 minutes away.",
+    "t0": 41.18,
+    "t1": 44.82,
+    "keys": [
+     "40",
+     "minutes"
+    ]
+   },
+   {
+    "take": 10,
+    "text": "This is real NASA data from the Inspiration4 crew.",
+    "t0": 45.42,
+    "t1": 48.72,
+    "keys": [
+     "nasa"
+    ]
+   },
+   {
+    "take": 5,
+    "text": "The day after landing, red-cell size fell in all four.",
+    "t0": 17.24,
+    "t1": 22.32,
+    "keys": [
+     "all",
+     "four"
+    ],
+    "rate": 1.24
+   },
+   {
+    "take": 5,
+    "text": "Every Earth lab range said normal.",
+    "t0": 23.02,
+    "t1": 25.82,
+    "keys": [
+     "normal"
+    ],
+    "rate": 1.24
+   },
+   {
+    "take": 10,
+    "text": "Measured against each astronaut's own baseline,",
+    "t0": 17.72,
+    "t1": 20.68,
+    "keys": [
+     "own",
+     "baseline"
+    ],
+    "cutouts": [
+     [
+      18.53,
+      18.66
+     ],
+     [
+      19.73,
+      19.85
+     ]
+    ]
+   },
+   {
+    "take": 10,
+    "text": "that shift is bigger than anything after recovery.",
+    "t0": 21.26,
+    "t1": 24.46,
+    "keys": [
+     "bigger"
+    ]
+   },
+   {
+    "take": 5,
+    "text": "Delta-Me checks every crew member against themselves.",
+    "t0": 39.58,
+    "t1": 45.04,
+    "keys": [
+     "themselves"
+    ],
+    "rate": 1.24,
+    "cutouts": [
+     [
+      40.2,
+      40.76
+     ],
+     [
+      43.18,
+      43.48
+     ]
+    ]
+   },
+   {
+    "take": 8,
+    "text": "And in a real solar storm, it calls for the shelter in minutes,",
+    "t0": 41.82,
+    "t1": 46.24,
+    "keys": [
+     "storm",
+     "shelter"
+    ],
+    "cutouts": [
+     [
+      42.18,
+      42.61
+     ]
+    ]
+   },
+   {
+    "take": 5,
+    "text": "not 40.",
+    "t0": 54.04,
+    "t1": 55.26,
+    "keys": [],
+    "rate": 1.24
+   },
+   {
+    "take": 10,
+    "text": "Delta-Me, your own baseline.",
+    "t0": 35.36,
+    "t1": 37.98,
+    "keys": [],
+    "cutouts": [
+     [
+      35.83,
+      36.25
+     ],
+     [
+      36.96,
+      37.36
+     ]
+    ]
+   }
+  ],
+  "rate": 1.12,
+  "end_hold": 0.75
+ },
+ {
+  "name": "draftB",
+  "beats": [
+   {
+    "take": 10,
+    "text": "On Mars, your doctor is 40 minutes away.",
+    "t0": 41.18,
+    "t1": 44.82,
+    "keys": [
+     "40",
+     "minutes"
+    ]
+   },
+   {
+    "take": 10,
+    "text": "This is real NASA data from the Inspiration4 crew.",
+    "t0": 45.42,
+    "t1": 48.72,
+    "keys": [
+     "nasa"
+    ]
+   },
+   {
+    "take": 5,
+    "text": "The day after landing, red-cell size fell in all four.",
+    "t0": 17.24,
+    "t1": 22.32,
+    "keys": [
+     "all",
+     "four"
+    ],
+    "rate": 1.24
+   },
+   {
+    "take": 5,
+    "text": "Every Earth lab range said normal.",
+    "t0": 23.02,
+    "t1": 25.82,
+    "keys": [
+     "normal"
+    ],
+    "rate": 1.24
+   },
+   {
+    "take": 10,
+    "text": "Measured against each astronaut's own baseline,",
+    "t0": 17.72,
+    "t1": 20.68,
+    "keys": [
+     "own",
+     "baseline"
+    ],
+    "cutouts": [
+     [
+      18.53,
+      18.66
+     ],
+     [
+      19.73,
+      19.85
+     ]
+    ]
+   },
+   {
+    "take": 10,
+    "text": "that shift is bigger than anything after recovery.",
+    "t0": 21.26,
+    "t1": 24.46,
+    "keys": [
+     "bigger"
+    ]
+   },
+   {
+    "take": 5,
+    "text": "Delta-Me checks every crew member against themselves.",
+    "t0": 39.58,
+    "t1": 45.04,
+    "keys": [
+     "themselves"
+    ],
+    "rate": 1.24,
+    "cutouts": [
+     [
+      40.2,
+      40.76
+     ],
+     [
+      43.18,
+      43.48
+     ]
+    ]
+   },
+   {
+    "take": 8,
+    "text": "And in a real solar storm, it calls for the shelter in minutes,",
+    "t0": 41.82,
+    "t1": 46.24,
+    "keys": [
+     "storm",
+     "shelter"
+    ],
+    "cutouts": [
+     [
+      42.18,
+      42.61
+     ]
+    ]
+   },
+   {
+    "take": 5,
+    "text": "not 40.",
+    "t0": 54.04,
+    "t1": 55.26,
+    "keys": [],
+    "rate": 1.24
+   },
+   {
+    "take": 10,
+    "text": "Delta-Me, your own baseline.",
+    "t0": 35.36,
+    "t1": 37.98,
+    "keys": [],
+    "cutouts": [
+     [
+      35.83,
+      36.25
+     ],
+     [
+      36.96,
+      37.36
+     ]
+    ]
+   }
+  ],
+  "rate": 1.12,
+  "end_hold": 0.75
+ }
+]
